@@ -25,11 +25,6 @@
     <?php
     if (!isset($_SESSION['Category'])) {
         header("Location: index.php");
-        ;
-        ;
-
-
-        
     }
     ?>
 
