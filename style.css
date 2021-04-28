@@ -59,10 +59,13 @@ section .borderReview {
   }
   .mybtn:hover{
     background-color: lightslategrey  !important;
+    box-shadow: #444444 I !important;
   }
   .mybtn:focus{
     background-color: lightslategrey  !important;
+    box-shadow: #444444 I !important;
   }
+  
  
   .myform {
     position: relative;
@@ -86,3 +89,12 @@ section .borderReview {
     border-color: lightslategrey;
   }
 
+  .box {
+    transition: box-shadow .3s;
+
+}
+
+.box:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.534);
+    
+}

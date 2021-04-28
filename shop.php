@@ -27,11 +27,11 @@
             $row = $stmt->fetch();
             if (isset($row['IdProduct'])) {
                 echo '  <div class="row">
-            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
-                <div class="product-wrapper text-center">
+            <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
+                <div class="product-wrapper box rounded text-center">
                     <div class="product-img rounded">
-                        <a href="' . $row['Link'] . '" data-abc="true">';
-                echo '<img src="' . $row['Path'] . '" class="rounded" alt="' . $row['Title'] . '">
+                        <a href="' . $row['Link'] . '" data-abc="true" >';
+                echo '<img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
                         </a>
                         
                         <div class="product-action">
@@ -51,11 +51,11 @@
 
 
             if (isset($row['IdProduct'])) {
-                echo '   <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
-                <div class="product-wrapper  text-center">
+                echo '   <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
+                <div class="product-wrapper box rounded text-center">
                     <div class="product-img rounded">
-                        <a href="' . $row['Link'] . '" data-abc="true">
-                            <img src="' . $row['Path'] . '" class="rounded" alt="' . $row['Title'] . '">
+                        <a href="' . $row['Link'] . '" data-abc="true" >
+                            <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
                         </a>
 
                         <div class="product-action">
@@ -70,11 +70,11 @@
                 $row = $stmt->fetch();
             }
             if (isset($row['IdProduct'])) {
-                echo '   <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
-                <div class="product-wrapper  text-center">
+                echo '   <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
+                <div class="product-wrapper box rounded  text-center">
                     <div class="product-img rounded">
-                        <a href="' . $row['Link'] . '" data-abc="true">
-                            <img src="' . $row['Path'] . '" class="rounded" alt="' . $row['Title'] . '">
+                        <a href="' . $row['Link'] . '" data-abc="true" >
+                            <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
                         </a>
 
                         <div class="product-action">
@@ -84,12 +84,30 @@
                         </div>
                     </div>
                 </div>
-            </div>
-           
-        </div>';
+            </div>';
                 --$cnt;
                 $row = $stmt->fetch();
             }
+            if (isset($row['IdProduct'])) {
+                echo '   <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
+                <div class="product-wrapper box rounded  text-center">
+                    <div class="product-img rounded">
+                        <a href="' . $row['Link'] . '" data-abc="true" >
+                            <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
+                        </a>
+
+                        <div class="product-action">
+                            <div class="product-action-style">
+                            <a href="#" class="nav-font">QUICK VIEW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+                --$cnt;
+                $row = $stmt->fetch();
+            }
+            echo '</div>';
         }
         ?>
 

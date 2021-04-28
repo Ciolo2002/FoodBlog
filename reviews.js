@@ -22,8 +22,8 @@ $(function () {
         spacing: "5px",
         multiColor: {
 
-            "startColor": "#444444", //RED
-            "endColor": "#4d0000" //GRAY
+            "startColor": "#444444", //GRAY
+            "endColor": "#4d0000" //RED
         }
     });
 });

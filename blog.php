@@ -37,7 +37,7 @@
             echo '<div class="row">';
             echo '<div class="col-lg-6 mb-3 mb-lg-0" style="margin-top: 12px !important; margin-bottom: 12px !important ">
                     <a href="recipe.php?recipe='.$idRecipes[$i].'">
-                        <div class="hover hover-1 text-white rounded"><img src="' . $paths[$i] . '" alt="' . $titles[$i] . '">
+                        <div class="hover hover-1 text-white box rounded"><img src="' . $paths[$i] . '" alt="' . $titles[$i] . '">
                             <div class="hover-overlay"></div>
                                 <div class="hover-1-content px-5 py-4">
                                     <h3 class="hover-1-title text-uppercase font-weight-bold mb-0"> <span class="sublogo" style="font-size: 30px"><b>' . $titles[$i] . '</b> </span></h3>
@@ -50,7 +50,7 @@
             if(isset($paths[$i])){
             echo '<div class="col-lg-6" style="margin-top: 12px !important; margin-bottom: 12px !important">
                    <a href="recipe.php?recipe='.$idRecipes[$i].'">
-                    <div class="hover hover-1 text-white rounded"><img src="' . $paths[$i] . '" alt="' . $titles[$i] . '">
+                    <div class="hover hover-1 text-white box rounded"><img src="' . $paths[$i] . '" alt="' . $titles[$i] . '">
                         <div class="hover-overlay"></div>
                             <div class="hover-1-content px-5 py-4">
                                 <h3 class="hover-1-title text-uppercase font-weight-bold mb-0"> <span class="sublogo" style="font-size: 30px"><b>' . $titles[$i] . '</b> </span></h3>

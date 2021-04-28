@@ -31,7 +31,7 @@ if (isset($_GET['recipe'])) {
                             }
                             ?>
                             <div class="col-md-12 text-center ">
-                                <input type="submit" class="btn btn-block mybtn btn-primary logo" name="Login" value="LOGIN">
+                                <input type="submit" class="btn btn-block mybtn btn-secondary logo" name="Login" value="LOGIN">
                             </div>
                             <div class="col-md-12 ">
                                 <div class="login-or">

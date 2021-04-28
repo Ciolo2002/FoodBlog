@@ -168,12 +168,12 @@
             <div class="row d-flex ">
                 <div class="col-6  d-flex justify-content-center ">
                     <div class="myform form" style="border: none;">
-                        <input type="submit" class="btn btn-block mybtn btn-primary logo" name="submit" value="UPDATE">
+                        <input type="submit" class="btn btn-block mybtn btn-secondary logo" name="submit" value="UPDATE">
                     </div>
                 </div>
                 <div class="col-6  d-flex justify-content-center ">
                     <div class="myform form" style="border: none;">
-                        <input type="reset" class="btn btn-block mybtn btn-primary logo" name="reset" value="RESET">
+                        <input type="reset" class="btn btn-block mybtn btn-secondary logo" name="reset" value="RESET">
                     </div>
                 </div>
             </div>
@@ -197,7 +197,7 @@
                                 $action = "MANAGE USERS";
                                 break;
                         }
-                        echo  '<a href="' . $url . '" class="button btn btn-block mybtn btn-primary logo">' . $action . '</a>';
+                        echo  '<a href="' . $url . '" class="button btn btn-block mybtn btn-secondary logo">' . $action . '</a>';
                     }
 
                     ?>
@@ -209,7 +209,7 @@
             <div class="row d-flex ">
                 <div class="col-12  d-flex justify-content-center ">
                     <div class="myform form" style="border: none;">
-                        <a href="#myModal" class="button trigger-btn btn btn-block mybtn mybtnImportant btn-primary logo" data-toggle="modal">DELITE YOUR ACCOUNT</a>
+                        <a href="#myModal" class="button trigger-btn btn btn-block mybtn mybtnImportant btn-danger logo" data-toggle="modal">DELITE YOUR ACCOUNT</a>
                     </div>
                 </div>
             </div>
