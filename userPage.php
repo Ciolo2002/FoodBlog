@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <?php ob_start(); //non so cosa sia ma mi risolve un bug legato a header(refresh:0) ?>
     <?php
