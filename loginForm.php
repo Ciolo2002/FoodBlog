@@ -1,8 +1,12 @@
 <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . strtok($_SERVER["REQUEST_URI"], '?');
 if (isset($_GET['recipe'])) {
-    $actual_link .= '?recipe=' . $_GET['recipe'] . '&';
-} else
-    $actual_link .= '?'; ?>
+    $actual_link .= '?recipe=' . $_GET['recipe'].'&';
+}if (isset($_GET['item'])) {
+    $actual_link .= '?item=' . $_GET['item'].'&';
+}
+ else {
+    $actual_link.='?';
+ } ?>
 <link rel=stylesheet href="loginStyle.css">
 <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">

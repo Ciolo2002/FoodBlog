@@ -36,7 +36,7 @@
                         
                         <div class="product-action">
                             <div class="product-action-style">
-                                <a href="#" class="nav-font">QUICK VIEW</a>
+                                <a href="product.php?item='.$row['IdProduct'].'" class="nav-font" style="text-decoration: none;">TAKE A LOOK </a>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
 
                         <div class="product-action">
                             <div class="product-action-style">
-                            <a href="#" class="nav-font">QUICK VIEW</a>
+                            <a href="product.php?item='.$row['IdProduct'].'" class="nav-font" style="text-decoration: none;">TAKE A LOOK</a>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
 
                         <div class="product-action">
                             <div class="product-action-style">
-                            <a href="#" class="nav-font">QUICK VIEW</a>
+                            <a href="product.php?item='.$row['IdProduct'].'" class="nav-font" style="text-decoration: none;">TAKE A LOOK</a>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
 
                         <div class="product-action">
                             <div class="product-action-style">
-                            <a href="#" class="nav-font">QUICK VIEW</a>
+                            <a href="product.php?item='.$row['IdProduct'].'" class="nav-font" style="text-decoration: none;">TAKE A LOOK</a>
                             </div>
                         </div>
                     </div>
