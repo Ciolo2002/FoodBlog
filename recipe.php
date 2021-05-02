@@ -27,6 +27,8 @@
 
 
         <?php
+        require_once("callingLogin.php");
+        require_once("navbar.php");
         if (isset($_GET['recipe']) && is_numeric($_GET['recipe'])) {
             $stmt = $dbh->getInstance()->prepare("SELECT IdRecipe, Title, Preparation FROM recipes WHERE recipes.IdRecipe= :idRecipe");
             $stmt->bindParam(':idRecipe', $_GET['recipe']);
@@ -43,8 +45,7 @@
         } else {
             header('Location: blog.php');
         }
-        require_once("callingLogin.php");
-        require_once("navbar.php");
+        
         echo '<header class="text-center logo">';
         echo '<h1 style="font-size: 65px">';
         $explode = explode(';', $row['Title']);

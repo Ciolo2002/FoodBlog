@@ -1,7 +1,7 @@
 <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . strtok($_SERVER["REQUEST_URI"], '?');
 if (isset($_GET['recipe'])) {
     $actual_link .= '?recipe=' . $_GET['recipe'].'&';
-}if (isset($_GET['item'])) {
+}else if (isset($_GET['item'])) {
     $actual_link .= '?item=' . $_GET['item'].'&';
 }
  else {
