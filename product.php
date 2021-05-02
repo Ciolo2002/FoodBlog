@@ -41,13 +41,13 @@
             <div class="col-12 col-sm-12 col-lg-4 col-md-6 d-flex justify-content-center">
                 <?php echo ' <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '" style="margin-botom:3%">'  ?>
             </div>
-            <div class="col-12 col-sm-12 col-lg-8 col-md-6 d-flex justify-content-center" >
-                <h4 style="font-size: 30px" class="navbar-font position-absolute"  style="margin-top:10%" >YOU WILL FOUND</h4>
+            <div class="col-12 col-sm-12 col-lg-8 col-md-6 d-flex justify-content-center">
+                <h4 style="font-size: 30px" class="navbar-font position-absolute" style="margin-top:10%">YOU WILL FOUND</h4>
                 <div class="position-relative" style="margin-top:10%;">
-                <p class="navbar-font" style="font-size:25px"><?php echo  $row['Description']?> </p>
+                    <p class="navbar-font" style="font-size:25px"><?php echo  $row['Description'] ?> </p>
+                    <a href="<?php echo $row['Link'] ?>" class="box"><img src="Images/amazon-kindle-logo_16.png" style=" width: 250px; height: 110px; background-color:none"> </a>
                 </div>
-                <div  style="margin-top:10%">
-                <a href="<?php $row['Link']?>"><img src="Images/amazon-kindle-logo_16.png"> </a>
+                <div style="margin-top:10%">
                 </div>
             </div>
 
