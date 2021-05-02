@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 28, 2021 alle 20:18
+-- Creato il: Mag 02, 2021 alle 18:17
 -- Versione del server: 10.4.18-MariaDB
 -- Versione PHP: 8.0.3
 
@@ -140,8 +140,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`IdProduct`, `Title`, `Link`, `Description`, `IdImage`) VALUES
-(6, 'Easy As Bread', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae tempus mi, vitae rhoncus ligula. Pellentesque vitae turpis eu nisl tincidunt aliquet id non tortor. Vivamus et eleifend sapien. Curabitur congue efficitur euismod. Nam mollis, nisl vel posuere aliquam, justo enim congue libero, ut dignissim turpis arcu vitae nunc. Phasellus.', 13),
-(7, 'Proper Pasta', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae tempus mi, vitae rhoncus ligula. Pellentesque vitae turpis eu nisl tincidunt aliquet id non tortor. Vivamus et eleifend sapien. Curabitur congue efficitur euismod. Nam mollis, nisl vel posuere aliquam, justo enim congue libero, ut dignissim turpis arcu vitae nunc. Phasellus.', 12);
+(1, 'Easy As Bread', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae tempus mi, vitae rhoncus ligula. Pellentesque vitae turpis eu nisl tincidunt aliquet id non tortor. Vivamus et eleifend sapien. Curabitur congue efficitur euismod. Nam mollis, nisl vel posuere aliquam, justo enim congue libero, ut dignissim turpis arcu vitae nunc. Phasellus.', 13),
+(2, 'Proper Pasta', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae tempus mi, vitae rhoncus ligula. Pellentesque vitae turpis eu nisl tincidunt aliquet id non tortor. Vivamus et eleifend sapien. Curabitur congue efficitur euismod. Nam mollis, nisl vel posuere aliquam, justo enim congue libero, ut dignissim turpis arcu vitae nunc. Phasellus.', 12);
 
 -- --------------------------------------------------------
 
@@ -435,7 +435,7 @@ ALTER TABLE `recipesimages`
 -- AUTO_INCREMENT per la tabella `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT per la tabella `users`
