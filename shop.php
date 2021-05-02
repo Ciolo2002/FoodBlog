@@ -28,7 +28,7 @@
             if (isset($row['IdProduct'])) {
                 echo '  <div class="row">
             <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
-                <div class="product-wrapper box rounded text-center">
+                <div class="product-wrapper box rounded text-center rss opacity ">
                     <div class="product-img rounded">
                         <a href="product.php?item='.$row['IdProduct'].'" data-abc="true" >';
                 echo '<img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
@@ -42,17 +42,12 @@
                     </div>
                 </div>
             </div>';
-
-
-
                 --$cnt;
                 $row = $stmt->fetch();
             }
-
-
             if (isset($row['IdProduct'])) {
                 echo '   <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
-                <div class="product-wrapper box rounded text-center">
+                <div class="product-wrapper box rounded text-center rss opacity">
                     <div class="product-img rounded">
                         <a href="product.php?item='.$row['IdProduct'].'"  data-abc="true" >
                             <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
@@ -71,7 +66,7 @@
             }
             if (isset($row['IdProduct'])) {
                 echo '   <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
-                <div class="product-wrapper box rounded  text-center">
+                <div class="product-wrapper box rounded text-center rss opacity">
                     <div class="product-img rounded">
                         <a href="product.php?item='.$row['IdProduct'].'" data-abc="true" >
                             <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
@@ -90,7 +85,7 @@
             }
             if (isset($row['IdProduct'])) {
                 echo '   <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
-                <div class="product-wrapper box rounded  text-center">
+                <div class="product-wrapper box rounded text-center rss opacity">
                     <div class="product-img rounded">
                         <a href="product.php?item='.$row['IdProduct'].'" data-abc="true" >
                             <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">

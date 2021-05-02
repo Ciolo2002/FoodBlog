@@ -1,101 +1,113 @@
-
-
 .ml-auto {
-    margin-left: auto !important;
-    /* boostrap non fa funzionare questa classe quindi  l'ho fatta a mano*/
+  margin-left: auto !important;
+  /* boostrap non fa funzionare questa classe quindi  l'ho fatta a mano*/
 }
 
 .logo {
-    font-family: 'Oswald', sans-serif;
-    font-size: 22px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
 }
 
 .main {
-    font-size: 65px;
+  font-size: 65px;
 }
 
 .sublogo {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 15px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 15px;
 }
 
 .navbar-font {
-    font-family: 'Lexend', sans-serif !important;
-    
+  font-family: 'Lexend', sans-serif !important;
+
 }
 
 .jumbotron {
-    position: relative;
-    overflow: hidden;
-    height: 550px;
-    padding: 100px 60px;
-    margin: 0px;
-    background-image: url('Images/strawberries.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  height: 550px;
+  padding: 100px 60px;
+  margin: 0px;
+  background-image: url('Images/strawberries.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .half-image {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(255, 255, 255, 0.815);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.815);
 }
 
 section .borderReview {
-    border-right-style: solid;
-    border-left-style: solid;
-    border-color: #44444494 !important;
-    border-width: 1px !important;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-color: #44444494 !important;
+  border-width: 1px !important;
 }
 
 .mybtn {
-    border: none;
-    background-color: lightgray;
-    font-size: 25px;
-    margin-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .mybtn:hover{
-    background-color: lightslategrey  !important;
-    box-shadow: #444444 I !important;
-  }
-  .mybtn:focus{
-    background-color: lightslategrey  !important;
-    box-shadow: #444444 I !important;
-  }
-  
- 
-  .myform {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 1rem;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    pointer-events: auto;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, .2);
-    border-radius: 1.1rem;
-    outline: 0;
-   
-  }
-  
-  .form-control:focus {
-    border-color: lightslategrey;
-  }
+  border: none;
+  background-color: lightgray;
+  font-size: 25px;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
-  .box {
-    transition: box-shadow .3s;
+.mybtn:hover {
+  background-color: lightslategrey !important;
+  box-shadow: #444444 I !important;
+}
+
+.mybtn:focus {
+  background-color: lightslategrey !important;
+  box-shadow: #444444 I !important;
+}
+
+
+.myform {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 1.1rem;
+  outline: 0;
+
+}
+
+.form-control:focus {
+  border-color: lightslategrey;
+}
+
+.box {
+  transition: box-shadow .3s;
 
 }
 
 .box:hover {
-    box-shadow: 0 0 11px rgba(33, 33, 33, 0.534);
-    
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.534);
+
+}
+
+
+
+.rss.opacity {
+  filter: opacity(75%);
+}
+.rss.opacity:hover {
+  filter: opacity(100%);
+}
+.rss.opacity:focus { 
+  filter: opacity(70%); 
 }
