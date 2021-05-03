@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<?php ob_start(); //non so cosa sia ma mi risolve un bug legato a header(refresh:0) ?>
+    <?php ob_start(); //non so cosa sia ma mi risolve un bug legato a header(refresh:0) 
+    ?>
     <?php
     require_once("header.php");
     ?>
@@ -9,13 +11,13 @@
 
     <script src="registerPassowrdControl.js"> </script>
     <link rel=stylesheet href="userPage.css">
-   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
-    
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
@@ -35,56 +37,61 @@
         $stmt->bindParam(':IdUser', $_SESSION['IdUser']);
         $stmt->execute();
         $row = $stmt->fetch();
-        $name=$row['Name'];
-        $surname=$row['Surname'];
-        $email=$row['Email'];
-        $newsleter=$row['Newsletter'];
+        $name = $row['Name'];
+        $surname = $row['Surname'];
+        $email = $row['Email'];
+        $newsleter = $row['Newsletter'];
         ?><?php
-        if (isset($_POST['submit'])) {
-            
-            $stmt2 = $dbh->getInstance()->prepare("UPDATE `users` SET `Name`=:name,`Surname`=:surname,`Email`=:email,`Password`=:password,`Newsletter`=:newsleter WHERE `IdUser`=:IdUser");
-            $stmt2->bindParam(':IdUser', $_SESSION['IdUser']);
-            if ((isset($_POST['name2']) && $_POST['name2'] != '') &&( $_POST['name2'] != $row['Name'])) {
-                $stmt2->bindParam(':name', $_POST['name2']);
-                $_SESSION['Name'] = htmlentities($_POST['name2']);
-                $name=$_POST['name2'];
-            } else {
-                $stmt2->bindParam(':name', $row['Name']);
-            }
-            if (isset($_POST['surname2'])  && $_POST['surname2'] != '' && $_POST['surname2'] != $row['Surname']) {
-                $stmt2->bindParam(':surname', $_POST['surname2']);
-                $name=$_POST['surname2'];
-            } else {
-                $stmt2->bindParam(':surname', $row['Surname']);
-            }
-            if (isset($_POST['email2'])  && $_POST['email2'] != '' && $_POST['email2'] != $row['Email']) {
-                $stmt2->bindParam(':email', $_POST['email2']);
-                $name=$_POST['email2'];
-            } else {
-                $stmt2->bindParam(':email', $row['Email']);
-            }
+            if (isset($_POST['submit'])) {
+                if (isset($_POST['email2'])) {
+                    $email1 = htmlentities($_POST['email2']);
+                    $stmt1 = $dbh->getInstance()->prepare("SELECT email FROM Users
+                                                       WHERE email =:email");
+                    $stmt1->bindParam(':email', $email1);
+                    $stmt1->execute();
+                    $row1 = $stmt1->fetch();
+                }
+                $stmt2 = $dbh->getInstance()->prepare("UPDATE `users` SET `Name`=:name,`Surname`=:surname,`Email`=:email,`Password`=:password,`Newsletter`=:newsleter WHERE `IdUser`=:IdUser");
+                $stmt2->bindParam(':IdUser', $_SESSION['IdUser']);
+                if ((isset($_POST['name2']) && $_POST['name2'] != '') && ($_POST['name2'] != $row['Name'])) {
+                    $stmt2->bindParam(':name', $_POST['name2']);
+                    $_SESSION['Name'] = htmlentities($_POST['name2']);
+                    $name = $_POST['name2'];
+                } else {
+                    $stmt2->bindParam(':name', $row['Name']);
+                }
+                if (isset($_POST['surname2'])  && $_POST['surname2'] != '' && $_POST['surname2'] != $row['Surname']) {
+                    $stmt2->bindParam(':surname', $_POST['surname2']);
+                    $name = $_POST['surname2'];
+                } else {
+                    $stmt2->bindParam(':surname', $row['Surname']);
+                }
+                if ((isset($_POST['email2'])  && $_POST['email2'] != '') && ((($_POST['email2'] != $row['Email']) && !isset($row1['email']))    || (($_POST['email2'] != $row['Email']) &&($_POST['email2'] != $row1['email'])))) {
+                    $stmt2->bindParam(':email', $_POST['email2']);
+                    $name = $_POST['email2'];
+                } else {
+                    $stmt2->bindParam(':email', $row['Email']);
+                }
+                
+                if (!isset($_POST['newsletter2'])) {
+                    $row['Newsletter'] = 0;
+                } else if ($_POST['newsletter2'] == true) {
+                    $row['Newsletter']  = 1;
+                }
 
 
-            
-            if (!isset($_POST['newsletter2'])) {
-                $row['Newsletter'] = 0;
-            } else if ($_POST['newsletter2'] == true) {
-                $row['Newsletter']  = 1;
+
+                $stmt2->bindParam(':newsleter', $newsleter);
+                if (isset($_POST['password2']) && $_POST['password2'] != '' && !password_verify($_POST['password2'], $row['Password'])) {
+                    $password = password_hash($_POST['password2'], PASSWORD_DEFAULT);
+                    $stmt2->bindParam(':password', $password);
+                } else {
+                    $stmt2->bindParam(':password', $row['Password']);
+                }
+                $stmt2->execute();
+                header("Refresh:0");
             }
-
-
-
-            $stmt2->bindParam(':newsleter', $newsleter);
-            if (isset($_POST['password2']) && $_POST['password2'] != '' && !password_verify($_POST['password2'], $row['Password'])) {
-                $password = password_hash($_POST['password2'], PASSWORD_DEFAULT);
-                $stmt2->bindParam(':password', $password);
-            } else {
-                $stmt2->bindParam(':password', $row['Password']);
-            }
-            $stmt2->execute();
-            header("Refresh:0");
-        }
-        ?>
+            ?>
 
         <header class="text-center logo">
             <h1 style="font-size: 65px">Hello <?php echo htmlentities($_SESSION['Name']); ?> this is you</h1>
