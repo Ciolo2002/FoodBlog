@@ -66,7 +66,7 @@
                 } else {
                     $stmt2->bindParam(':surname', $row['Surname']);
                 }
-                if ((isset($_POST['email2'])  && $_POST['email2'] != '') && ((($_POST['email2'] != $row['Email']) && !isset($row1['email']))    || (($_POST['email2'] != $row['Email']) &&($_POST['email2'] != $row1['email'])))) {
+                if ((isset($_POST['email2'])  && $_POST['email2'] != '') && ((($_POST['email2'] != $row['Email']) && !isset($row1['email']))  || (($_POST['email2'] != $row['Email']) &&($_POST['email2'] != $row1['email'])))) {
                     $stmt2->bindParam(':email', $_POST['email2']);
                     $name = $_POST['email2'];
                 } else {
