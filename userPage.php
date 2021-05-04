@@ -73,12 +73,11 @@
                 
                 if (!isset($_POST['newsletter2'])) {
                     $row['Newsletter'] = 0;
-                } else if ($_POST['newsletter2'] == true) {
+                    $newsleter=false;
+                } else if (isset($_POST['newsletter2'])) {
                     $row['Newsletter']  = 1;
+                    $newsleter=true;
                 }
-
-
-
                 $stmt2->bindParam(':newsleter', $newsleter);
                 if (isset($_POST['password2']) && $_POST['password2'] != '' && !password_verify($_POST['password2'], $row['Password'])) {
                     $password = password_hash($_POST['password2'], PASSWORD_DEFAULT);
