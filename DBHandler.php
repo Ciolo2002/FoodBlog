@@ -1,25 +1,47 @@
 <?php
 
-class DBHandler {
+class DBHandler
+{
     private $db;
 
-    function __construct() {
+    function __construct()
+    {
         $this->connect_database();
     }
 
-    public function getInstance() {
+    public function getInstance()
+    {
         return $this->db;
     }
 
-public function getDb() {
-       if ($this->db instanceof PDO) {
+    public function getDb()
+    {
+        if ($this->db instanceof PDO) {
             return $this->db;
-       }
-}
-       
-    private function connect_database() {
-        define('USER', 'root');
-        define('PASSWORD', '');
+        }
+    }
+
+    private function connect_database()
+    {
+        if (!isset($_SESSION['Category'])) {
+            define('USER', 'nouser');
+            define('PASSWORD', '4KsKhh{PL>4Mhcw7v;FE)~,6r6!Yzf!L');
+        } else if (isset($_SESSION['Category'])) {
+            switch ($_SESSION['Category']) {
+                case 'User':
+                    define('USER', 'user');
+                    define('PASSWORD', 'UqZ)SA5/C?buu.6^"9t!!>!^kh"=?+vP');
+                    break;
+                case 'Chef':
+                    define('USER', 'chef');
+                    define('PASSWORD', 'A.Djh!]XQg<TrTX+Gx(&V@fPv74qnTL~');
+                    break;
+                case 'Admin':
+                    define('USER', 'admin');
+                    define('PASSWORD', ';E&w#!%Br]]XtJLSe@$XY}qD<r3g2u2n');
+                    break;
+            }
+        }
 
         // Database connection
         try {
@@ -29,11 +51,9 @@ public function getDb() {
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             );
             $this->db = new PDO($connection_string, USER, PASSWORD, $connection_array);
-           // echo 'Database connection established';
-        }
-        catch(PDOException $e) {
+            // echo 'Database connection established';
+        } catch (PDOException $e) {
             $this->db = null;
         }
-       
-    }   
+    }
 }

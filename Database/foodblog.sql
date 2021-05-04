@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 02, 2021 alle 18:17
+-- Creato il: Mag 05, 2021 alle 00:11
 -- Versione del server: 10.4.18-MariaDB
 -- Versione PHP: 8.0.3
 
@@ -301,7 +301,7 @@ INSERT INTO `users` (`IdUser`, `Name`, `Surname`, `Email`, `Password`, `Newslett
 (16, 'Leonardo', 'Vio', 'leonardo.vio56@gmail.com', '$2y$10$YS3HJXqUXQ.8qEewIQyyb.JP/DOZaMoZnPiVmH/Mim6RjejWqMqRu', 1, 3),
 (17, 'Diego', 'Nardo', 'diego.nardo@magia.org.uk', '$2y$10$i1d5mW63jHWv1onoHbHgt.U79l1.2PD9aRDB8QAqtv64vkyRZiEUS', 0, 3),
 (18, 'Claudia', 'Dei Rossi', 'claudia@deirossi.it', '$2y$10$l/pWcTCXLwONAcK131t0IumSNGB3Z.8QzaGZ5BLeD5wxbJTcGqMI6', 1, 3),
-(19, 'Marta', 'Terranova', 'marta.evvia@gmail.it', '$2y$10$hAVBeGIKd8IL5F18glsKheF2FgQJCrB5pv4tl3DCGJrl1jcvErtpO', 1, 3),
+(19, 'Marta', 'Terranova', 'marta.terranova@gmail.it', '$2y$10$hAVBeGIKd8IL5F18glsKheF2FgQJCrB5pv4tl3DCGJrl1jcvErtpO', 1, 3),
 (20, 'Nicolò', 'Bighetto', 'nickbig@hello.yuppi', '$2y$10$KUeg25.heeCdkG781LIc6.3zOLfZ.uTpr0vx6Dh38KvcMbxjRetu.', 0, 3),
 (21, 'Hadda', 'Hakim', 'vortrex@ciao.ciao', '$2y$10$uNvd5wcDWWmAYix03zFfvelhKtNWbqYKjYu.gyNI5t7FkdbXE0Pt.', 0, 3),
 (31, 'Ludovico', 'Ariosto', 'ludovico@arrosto.haha', '$2y$10$/H7SZD1xOWaUZPqJ2nv2cu2S5R.TE9O1.z2L07jpL.CwCbqj16JoO', 0, 3),
@@ -310,7 +310,8 @@ INSERT INTO `users` (`IdUser`, `Name`, `Surname`, `Email`, `Password`, `Newslett
 (36, 'Topolino', 'Disney', 'topolino@ciao.boh', '$2y$10$fbf1wAcPwzOEuxwvHY0F8uVniTpHUhf8UHlwnHg4AbT9PDgai/UvG', 0, 3),
 (38, 'Minnie', 'Disney', 'minnie@disney.it', '$2y$10$yfgRtneAGTUIEhuJr2Sbg.hv65RJiThz8yuvhbs7FkK9mXGolAVJy', 0, 3),
 (39, 'Rosa', 'Chemical', 'rosa@music.it', '$2y$10$jeyDq6PsAyzoeRMJ.bOZAemjdOzkqZu7LenyaPF/Uwnf/.VWmj14S', 1, 3),
-(40, 'Matthew David', 'Gullidge', 'burntleeksandrawbeets@gmail.com', '$2y$10$n529dtGZ78.sa9Ns/5bEk.Pj7SkaSZtkYTinE7D3LxyfmF/8TekMC', 1, 1);
+(40, 'Matthew David', 'Gullidge', 'burntleeksandrawbeets@gmail.com', '$2y$10$n529dtGZ78.sa9Ns/5bEk.Pj7SkaSZtkYTinE7D3LxyfmF/8TekMC', 1, 1),
+(41, 'Sfera', 'Ebbasta', 'sfera.ebbasta@bhmg.it', '$2y$10$ITPtwtXfARzLnnm1JN2ibO3IrfFkhTsu8.dbOXi5LsSYVYdvct9Ja', 1, 3);
 
 --
 -- Indici per le tabelle scaricate
@@ -435,13 +436,13 @@ ALTER TABLE `recipesimages`
 -- AUTO_INCREMENT per la tabella `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `IdUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `IdUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Limiti per le tabelle scaricate
