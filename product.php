@@ -33,19 +33,19 @@
 
         ?>
         <header class="text-center logo">
-            <h1 style="font-size: 65px"><?php echo htmlentities($row['Title']); ?></h1>
+            <h1 style="font-size: 65px"><?php echo strtoupper(htmlentities($row['Title'])); ?></h1>
         </header>
         <div style="margin: 3%"></div>
         <div class="row" style="margin-bottom:3%">
 
             <div class="col-12 col-sm-12 col-lg-4 col-md-6 d-flex justify-content-center">
                 <a href="<?php echo $row['Link'] ?>" class="box rounded">
-                    <?php echo ' <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '" style="margin-botom:3%;  box-shadow: 0 0 11px rgba(33, 33, 33, 0.534);">'  ?>
+                    <?php echo ' <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' .$row['Title'] . '" style="margin-botom:3%;  box-shadow: 0 0 11px rgba(33, 33, 33, 0.534);">'  ?>
                 </a>
             </div>
 
             <div class="col-12 col-sm-12 col-lg-8 col-md-6 d-flex justify-content-center">
-                <h4 style="font-size: 35px" class="navbar-font position-absolute" style="margin-top:10%">YOU WILL FOUND</h4>
+                <h4 style="font-size: 35px" class="navbar-font position-absolute" style="margin-top:10%">YOU WILL FIND</h4>
                 <div class="position-relative" style="margin-top:10%;">
 
                     <p class="navbar-font" style="font-size:25px"><?php echo  $row['Description'] ?> </p>
