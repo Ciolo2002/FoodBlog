@@ -1,8 +1,8 @@
-'nouser' quando non è loggato nessuno al sito, non ha nessun permesso (solo selecet e inserimento di un utente). Password:
+'nouser' quando non è loggato nessuno al sito, non ha nessun permesso (solo selecet di tutto il db e inserimento di un utente). Password:
 4KsKhh{PL>4Mhcw7v;FE)~,6r6!Yzf!L
 
 
-'user' ha i permessi solo di inserire e rimuovere (in futuro modifcare lo stato [attivo: bool] delle recensioni)+ (le select)
+'user' ha i permessi solo di inserire e rimuovere (in futuro modifcare lo stato [attivo: bool] delle recensioni)+ (le select di tutto il db) e la rimozione di un utente (se steso)
 UqZ)SA5/C?buu.6^"9t!!>!^kh"=?+vP
 
 

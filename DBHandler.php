@@ -23,24 +23,25 @@ class DBHandler
 
     private function connect_database()
     {
-        if (!isset($_SESSION['Category'])) {
-            define('USER', 'nouser');
-            define('PASSWORD', '4KsKhh{PL>4Mhcw7v;FE)~,6r6!Yzf!L');
-        } else if (isset($_SESSION['Category'])) {
+       if (isset($_SESSION['Category'])) {
             switch ($_SESSION['Category']) {
-                case 'User':
+                case "User":
                     define('USER', 'user');
                     define('PASSWORD', 'UqZ)SA5/C?buu.6^"9t!!>!^kh"=?+vP');
                     break;
-                case 'Chef':
+                case "Chef":
                     define('USER', 'chef');
                     define('PASSWORD', 'A.Djh!]XQg<TrTX+Gx(&V@fPv74qnTL~');
                     break;
-                case 'Admin':
+                case "Admin":
                     define('USER', 'admin');
                     define('PASSWORD', ';E&w#!%Br]]XtJLSe@$XY}qD<r3g2u2n');
                     break;
             }
+           
+        } else {
+            define('USER', 'nouser');
+            define('PASSWORD', '4KsKhh{PL>4Mhcw7v;FE)~,6r6!Yzf!L');
         }
 
         // Database connection
