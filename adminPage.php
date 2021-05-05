@@ -29,12 +29,6 @@
         <?php
         require_once("callingLogin.php");
         require_once("navbar.php"); ?>
-
-
-
-
-
-
         <div class="row">
             <h1>Bootstrap Table</h1>
             <p> Mémo pour les options du Bootstrap Table : <a href="http://bootstrap-table.wenzhixin.net.cn/documentation/">Bootstrap Table Documentation</a></p>
