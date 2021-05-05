@@ -23,7 +23,7 @@ class DBHandler
 
     private function connect_database()
     {
-       if (isset($_SESSION['Category'])) {
+        if (isset($_SESSION['Category'])) {
             switch ($_SESSION['Category']) {
                 case "User":
                     define('USER', 'user');
@@ -33,12 +33,15 @@ class DBHandler
                     define('USER', 'chef');
                     define('PASSWORD', 'A.Djh!]XQg<TrTX+Gx(&V@fPv74qnTL~');
                     break;
-                case "Admin":
+                case "Administrator":
                     define('USER', 'admin');
                     define('PASSWORD', ';E&w#!%Br]]XtJLSe@$XY}qD<r3g2u2n');
                     break;
+                    default:
+                    define('USER', 'nouser');
+                    define('PASSWORD', '4KsKhh{PL>4Mhcw7v;FE)~,6r6!Yzf!L');
+                    break;
             }
-           
         } else {
             define('USER', 'nouser');
             define('PASSWORD', '4KsKhh{PL>4Mhcw7v;FE)~,6r6!Yzf!L');
