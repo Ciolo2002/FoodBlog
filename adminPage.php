@@ -4,6 +4,27 @@
 <head>
     <?php
     require_once("header.php");
+    $stmt = $dbh->getInstance()->prepare("SELECT `IdUser`, `Name`, `Surname`, `Email`,  `Newsletter`, categories.Category FROM `users` INNER join categories on categories.IdCategory=users.Category WHERE 1 ORDER by users.IdUser");
+    $stmt->execute();
+    while ($row = $stmt->fetch()) {
+        $users[] = array(
+            "IdUser" => $row["IdUser"],
+            "Name" => $row["Name"],
+            "Surname" => $row["Surname"],
+            "Email" => $row["Email"],
+            "Newsletter" => $row["Newsletter"],
+            "Category" => $row["Category"],
+        );
+    }
+
+    $file = "json/users.json";
+    if (file_put_contents(
+        $file,
+        '{ "rows": ' . json_encode($users) . '} '
+    ))
+        echo ("");
+    else
+        echo ("Failed");
     ?>
 
     <script src="adminPage.js"></script>
@@ -107,14 +128,12 @@
                 <i class="fa fa-trash"></i> Delete
             </button>
         </div>
-        <table id="table" data-toolbar="#toolbar" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true" data-click-to-select="true" data-detail-formatter="detailFormatter" data-minimum-count-columns="2" data-show-pagination-switch="true" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true" data-side-pagination="server" data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data" data-response-handler="responseHandler">
+        <table id="table" data-toolbar="#toolbar" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true" data-click-to-select="true" data-detail-formatter="detailFormatter" data-minimum-count-columns="2" data-show-pagination-switch="true" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true" data-side-pagination="server" data-url="json\users.json" data-response-handler="responseHandler">
         </table>
 
         <script>
             var $table = $('#table')
             var $remove = $('#remove')
-            var selections = []
-
             function getIdSelections() {
                 return $.map($table.bootstrapTable('getSelections'), function(row) {
                     return row.id
@@ -139,7 +158,7 @@
             function operateFormatter(value, row, index) {
                 return [
                     '<a class="operate" href="javascript:void(0)" title="Operate">',
-                    '<i class="fa fa-heart"></i>',
+                    '<i class="fas fa-cog"></i>',
                     '</a>  ',
                     '<a class="remove" href="javascript:void(0)" title="Remove">',
                     '<i class="fa fa-trash"></i>',
@@ -189,58 +208,59 @@
                             valign: 'middle'
                         }, {
                             title: 'User ID',
-                            field: 'id',
+                            field: 'IdUser',
                             rowspan: 2,
                             align: 'center',
                             valign: 'middle',
                             sortable: true,
-                           
+
                         }, {
                             title: 'User Detail',
                             colspan: 6,
                             align: 'center'
                         }],
                         [{
-                            field: 'name',
-                            title: 'User Name',
-                            sortable: true,
-                           
-                            align: 'center'
-                        }, {
-                            field: 'surname',
-                            title: 'User Surname',
-                            sortable: true,
-                            align: 'center',
-                            
-                        }, 
-                        {
-                            field: 'email',
-                            title: 'User Email',
-                            sortable: true,
-                            align: 'center',
-                            
-                        },
-                        {
-                            field: 'newsletter',
-                            title: 'User Newsletter',
-                            checkbox: true,
-                            align: 'center',
-                            valign: 'middle'
-                        },
-                        {
-                            field: 'category',
-                            title: 'User Category',
-                            sortable: true,
-                            align: 'center',
-                            
-                        },{
-                            field: 'operate',
-                            title: 'Item Operate',
-                            align: 'center',
-                            clickToSelect: false,
-                            events: window.operateEvents,
-                           
-                        }]
+                                field: 'Name',
+                                title: 'User Name',
+                                sortable: true,
+
+                                align: 'center'
+                            }, {
+                                field: 'Surname',
+                                title: 'User Surname',
+                                sortable: true,
+                                align: 'center',
+
+                            },
+                            {
+                                field: 'Email',
+                                title: 'User Email',
+                                sortable: true,
+                                align: 'center',
+
+                            },
+                            {
+                                field: 'Newsletter',
+                                title: 'User Newsletter',
+                                checkbox: true,
+                                align: 'center',
+                                valign: 'middle'
+                            },
+                            {
+                                field: 'Category',
+                                title: 'User Category',
+                                sortable: true,
+                                align: 'center',
+
+                            }, {
+                                field: 'operate',
+                                title: 'User Operate',
+                                align: 'center',
+                                clickToSelect: false,
+                                events: window.operateEvents,
+
+                            }
+                        ]
                     ]
                 })
                 $table.on('check.bs.table uncheck.bs.table ' +
