@@ -8,19 +8,19 @@
     $stmt->execute();
     while ($row = $stmt->fetch()) {
         $users[] = array(
-            "IdUser" => $row["IdUser"],
-            "Name" => $row["Name"],
-            "Surname" => $row["Surname"],
-            "Email" => $row["Email"],
-            "Newsletter" => $row["Newsletter"],
-            "Category" => $row["Category"],
+            "iduser" => $row["IdUser"],
+            "name" => $row["Name"],
+            "surname" => $row["Surname"],
+            "email" => $row["Email"],
+            "newsletter" => $row["Newsletter"],
+            "category" => $row["Category"],
         );
     }
 
     $file = "json/users.json";
     if (file_put_contents(
         $file,
-        '{ "rows": ' . json_encode($users) . '} '
+        json_encode($users)
     ))
         echo ("");
     else
@@ -120,12 +120,29 @@
                 <i class="fa fa-trash"></i> Delete
             </button>
         </div>
-        <table id="table" data-toolbar="#toolbar" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true" data-click-to-select="true" data-detail-formatter="detailFormatter" data-minimum-count-columns="2" data-show-pagination-switch="true" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true" data-side-pagination="server" data-url="json\users.json" data-response-handler="responseHandler">
+        <table id="table" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true" data-click-to-select="true" data-detail-formatter="detailFormatter" data-show-pagination-switch="true" data-pagination="true" data-id-field="IdUser" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true" data-side-pagination="server" data-url="json\users.json" data-response-handler="responseHandler">
+            <tbody>
+                <tr>
+                    <th data-field="iduser"></th>
+                    <th data-field="name"></th>
+                    <th data-field="surname"></th>
+                    <th data-field="email"></th>
+                    <th data-field="newsletter"></th>
+                    <th data-field="category"></th>
+                </tr>
+            </tbody>
         </table>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
 
         <script>
             var $table = $('#table')
             var $remove = $('#remove')
+
+
+
             function getIdSelections() {
                 return $.map($table.bootstrapTable('getSelections'), function(row) {
                     return row.id
@@ -200,7 +217,7 @@
                             valign: 'middle'
                         }, {
                             title: 'User ID',
-                            field: 'IdUser',
+                            field: 'iduser',
                             rowspan: 2,
                             align: 'center',
                             valign: 'middle',
@@ -212,34 +229,34 @@
                             align: 'center'
                         }],
                         [{
-                                field: 'Name',
+                                field: 'name',
                                 title: 'User Name',
                                 sortable: true,
 
                                 align: 'center'
                             }, {
-                                field: 'Surname',
+                                field: 'surname',
                                 title: 'User Surname',
                                 sortable: true,
                                 align: 'center',
 
                             },
                             {
-                                field: 'Email',
+                                field: 'email',
                                 title: 'User Email',
                                 sortable: true,
                                 align: 'center',
 
                             },
                             {
-                                field: 'Newsletter',
+                                field: 'newsletter',
                                 title: 'User Newsletter',
-                                checkbox: true,
+
                                 align: 'center',
                                 valign: 'middle'
                             },
                             {
-                                field: 'Category',
+                                field: 'category',
                                 title: 'User Category',
                                 sortable: true,
                                 align: 'center',
