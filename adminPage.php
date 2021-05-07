@@ -121,7 +121,7 @@
             </button>
         </div>
         <table id="table" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true" data-click-to-select="true" data-detail-formatter="detailFormatter" data-show-pagination-switch="true" data-pagination="true" data-id-field="IdUser" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true" data-side-pagination="server" data-url="json\users.json" data-response-handler="responseHandler">
-            <tbody>
+         <!--   <tbody>
                 <tr>
                     <th data-field="iduser"></th>
                     <th data-field="name"></th>
@@ -130,7 +130,7 @@
                     <th data-field="newsletter"></th>
                     <th data-field="category"></th>
                 </tr>
-            </tbody>
+            </tbody> -->
         </table>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -141,7 +141,83 @@
             var $table = $('#table')
             var $remove = $('#remove')
 
+           /* $(function() {
+                $('#table').bootstrapTable({
+                    method: 'get',
+                    url: 'json/users.json',
+                    height: 450,
+                    cache: false,
+                    stripped: true,
+                    pagination: true,
+                    pageSize: 10,
+                    pageList: [10, 25, 50, 100, 200],
+                    minimumCountColums: 2,
+                    clickToSelect: true,
+                    columns: [
+                        {
+                            field: 'state', //checobox per fare tutto
+                            checkbox: true,
+                            rowspan: 2,
+                            align: 'center',
+                            valign: 'middle'
+                        }, {
+                            title: 'User ID',
+                            field: 'iduser',
+                            rowspan: 2,
+                            align: 'center',
+                            valign: 'middle',
+                            sortable: true,
 
+                        }, {
+                            title: 'User Detail',
+                            colspan: 6,
+                            align: 'center'
+                        },
+                        {
+                                field: 'name',
+                                title: 'User Name',
+                                sortable: true,
+
+                                align: 'center'
+                            }, {
+                                field: 'surname',
+                                title: 'User Surname',
+                                sortable: true,
+                                align: 'center',
+
+                            },
+                            {
+                                field: 'email',
+                                title: 'User Email',
+                                sortable: true,
+                                align: 'center',
+
+                            },
+                            {
+                                field: 'newsletter',
+                                title: 'User Newsletter',
+
+                                align: 'center',
+                                valign: 'middle'
+                            },
+                            {
+                                field: 'category',
+                                title: 'User Category',
+                                sortable: true,
+                                align: 'center',
+
+                            }, {
+                                field: 'operate',
+                                title: 'User Operate',
+                                align: 'center',
+                                clickToSelect: false,
+                                events: window.operateEvents,
+
+                            }
+                        ]
+                    
+                })
+            }) */
 
             function getIdSelections() {
                 return $.map($table.bootstrapTable('getSelections'), function(row) {
