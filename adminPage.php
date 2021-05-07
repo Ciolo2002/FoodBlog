@@ -28,11 +28,20 @@
     ?>
 
     <script src="adminPage.js"></script>
+
+    
+ 
+    
+    
+    
+    
+
     <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
     <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table-locale-all.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/export/bootstrap-table-export.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -40,6 +49,7 @@
 
     <style rel="stylesheet" href="adminPage.css"></style>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+    
     <style>
         .select,
         #locale {
@@ -56,7 +66,9 @@
 </head>
 
 <body>
+<link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
 
+<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
     <div class="container-fluid ">
 
         <?php
@@ -124,17 +136,28 @@
                 <i class="fa fa-trash"></i> Delete
             </button>
         </div>
-        <table id="table" data-search="true" , data-show-refresh="true" data-show-toggle="true" data-show-fullscreen="true" data-show-columns="true" data-show-columns-toggle-all="true" data-detail-view="true" data-show-export="true" data-click-to-select="true" data-detail-formatter="detailFormatter" data-show-pagination-switch="true" data-pagination="true" data-id-field="IdUser" data-page-list="[10, 25, 50, 100, all]" data-show-footer="true" data-side-pagination="server" data-url="json\users.json" data-response-handler="responseHandler">
-            <!--   <tbody>
-                <tr>
-                    <th data-field="iduser"></th>
-                    <th data-field="name"></th>
-                    <th data-field="surname"></th>
-                    <th data-field="email"></th>
-                    <th data-field="newsletter"></th>
-                    <th data-field="category"></th>
-                </tr>
-            </tbody> -->
+        <table  id="table"
+  data-toolbar="#toolbar"
+  data-search="true"
+  data-show-refresh="true"
+  data-show-toggle="true"
+  data-show-fullscreen="true"
+  data-show-columns="true"
+  data-show-columns-toggle-all="true"
+  data-detail-view="true"
+  data-show-export="true"
+  data-click-to-select="true"
+  data-detail-formatter="detailFormatter"
+  data-minimum-count-columns="2"
+  data-show-pagination-switch="true"
+  data-pagination="true"
+  data-id-field="id"
+  data-page-list="[10, 25, 50, 100, all]"
+  data-show-footer="true"
+  data-side-pagination="server" 
+  data-url="json\users.json" 
+  data-response-handler="responseHandler">
+           
         </table>
 
 
@@ -142,84 +165,7 @@
             var $table = $('#table')
             var $remove = $('#remove')
 
-            /* $(function() {
-                 $('#table').bootstrapTable({
-                     method: 'get',
-                     
-                     url: 'json/users.json',
-                     height: 450,
-                     cache: false,
-                     stripped: true,
-                     pagination: true,
-                     pageSize: 10,
-                     pageList: [10, 25, 50, 100, 200],
-                     minimumCountColums: 2,
-                     clickToSelect: true,
-                     columns: [
-                         {
-                             field: 'state', //checobox per fare tutto
-                             checkbox: true,
-                             rowspan: 2,
-                             align: 'center',
-                             valign: 'middle'
-                         }, {
-                             title: 'User ID',
-                             field: 'iduser',
-                             rowspan: 2,
-                             align: 'center',
-                             valign: 'middle',
-                             sortable: true,
 
-                         }, {
-                             title: 'User Detail',
-                             colspan: 6,
-                             align: 'center'
-                         },
-                         {
-                                 field: 'name',
-                                 title: 'User Name',
-                                 sortable: true,
-
-                                 align: 'center'
-                             }, {
-                                 field: 'surname',
-                                 title: 'User Surname',
-                                 sortable: true,
-                                 align: 'center',
-
-                             },
-                             {
-                                 field: 'email',
-                                 title: 'User Email',
-                                 sortable: true,
-                                 align: 'center',
-
-                             },
-                             {
-                                 field: 'newsletter',
-                                 title: 'User Newsletter',
-
-                                 align: 'center',
-                                 valign: 'middle'
-                             },
-                             {
-                                 field: 'category',
-                                 title: 'User Category',
-                                 sortable: true,
-                                 align: 'center',
-
-                             }, {
-                                 field: 'operate',
-                                 title: 'User Operate',
-                                 align: 'center',
-                                 clickToSelect: false,
-                                 events: window.operateEvents,
-
-                             }
-                         ]
-                     
-                 })
-             }) */
 
             function getIdSelections() {
                 return $.map($table.bootstrapTable('getSelections'), function(row) {
@@ -265,22 +211,11 @@
                 }
             }
 
-            function totalTextFormatter(data) {
-                return 'Total'
-            }
+            
 
-            function totalNameFormatter(data) {
-                return data.length
-            }
+            
 
-            function totalPriceFormatter(data) {
-                var field = this.field
-                return '$' + data.map(function(row) {
-                    return +row[field].substring(1)
-                }).reduce(function(sum, i) {
-                    return sum + i
-                }, 0)
-            }
+           
 
             function initTable() {
                 $table.bootstrapTable('destroy').bootstrapTable({
@@ -389,7 +324,10 @@
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 </body>
 
 </html>

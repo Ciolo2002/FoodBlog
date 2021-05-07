@@ -1,9 +1,18 @@
 .container {
-	width: 1024px;
-	padding: 2em;
+    width: 1024px;
+    padding: 2em;
 }
 
 .bold-blue {
-	font-weight: bold;
-	color: #0277BD;
+    font-weight: bold;
+    color: #0277BD;
+}
+
+.select,
+#locale {
+    width: 100%;
+}
+
+.operate {
+    margin-right: 10px;
 }
