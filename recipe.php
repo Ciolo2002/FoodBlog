@@ -11,15 +11,7 @@
     <link rel="stylesheet" href="jquery.rateyo.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <script src="reviews.js"></script>
-    <style>
-        .trashBin {
-            color: lightslategrey;
-        }
-
-        .trashBin:hover {
-            color: #4d0000;
-        }
-    </style>
+    
 </head>
 
 <body>

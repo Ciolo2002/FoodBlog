@@ -111,3 +111,11 @@ section .borderReview {
 .rss.opacity:focus { 
   filter: opacity(70%); 
 }
+
+.trashBin {
+  color: lightslategrey;
+}
+
+.trashBin:hover {
+  color: #4d0000;
+}

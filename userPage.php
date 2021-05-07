@@ -64,19 +64,19 @@
                 } else {
                     $stmt2->bindParam(':surname', $row['Surname']);
                 }
-                if ((isset($_POST['email2'])  && $_POST['email2'] != '') && ((($_POST['email2'] != $row['Email']) && !isset($row1['email']))  || (($_POST['email2'] != $row['Email']) &&($_POST['email2'] != $row1['email'])))) {
+                if ((isset($_POST['email2'])  && $_POST['email2'] != '') && ((($_POST['email2'] != $row['Email']) && !isset($row1['email']))  || (($_POST['email2'] != $row['Email']) && ($_POST['email2'] != $row1['email'])))) {
                     $stmt2->bindParam(':email', $_POST['email2']);
                     $name = $_POST['email2'];
                 } else {
                     $stmt2->bindParam(':email', $row['Email']);
                 }
-                
+
                 if (!isset($_POST['newsletter2'])) {
                     $row['Newsletter'] = 0;
-                    $newsleter=false;
+                    $newsleter = false;
                 } else if (isset($_POST['newsletter2'])) {
                     $row['Newsletter']  = 1;
-                    $newsleter=true;
+                    $newsleter = true;
                 }
                 $stmt2->bindParam(':newsleter', $newsleter);
                 if (isset($_POST['password2']) && $_POST['password2'] != '' && !password_verify($_POST['password2'], $row['Password'])) {
