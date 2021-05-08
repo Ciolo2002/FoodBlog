@@ -31,8 +31,18 @@
 
         <?php
         require_once("navbar.php");
+
+        if (isset($_SESSION['Category']) && $_SESSION['Category'] == 'Administrator' && isset($_POST['modifyByAdmin'])) {
+            $_SESSION['modifyByAdmin'] = true; 
+            $_SESSION['IDmodifyByAdmin'] = $_POST['IdUserToModify'];
+        }
+        
         $stmt = $dbh->getInstance()->prepare("SELECT `IdUser`, `Name`, `Surname`, `Email`, `Password`, `Newsletter` FROM `users` WHERE `IdUser`=:IdUser");
-        $stmt->bindParam(':IdUser', $_SESSION['IdUser']);
+        if (isset($_SESSION['modifyByAdmin']) && $_SESSION['modifyByAdmin']== true) {
+            $stmt->bindParam(':IdUser',  $_SESSION['IDmodifyByAdmin']);
+        } else {
+            $stmt->bindParam(':IdUser', $_SESSION['IdUser']);
+        }
         $stmt->execute();
         $row = $stmt->fetch();
         $name = $row['Name'];
@@ -50,11 +60,17 @@
                     $row1 = $stmt1->fetch();
                 }
                 $stmt2 = $dbh->getInstance()->prepare("UPDATE `users` SET `Name`=:name,`Surname`=:surname,`Email`=:email,`Password`=:password,`Newsletter`=:newsleter WHERE `IdUser`=:IdUser");
-                $stmt2->bindParam(':IdUser', $_SESSION['IdUser']);
+                if (isset($_SESSION['Category']) && $_SESSION['Category'] == 'User') {
+                    $stmt2->bindParam(':IdUser', $_SESSION['IdUser']);
+                } else if ($_SESSION['modifyByAdmin'] == true && $_SESSION['Category'] == 'Administrator')  {
+                    $stmt2->bindParam(':IdUser', $_SESSION['IDmodifyByAdmin']);
+                }
                 if ((isset($_POST['name2']) && $_POST['name2'] != '') && ($_POST['name2'] != $row['Name'])) {
                     $stmt2->bindParam(':name', $_POST['name2']);
-                    $_SESSION['Name'] = htmlentities($_POST['name2']);
                     $name = $_POST['name2'];
+                    if(isset($_SESSION['Category'])&& $_SESSION['Category']=='User'){
+                        $_SESSION['Name'] = htmlentities($_POST['name2']);
+                    }
                 } else {
                     $stmt2->bindParam(':name', $row['Name']);
                 }

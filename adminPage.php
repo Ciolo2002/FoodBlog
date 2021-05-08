@@ -7,6 +7,9 @@
     if(!isset($_SESSION['Category'])||$_SESSION['Category']!='Administrator'){
         header("Location: index.php");
     }
+    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
+        $_SESSION['modifyByAdmin']=false;
+    }
     ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -66,9 +69,11 @@
                                     <td class="navbar-font">' .  (($newsletter == 1) ? 'Subscribed' : 'Not Subscribed')  . '</td>
                                     <td class="navbar-font">' . $category . '</td>
                                     <td class="navbar-font">
-                                    <form action="userPage.php" method="post">
-                                    <i class="fas fa-cog  fa-lg trashBin"></i>
-                                    </form><form action="deliteAccount.php" method="POST"><input type="hidden" name="idToDelite" value="'.$id.'"><button type="submit" name="adminSubmit"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin"></i></button></form>
+                                    <form action="userPage.php" method="POST">
+                                    <input type="hidden=" name="IdUserToModify" value="'.$id.'">
+                                    <button type="submit" name="modifyByAdmin"><i class="fas fa-cog  fa-lg trashBin"></i></button>
+                                    </form>
+                                    <form action="deliteAccount.php" method="POST"><input type="hidden" name="idToDelite" value="'.$id.'"><button type="submit" name="adminSubmit"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin"></i></button></form>
                                     </td>
                                       
                                </tr>  

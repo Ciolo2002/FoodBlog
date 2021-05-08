@@ -8,6 +8,9 @@
     </div>
     <?php
     require_once('Header.php');
+    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
+        $_SESSION['modifyByAdmin']=false;
+    }
     if (isset($_SESSION['IdUser'])) { //controllo se l'utente è gia loggato
         echo ' <div class="row d-flex justify-content-center">
                 <div class="col-10  d-flex justify-content-center borderReview">

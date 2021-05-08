@@ -7,6 +7,9 @@ if (isset($_GET['recipe'])) {
  else {
     $actual_link.='?';
  }
+ if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
+    $_SESSION['modifyByAdmin']=false;
+}
  ?>
 <link rel=stylesheet href="loginStyle.css">
 <script src="registerPassowrdControl.js"></script>

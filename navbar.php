@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-md bg-light navbar-light">
+<div id='userControl'></div>
     <a class="navbar-brand" href="index.php">
         <div>
             <span class="logo">
@@ -19,12 +20,12 @@
             <?php
             if (isset($_SESSION['Name'])) {
                 echo '<li class="nav-item navbar-font">
-               <a class="nav-link " href="userPage.php" ><b> Hi ' . htmlentities($_SESSION['Name']) . '!</b></a>
+               <a class="nav-link" href="userPage.php"><b> Hi ' . htmlentities($_SESSION['Name']) . '!</b></a>
                 </li>';
             }
             ?>
             <li class="nav-item navbar-font">
-                <a class="nav-link " href="index.php">Home</a>
+                <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item navbar-font">
                 <a class="nav-link" href="shop.php">Shop</a>

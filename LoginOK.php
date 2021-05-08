@@ -1,5 +1,8 @@
 <?php
 require('header.php');
+if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
+    $_SESSION['modifyByAdmin']=false;
+}
 if (isset($_POST['Login'])) {
     $stmt = $dbh->getInstance()->prepare("SELECT `IdUser`, password, `Name`, categories.Category FROM `users` INNER join categories on categories.IdCategory=users.Category
                     WHERE email =:email");

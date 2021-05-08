@@ -4,6 +4,9 @@
 <head>
     <?php
     require_once("header.php");
+    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
+        $_SESSION['modifyByAdmin']=false;
+    }
     ?>
     <link rel="stylesheet" href="blog.css">
 </head>

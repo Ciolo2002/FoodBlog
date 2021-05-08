@@ -6,7 +6,10 @@ if (isset($_GET['recipe'])) {
 }
  else {
     $actual_link.='?';
- } ?>
+ } 
+ if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
+    $_SESSION['modifyByAdmin']=false;
+}?>
 <link rel=stylesheet href="loginStyle.css">
 <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">

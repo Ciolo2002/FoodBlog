@@ -1,5 +1,8 @@
     <?php
     require_once('Header.php');
+    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
+        $_SESSION['modifyByAdmin']=false;
+    }
     if (isset($_POST['Signup'])) {
         $email = htmlentities($_POST['email']);
         $stmt1 = $dbh->getInstance()->prepare("SELECT email FROM Users

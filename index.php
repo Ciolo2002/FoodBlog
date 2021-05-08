@@ -5,7 +5,10 @@
     <?php require_once("header.php");
     if ((isset($_SESSION['ErrorLogin']) && $_SESSION['ErrorLogin'] == false)  || !isset($_SESSION['Name'])) {
         echo '<script src="scriptOpenLogin.js"></script>';
-    } ?>
+    } 
+    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
+        $_SESSION['modifyByAdmin']=false;
+    }?>
 
 </head>
 
