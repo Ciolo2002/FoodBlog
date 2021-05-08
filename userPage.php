@@ -107,7 +107,7 @@
             ?>
 
         <header class="text-center logo">
-            <h1 style="font-size: 65px">Hello <?php echo htmlentities($_SESSION['Name']); ?> this is you</h1>
+            <h1 style="font-size: 65px">Hello <?php echo htmlentities($name); ?> this is you</h1>
         </header>
 
 
@@ -229,7 +229,7 @@
             <div class="row d-flex ">
                 <div class="col-12  d-flex justify-content-center ">
                     <div class="myform form" style="border: none;">
-                        <a href="#myModal" class="button trigger-btn btn btn-block mybtn mybtnImportant btn-danger logo" data-toggle="modal">DELITE YOUR ACCOUNT</a>
+                        <a href="#myModal" class="button trigger-btn btn btn-block mybtn mybtnImportant btn-danger logo" data-toggle="modal">DELETE THIS ACCOUNT</a>
                     </div>
                 </div>
             </div>
@@ -243,7 +243,7 @@
                             <h4 class="modal-title w-100 sublogo">Are you sure?</h4>
                         </div>
                         <div class="modal-body navbar-font">
-                            <p>Do you really want to delete your acount? This process cannot be undone.</p>
+                            <p>Do you really want to delete this acount? This process cannot be undone.</p>
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-secondary logo" data-dismiss="modal">Cancel</button>

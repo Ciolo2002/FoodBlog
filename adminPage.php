@@ -21,7 +21,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/cr-1.5.3/fh-3.1.8/kt-2.6.1/r-2.2.7/datatables.min.js"></script>
-    <
+    
 
 </head>
 
@@ -70,8 +70,8 @@
                                     <td class="navbar-font">' . $category . '</td>
                                     <td class="navbar-font">
                                     <form action="userPage.php" method="POST">
-                                    <input type="hidden=" name="IdUserToModify" value="'.$id.'">
-                                    <button type="submit" name="modifyByAdmin"><i class="fas fa-cog  fa-lg trashBin"></i></button>
+                                    <input type="hidden" name="IdUserToModify" value="'.$id.'">
+                                    <button type="submit" class="btn btn-link" name="modifyByAdmin"><i class="fas fa-cog  fa-lg trashBin"></i></button>
                                     </form>
                                     <form action="deliteAccount.php" method="POST"><input type="hidden" name="idToDelite" value="'.$id.'"><button type="submit" name="adminSubmit"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin"></i></button></form>
                                     </td>

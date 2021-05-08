@@ -4,8 +4,8 @@
 <head>
     <?php
     require_once("header.php");
-    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
-        $_SESSION['modifyByAdmin']=false;
+    if (isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin']) == true) {
+        $_SESSION['modifyByAdmin'] = false;
     }
     ?>
     <link rel="stylesheet" href="ingredients.css">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="jquery.rateyo.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <script src="reviews.js"></script>
-    
+
 </head>
 
 <body>
@@ -22,25 +22,25 @@
 
 
         <?php
-        require_once("callingLogin.php");
-        require_once("navbar.php");
         if (isset($_GET['recipe']) && is_numeric($_GET['recipe'])) {
             $stmt = $dbh->getInstance()->prepare("SELECT IdRecipe, Title, Preparation FROM recipes WHERE recipes.IdRecipe= :idRecipe");
             $stmt->bindParam(':idRecipe', $_GET['recipe']);
             $stmt->execute();
             $row = $stmt->fetch();
-            if (!isset($row) || $row['IdRecipe'] != $_GET['recipe']) {
-                header('Location: blog.php');
-            }
-
             $stmt2 = $dbh->getInstance()->prepare("SELECT images.Path from images INNER join recipesimages on recipesimages.IdImage=images.IdImage INNER join recipes on recipesimages.IdRecipe=recipes.IdRecipe WHERE recipesimages.IdRecipe=:idRecipe AND images.Path not like '%CUT%' ");
             $stmt2->bindParam(':idRecipe', $_GET['recipe']);
             $stmt2->execute();
             $row2 = $stmt2->fetch();
+            if (!isset($row) || $row['IdRecipe'] != $_GET['recipe']) {
+                header('Location: blog.php');
+            }
         } else {
             header('Location: blog.php');
         }
-        
+        require_once("callingLogin.php");
+        require_once("navbar.php");
+
+
         echo '<header class="text-center logo">';
         echo '<h1 style="font-size: 65px">';
         $explode = explode(';', $row['Title']);
