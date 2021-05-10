@@ -209,8 +209,9 @@
                     if ($_SESSION['Category'] != "User") {
                         switch ($_SESSION['Category']) {
                             case "Chef":
-                                $url = "chefPage.php";
-                                $action = "MANAGE RECIPES AND PRODUCTS";
+                                $url = "chefPageRecipes.php";
+                                $action = "MANAGE RECIPES";
+                                echo  '<a href="chefPageProducts.php" class="button btn btn-block mybtn btn-secondary logo">MANAGE PRODUCTS</a>';
                                 break;
                             case "Administrator":
                                 $url = 'adminPage.php';
@@ -218,6 +219,7 @@
                                 break;
                         }
                         echo  '<a href="' . $url . '" class="button btn btn-block mybtn btn-secondary logo">' . $action . '</a>';
+                        
                     }
 
                     ?>

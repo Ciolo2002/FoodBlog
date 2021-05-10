@@ -5,7 +5,7 @@
 .product-wrapper,
 .product-img {
     overflow: hidden;
-    position: relative
+    position: relative;
 }
 
 .mb-45 {
@@ -60,7 +60,8 @@
 
 .product-wrapper:hover .product-action {
     bottom: 20px;
-    opacity: 1
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 
