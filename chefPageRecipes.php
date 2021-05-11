@@ -4,10 +4,10 @@
 <head>
     <?php
     require_once("header.php");
-    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
-        $_SESSION['modifyByAdmin']=false;
+    if (isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin']) == true) {
+        $_SESSION['modifyByAdmin'] = false;
     }
-    if(!isset($_SESSION['Category']) || $_SESSION['Category']!='Chef'){
+    if (!isset($_SESSION['Category']) || $_SESSION['Category'] != 'Chef') {
         header("Location: index.php");
     }
     ?>
@@ -24,15 +24,9 @@
         require_once("callingLogin.php");
         require_once("navbar.php"); ?>
 
-      
 
+       
 
-        
-    <div class="row">
-    
-    
-    
-    </div>
 
 
 

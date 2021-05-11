@@ -65,4 +65,14 @@
 }
 
 
+.float-child {
+    width: 50%;
+    float: left;
+   
+}  
+
+input.hidden {
+    position: hidden;
+  
+}
 
