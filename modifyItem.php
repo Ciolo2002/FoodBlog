@@ -13,9 +13,9 @@
         header("Location: index.php");
     }
 
-    if (!isset($_POST['modifyItem'])) {
+    /* if (!isset($_POST['modifyItem'])) {
         header("Location: index.php");
-    }
+    } */
 
     ?>
 
@@ -40,18 +40,18 @@
         <?php
         require_once("navbar.php");
         if (isset($_POST['modifyItem'])) {
-            $stmt = $dbh->getInstance()->prepare("SELECT `IdProduct`, `Title`, `Link`, `Description`, images.Path FROM `products` INNER join images on products.IdImage=images.IdImage WHERE IdProduct=:idProduct");
-            $stmt->bindParam(':idProduct',  $_POST['IdProductToModify']);
-            $stmt->execute();
-            $row = $stmt->fetch();
-            $idProduct = $row['IdProduct'];
-            $title = $row['Title'];
-            $link = $row['Link'];
-            $description = $row['Description'];
-            $path = $row['Path'];
-        } ?>
-        <?php
-
+            $_SESSION['IdProductToModify'] = $_POST['IdProductToModify'];
+        }
+        $stmt = $dbh->getInstance()->prepare("SELECT `IdProduct`, `Title`, `Link`, `Description`, images.Path, images.IdImage FROM `products` INNER join images on products.IdImage=images.IdImage WHERE IdProduct=:idProduct");
+        $stmt->bindParam(':idProduct', $_SESSION['IdProductToModify']);
+        $stmt->execute();
+        $row = $stmt->fetch();
+        $idProduct = $row['IdProduct'];
+        $title = $row['Title'];
+        $link = $row['Link'];
+        $description = $row['Description'];
+        $image['Path'] = $row['Path'];
+        $image['IdImage'] = $row['IdImage'];
 
 
         if (isset($_POST["submit"])) {
@@ -118,36 +118,36 @@
                 $pdoStatement = $dbh->getDatabase()->prepare("INSERT INTO images(Path) VALUES( :photopath)");
                 $pdoStatement->bindValue(":photopath", $target_file, PDO::PARAM_STR);
                 $pdoStatement->execute();
-                $stmtIdImg = $dbh->getDatabase()->prepare("SELECT `IdImage` FROM `images` WHERE `Path`= :photopath");
+                $stmtIdImg = $dbh->getDatabase()->prepare("SELECT MAX(IdImage), Path FROM `images` WHERE `Path`= :photopath");
                 $stmtIdImg->bindValue(":photopath", $target_file, PDO::PARAM_STR);
                 $stmtIdImg->execute();
-                $path = $stmtIdImg->fetch();
+                $rowImg = $stmtIdImg->fetch();
+                $image['Path'] = $rowImg['Path'];
+                $image['IdImage'] = $rowImg['MAX(IdImage)'];
             }
 
             $stmt2 = $dbh->getInstance()->prepare("UPDATE `products` SET `Title`=:title,`Description`=:description,`Link`=:link,`IdImage`=:idImage WHERE `IdProduct`=:idProduct");
+            $stmt2->bindParam(':idProduct', $idProduct);
+            if ((isset($_POST['title2']) && $_POST['title2'] != '') && ($_POST['title2'] != $row['Title'])) {
+                $stmt2->bindParam(':title', $_POST['title2']);
+                $title = $_POST['title2'];
+            } else {
+                $stmt2->bindParam(':title', $title);
+            }
+            if ((isset($_POST['link2']) && $_POST['link2'] != '') && ($_POST['link2'] != $row['Link'])) {
+                $stmt2->bindParam(':link', $_POST['link2']);
+                $link = $_POST['link'];
+            } else {
+                $stmt2->bindParam(':link', $link);
+            }
+            $stmt2->bindParam(':description', $_POST['description2']);
+            $description = $_POST['description2'];
+
+
+            $stmt2->bindParam(':idImage', $image['IdImage']);
+            $stmt2->execute();
+            header("Refresh:0");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         ?>
@@ -165,7 +165,7 @@
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Title: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="text" name="ttitle2" maxlength="255" placeholder="<?php echo htmlentities($title); ?>" style="height: 100%; width:100%; border:none;">
+                            <input type="text" name="title2" maxlength="255" placeholder="<?php echo htmlentities($title); ?>" style="height: 100%; width:100%; border:none;">
                         </div>
                     </div>
                 </div>
@@ -206,7 +206,7 @@
                     <div class="product-wrapper box rounded text-center rss opacity">
                         <div class="product-img rounded">
                             <a href="product.php?item='.$row['IdProduct'].'" data-abc="true">
-                                <img src="<?php echo $path; ?>" class="img-fluid rounded" alt="<?php echo $title; ?>">
+                                <img src="<?php echo $image['Path']; ?>" class="img-fluid rounded" alt="<?php echo $title; ?>">
                             </a>
 
                             <div class="product-action">

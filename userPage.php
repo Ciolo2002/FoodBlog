@@ -55,14 +55,15 @@
                     $row1 = $stmt1->fetch();
                 }
                 $stmt2 = $dbh->getInstance()->prepare("UPDATE `users` SET `Name`=:name,`Surname`=:surname,`Email`=:email,`Password`=:password,`Newsletter`=:newsleter WHERE `IdUser`=:IdUser");
-                if (isset($_SESSION['Category']) && $_SESSION['Category'] == 'User') {
+                if (isset($_SESSION['Category'])) {
                     $stmt2->bindParam(':IdUser', $_SESSION['IdUser']);
-                } else if ($_SESSION['modifyByAdmin'] == true && $_SESSION['Category'] == 'Administrator')  {
+                } else if (isset($_SESSION['modifyByAdmin'])&& $_SESSION['modifyByAdmin'] == true && $_SESSION['Category'] == 'Administrator')  {
                     $stmt2->bindParam(':IdUser', $_SESSION['IDmodifyByAdmin']);
                 }
                 if ((isset($_POST['name2']) && $_POST['name2'] != '') && ($_POST['name2'] != $row['Name'])) {
                     $stmt2->bindParam(':name', $_POST['name2']);
                     $name = $_POST['name2'];
+                    $_SESSION['Name']=$name;
                     if(isset($_SESSION['Category'])&& $_SESSION['Category']=='User'){
                         $_SESSION['Name'] = htmlentities($_POST['name2']);
                     }
