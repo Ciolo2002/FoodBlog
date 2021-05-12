@@ -198,7 +198,7 @@
                             <div class="product-action">
                                 <div class="product-action-style">
                                     <input type="file" name="fileToUpload" id="fileToUpload" class="hidden nav-font">
-                                    <div id="item-image" clas="nav-font" style="text-decoration: none;">Click here to change product image</div>
+                                    <div id="item-image" clas="nav-font" style="text-decoration: none; cursor:pointer;">Click here to change product image</div>
                                 </div>
                             </div>
                         </div>

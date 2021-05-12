@@ -25,7 +25,7 @@
         require_once("navbar.php"); ?>
 
         <header class="text-center logo">
-            <h1 style="font-size: 65px">Here are your products</h1>
+            <h1 style="font-size: 65px">Manage your products</h1>
         </header>
         <?php
         $stmt = $dbh->getInstance()->prepare("SELECT `IdProduct`,`Title`,`Link`,`Description`,images.Path FROM `products` INNER JOIN images on images.IdImage=products.IdImage WHERE 1");
