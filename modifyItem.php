@@ -55,42 +55,27 @@
 
 
         if (isset($_POST["submit"])) {
-            if (isset($_FILES["fileToUpload"]["tmp_name"])) {
+
+            if (is_uploaded_file($_FILES["fileToUpload"]["tmp_name"])) {
                 $target_dir = "Images/";
-                // $target_file is the new file name including the extension
-                // $_FILES["fileToUpload"] contains an entry corresponding to the file uploaded
-                // by pushing the button with name fileToUpload
-                // $_FILES["fileToUpload"]["name"] return the full name of the file (including the path)
-                // e.g. c:/user/ccapuzzo/desktop/myrtle.jpg
-                // basename($_FILES["fileToUpload"]["name"]) returns myrtle.jpg
                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                 $uploadOk = 1;
-                // get information about the extension
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
                 // Check if image file is a actual image or fake image
-
-                // getimagesize returns false if its argument is not an image else
-                // it returns an array conatining info about the image. $check["mime"] is the extension
-                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                if ($check !== false) {
-                    //  echo "File is an image - " . $check["mime"] . ".";
-                    $uploadOk = 1;
-                } else {
-                    //  echo "File is not an image.";
-                    $uploadOk = 0;
+                if (isset($_POST["submit"])) {
+                    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                    if ($check !== false) {
+                        echo "File is an image - " . $check["mime"] . ".";
+                        $uploadOk = 1;
+                    } else {
+                        echo "File is not an image.";
+                        $uploadOk = 0;
+                    }
                 }
-
-
-                // Check if file already exists
-                if (file_exists($target_file)) {
-                    // echo "Sorry, file already exists.";
-                    $uploadOk = 0;
-                }
-
                 // Check file size
-                if ($_FILES["fileToUpload"]["size"] > 5000000000) {
-                    // echo "Sorry, your file is too large.";
+                if ($_FILES["fileToUpload"]["size"] > 5000000) {
+                    echo "Sorry, your file is too large.";
                     $uploadOk = 0;
                 }
 
@@ -99,33 +84,34 @@
                     $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                     && $imageFileType != "gif"
                 ) {
-                    //  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                     $uploadOk = 0;
                 }
 
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0) {
-                    // echo "Sorry, your file was not uploaded.";
+                    echo "Sorry, your file was not uploaded.";
                     // if everything is ok, try to upload file
                 } else {
                     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                         echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
                     } else {
-                        // echo "Sorry, there was an error uploading your file.";
+                        echo "Sorry, there was an error uploading your file.";
                     }
+
+
+
+                    $pdoStatement = $dbh->getInstance()->prepare("INSERT INTO images(Path) VALUES( :photopath)");
+                    $pdoStatement->bindValue(":photopath", $target_file, PDO::PARAM_STR);
+                    $pdoStatement->execute();
+                    $stmtIdImg = $dbh->getInstance()->prepare("SELECT MAX(IdImage), Path FROM `images` WHERE `Path`= :photopath");
+                    $stmtIdImg->bindValue(":photopath", $target_file, PDO::PARAM_STR);
+                    $stmtIdImg->execute();
+                    $rowImg = $stmtIdImg->fetch();
+                    $image['Path'] = $rowImg['Path'];
+                    $image['IdImage'] = $rowImg['MAX(IdImage)'];
                 }
-
-                $pdoStatement = $dbh->getDatabase()->prepare("INSERT INTO images(Path) VALUES( :photopath)");
-                $pdoStatement->bindValue(":photopath", $target_file, PDO::PARAM_STR);
-                $pdoStatement->execute();
-                $stmtIdImg = $dbh->getDatabase()->prepare("SELECT MAX(IdImage), Path FROM `images` WHERE `Path`= :photopath");
-                $stmtIdImg->bindValue(":photopath", $target_file, PDO::PARAM_STR);
-                $stmtIdImg->execute();
-                $rowImg = $stmtIdImg->fetch();
-                $image['Path'] = $rowImg['Path'];
-                $image['IdImage'] = $rowImg['MAX(IdImage)'];
             }
-
             $stmt2 = $dbh->getInstance()->prepare("UPDATE `products` SET `Title`=:title,`Description`=:description,`Link`=:link,`IdImage`=:idImage WHERE `IdProduct`=:idProduct");
             $stmt2->bindParam(':idProduct', $idProduct);
             if ((isset($_POST['title2']) && $_POST['title2'] != '') && ($_POST['title2'] != $row['Title'])) {
@@ -158,7 +144,7 @@
         </header>
 
 
-        <form action="modifyItem.php" method="post">
+        <form action="modifyItem.php" method="post" enctype="multipart/form-data">
             <div class="row d-flex justify-content-center">
                 <div class="col-10  d-flex justify-content-center ">
 
@@ -211,9 +197,8 @@
 
                             <div class="product-action">
                                 <div class="product-action-style">
-                                    <input id="item-image-upload" name="fileToUpload" id="fileToUpload" class="hidden nav-font" type="file">
+                                    <input type="file" name="fileToUpload" id="fileToUpload" class="hidden nav-font">
                                     <div id="item-image" clas="nav-font" style="text-decoration: none;">Click here to change product image</div>
-
                                 </div>
                             </div>
                         </div>
