@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 07, 2021 alle 23:07
+-- Creato il: Mag 12, 2021 alle 11:24
 -- Versione del server: 10.4.18-MariaDB
 -- Versione PHP: 8.0.3
 
@@ -68,7 +68,9 @@ INSERT INTO `images` (`IdImage`, `Path`) VALUES
 (10, 'Images/CUTEnglish.jpg'),
 (11, 'Images/English.jpg'),
 (12, 'Images/ProperPasta.png'),
-(13, 'Images/EasyAsBread.png');
+(13, 'Images/EasyAsBread.png'),
+(16, 'Images/wp6354193-dark-gray-minimalist-wallpapers.jpg'),
+(17, 'Images/ProperPasta.png');
 
 -- --------------------------------------------------------
 
@@ -140,8 +142,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`IdProduct`, `Title`, `Link`, `Description`, `IdImage`) VALUES
-(1, 'Easy As Bread', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae tempus mi, vitae rhoncus ligula. Pellentesque vitae turpis eu nisl tincidunt aliquet id non tortor. Vivamus et eleifend sapien. Curabitur congue efficitur euismod. Nam mollis, nisl vel posuere aliquam, justo enim congue libero, ut dignissim turpis arcu vitae nunc. Phasellus.', 13),
-(2, 'Proper Pasta', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae tempus mi, vitae rhoncus ligula. Pellentesque vitae turpis eu nisl tincidunt aliquet id non tortor. Vivamus et eleifend sapien. Curabitur congue efficitur euismod. Nam mollis, nisl vel posuere aliquam, justo enim congue libero, ut dignissim turpis arcu vitae nunc. Phasellus.', 12);
+(1, 'Easy As Bread', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Bread is the most respected staple food across the globe. We love it for good reason. It is inexpensive. It is delicious. It has been around since the beginning and we are familiar with it. \r\n\r\nBread is the only food that connects our different cultures and social groups. Through race, religion, poverty and wealth. Bread is celebrated. If you are interested in a further understanding of your own food culture or have curiosities about others and the similarities between them all. There is no better place to start than with bread. This book consists of easy bread recipes that are diverse and will cover a wide range of cuisine’s so you can eat good bread and turn every meal into a great meal.\r\n', 13),
+(9, 'Proper Pasta', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Donec interdum eget mi a sollicitudin. Morbi sed metus ac nunc rutrum fringilla ac eget massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ac finibus leo, elementum elementum odio. Suspendisse a lectus a turpis cursus facilisis a eu risus. Vestibulum et fringilla odio, et tempor erat. Donec mollis a elit porttitor congue. Quisque ac fermentum nisl, nec vestibulum felis. Phasellus id interdum ', 17);
 
 -- --------------------------------------------------------
 
@@ -294,7 +296,6 @@ INSERT INTO `users` (`IdUser`, `Name`, `Surname`, `Email`, `Password`, `Newslett
 (8, 'Csaba', 'Zorba', 'csaba.zorza@gmail.it', '$2y$10$qCz6/EDMZhaLfNh6SuxaQeuNQ5UfNLb4LS2IUjSpGojw3OE3GIePi', 1, 3),
 (9, 'Antonella', 'Kinder', 'antonella@kinder.it', '$2y$10$3fl/6xxIlgxbl4t06U7Hn.B5PcrFvMEoxYtAyBHGQN3.On3TWiqhy', 1, 3),
 (10, 'Michele', 'Sarto', 'sarto@tiscali.it', '$2y$10$Tx4WeaPqPrvuhmFESs9nduCKVMKXRQmJiaRjRdxpUCXd/1JCMUpvO', 1, 3),
-(11, 'Lorella', 'Cuccarini', 'lorella@moltobella.co.uk', '$2y$10$6pHF4lGkp3kuj0h6UyxCBuZl/I2SFOksK4oA6cYFdjFZdbz6i49fm', 0, 3),
 (12, 'Grace', 'Gullidge', 'ciao@ciao.it', '$2y$10$nAno1NOCGtHqBJvkSCxLIejtFbhQAyCFsBFucazSk9OsdpJvEguQ2', 0, 3),
 (13, 'Nicola', 'Panizzolo', 'nicola.panizollo@ptpvenezia.edu.it', '$2y$10$58P.iDm908KPmJ2DgZ8zuuaxx1bpHVAHPuRemSA3Q7ddYC37wbfL6', 1, 3),
 (15, 'Ethan', 'Franceschin', 'ethan.franceschin@ptpvenezia.edu.it', '$2y$10$v/IshXfaAnKzLemWzzmhHuThx6CWKbgo.24NyYCel9UOQ9MXCpfLG', 1, 3),
@@ -398,7 +399,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT per la tabella `images`
 --
 ALTER TABLE `images`
-  MODIFY `IdImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `IdImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT per la tabella `ingredients`
@@ -416,7 +417,7 @@ ALTER TABLE `measureunits`
 -- AUTO_INCREMENT per la tabella `products`
 --
 ALTER TABLE `products`
-  MODIFY `IdProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `IdProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `recipes`
@@ -440,7 +441,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `IdUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `IdUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- Limiti per le tabelle scaricate
@@ -452,12 +453,6 @@ ALTER TABLE `users`
 ALTER TABLE `ingredients`
   ADD CONSTRAINT `FK_alernative` FOREIGN KEY (`IdAlternative`) REFERENCES `ingredients` (`IdIngredient`),
   ADD CONSTRAINT `ingredients_ibfk_1` FOREIGN KEY (`IdMeasureUnit`) REFERENCES `measureunits` (`IdMeasureUnit`);
-
---
--- Limiti per la tabella `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`IdImage`) REFERENCES `images` (`IdImage`);
 
 --
 -- Limiti per la tabella `recipesimages`
