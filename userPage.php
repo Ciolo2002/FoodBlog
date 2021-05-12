@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">>
 
 <head>
     <?php ob_start(); //non so cosa sia ma mi risolve un bug legato a header(refresh:0) 

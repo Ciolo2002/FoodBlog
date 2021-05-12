@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">>
 
 <head>
     <?php
@@ -64,8 +64,8 @@
 
 
 
-        <div class="row">
-            <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
+        <div class="row d-flex justify-content-center">
+            <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45 d-flex justify-content-center">
                 <div class="product-wrapper box rounded text-center rss opacity ">
                     <div class="product-img rounded">
                         <a href="insertProduct.php" data-abc="true">
