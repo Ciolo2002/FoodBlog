@@ -4,8 +4,8 @@
 <head>
     <?php
     require_once("header.php");
-    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
-        $_SESSION['modifyByAdmin']=false;
+    if (isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin']) == true) {
+        $_SESSION['modifyByAdmin'] = false;
     }
     ?>
 
@@ -33,7 +33,7 @@
             <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
                 <div class="product-wrapper box rounded text-center rss opacity ">
                     <div class="product-img rounded">
-                        <a href="product.php?item='.$row['IdProduct'].'" data-abc="true" >';
+                        <a href="product.php?item=' . $row['IdProduct'] . '" data-abc="true" >';
                 echo '<img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
                         </a>
                         
@@ -52,7 +52,7 @@
                 echo '   <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
                 <div class="product-wrapper box rounded text-center rss opacity">
                     <div class="product-img rounded">
-                        <a href="product.php?item='.$row['IdProduct'].'"  data-abc="true" >
+                        <a href="product.php?item=' . $row['IdProduct'] . '"  data-abc="true" >
                             <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
                         </a>
 
@@ -71,7 +71,7 @@
                 echo '   <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
                 <div class="product-wrapper box rounded text-center rss opacity">
                     <div class="product-img rounded">
-                        <a href="product.php?item='.$row['IdProduct'].'" data-abc="true" >
+                        <a href="product.php?item=' . $row['IdProduct'] . '" data-abc="true" >
                             <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
                         </a>
 
@@ -90,7 +90,7 @@
                 echo '   <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45">
                 <div class="product-wrapper box rounded text-center rss opacity">
                     <div class="product-img rounded">
-                        <a href="product.php?item='.$row['IdProduct'].'" data-abc="true" >
+                        <a href="product.php?item=' . $row['IdProduct'] . '" data-abc="true" >
                             <img src="' . $row['Path'] . '" class="img-fluid rounded" alt="' . $row['Title'] . '">
                         </a>
 
@@ -106,6 +106,21 @@
                 $row = $stmt->fetch();
             }
             echo '</div>';
+        }
+        ?>
+        <?php
+        if (isset($_SESSION['Category']) && $_SESSION['Category'] =="Chef") {
+            echo ' <div class="row d-flex justify-content-center">
+            <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45 d-flex justify-content-center">
+                <div class="product-wrapper box rounded text-center rss opacity ">
+                    <div class="product-img rounded">
+                        <a href="insertProduct.php" data-abc="true">
+                        <img src="Images/InsertNewProduct.jpg" class="img-fluid rounded" alt="Insert a new product">
+                           </div>
+                        </a>
+                    </div>
+                </div>
+            </div>';
         }
         ?>
 

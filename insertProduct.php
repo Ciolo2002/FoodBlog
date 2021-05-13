@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <?php ob_start();
+    ?>
     <?php
     require_once("header.php");
     if (isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin']) == true) {
@@ -28,7 +30,7 @@
 
 
         if (isset($_POST["submit"])) {
-            $image['IdImage'] ="";
+            $image['IdImage'] = null;
             if (is_uploaded_file($_FILES["fileToUpload"]["tmp_name"])) {
                 $target_dir = "Images/";
                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -85,7 +87,7 @@
                     $image['IdImage'] = $rowImg['MAX(IdImage)'];
                 }
             }
-            $stmt2 = $dbh->getInstance()->prepare("INSERT INTO `products`( `Title`, `Link`, `Description`, `IdImage`) VALUES (':title', ':link' ,':description',  :idImage )");
+            $stmt2 = $dbh->getInstance()->prepare("INSERT INTO `products`( `Title`, `Link`, `Description`, `IdImage`) VALUES (:title, :link ,:description, :idImage )");
             $stmt2->bindParam(':title', $_POST['title2']);
             $stmt2->bindParam(':link', $_POST['link2']);
             $stmt2->bindParam(':description', $_POST['description2']);
