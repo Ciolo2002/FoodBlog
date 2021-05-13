@@ -15,7 +15,7 @@
 
 <body>
 
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <?php
         require_once("callingLogin.php");
         require_once("navbar.php"); ?>
