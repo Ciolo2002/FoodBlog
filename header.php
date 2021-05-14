@@ -18,4 +18,4 @@ echo '<link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">';
 echo '<link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap" rel="stylesheet">';
-echo '<link rel=stylesheet href="style.css">';
+echo '<link rel="stylesheet" href="style.css">';
