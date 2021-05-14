@@ -22,7 +22,7 @@
         </header>
         <div id="top"></div>
         <?php
-        $stmt = $dbh->getInstance()->prepare("SELECT Recipes.IdRecipe, Images.IdImage, Recipes.Title, Images.Path FROM RecipesImages INNER JOIN Recipes on Recipes.IdRecipe=RecipesImages.IdRecipe INNER JOIN Images ON Images.IdImage=RecipesImages.IdImage WHERE Images.Path LIKE '%CUT%'");
+        $stmt = $dbh->getInstance()->prepare("SELECT Recipes.IdRecipe, Images.IdImage, Recipes.Title, Images.Path FROM RecipesImages INNER JOIN Recipes on Recipes.IdRecipe=RecipesImages.IdRecipe INNER JOIN Images ON Images.IdImage=RecipesImages.IdImage WHERE 1");
         $stmt->execute();
         $titles = array();
         $paths = array();
