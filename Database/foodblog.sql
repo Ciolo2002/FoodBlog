@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 12, 2021 alle 11:24
+-- Creato il: Mag 14, 2021 alle 17:25
 -- Versione del server: 10.4.18-MariaDB
 -- Versione PHP: 8.0.3
 
@@ -59,18 +59,23 @@ CREATE TABLE `images` (
 INSERT INTO `images` (`IdImage`, `Path`) VALUES
 (1, 'Images/Instagram.png'),
 (2, 'Images/Pinterest.png'),
-(3, 'Images/CUTBreadRolls.jpg'),
 (4, 'Images/BreadRolls.jpg'),
-(6, 'Images/CUTTortillas.jpg'),
 (7, 'Images/Tortillas.jpg'),
-(8, 'Images/CUTToast2.jpg'),
 (9, 'Images/Toast2.jpg'),
 (10, 'Images/CUTEnglish.jpg'),
 (11, 'Images/English.jpg'),
-(12, 'Images/ProperPasta.png'),
 (13, 'Images/EasyAsBread.png'),
-(16, 'Images/wp6354193-dark-gray-minimalist-wallpapers.jpg'),
-(17, 'Images/ProperPasta.png');
+(20, 'Images/ProperPasta.png'),
+(21, 'Images/ProperPasta.png'),
+(22, 'Images/ProperPasta.png'),
+(23, 'Images/ProperPasta.png'),
+(24, 'Images/ProperPasta.png'),
+(25, 'Images/ProperPasta.png'),
+(26, 'Images/ProperPasta.png'),
+(27, 'Images/ProperPasta.png'),
+(28, 'Images/ProperPasta.png'),
+(29, 'Images/EasyAsBread.png'),
+(30, 'Images/ProperPasta.png');
 
 -- --------------------------------------------------------
 
@@ -143,7 +148,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`IdProduct`, `Title`, `Link`, `Description`, `IdImage`) VALUES
 (1, 'Easy As Bread', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Bread is the most respected staple food across the globe. We love it for good reason. It is inexpensive. It is delicious. It has been around since the beginning and we are familiar with it. \r\n\r\nBread is the only food that connects our different cultures and social groups. Through race, religion, poverty and wealth. Bread is celebrated. If you are interested in a further understanding of your own food culture or have curiosities about others and the similarities between them all. There is no better place to start than with bread. This book consists of easy bread recipes that are diverse and will cover a wide range of cuisine’s so you can eat good bread and turn every meal into a great meal.\r\n', 13),
-(9, 'Proper Pasta', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Donec interdum eget mi a sollicitudin. Morbi sed metus ac nunc rutrum fringilla ac eget massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ac finibus leo, elementum elementum odio. Suspendisse a lectus a turpis cursus facilisis a eu risus. Vestibulum et fringilla odio, et tempor erat. Donec mollis a elit porttitor congue. Quisque ac fermentum nisl, nec vestibulum felis. Phasellus id interdum ', 17);
+(12, 'Proper Pasta', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', '\r\nMaecenas condimentum laoreet felis, ut cursus orci semper sit amet. Sed fermentum consequat ante quis eleifend. Mauris ac auctor turpis. Integer a tristique tortor. Quisque pulvinar quis sem sit amet cursus. Proin sollicitudin malesuada dolor sit amet dignissim. Vivamus nibh elit, malesuada ac volutpat ac, tempor nec nunc. Nunc quis nibh orci. Mauris semper, ex sed volutpat consectetur, quam sapien feugiat ex, in bibendum quam arcu quis erat.\r\n', 30);
 
 -- --------------------------------------------------------
 
@@ -399,7 +404,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT per la tabella `images`
 --
 ALTER TABLE `images`
-  MODIFY `IdImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `IdImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT per la tabella `ingredients`
@@ -417,7 +422,7 @@ ALTER TABLE `measureunits`
 -- AUTO_INCREMENT per la tabella `products`
 --
 ALTER TABLE `products`
-  MODIFY `IdProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `IdProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT per la tabella `recipes`
@@ -458,8 +463,6 @@ ALTER TABLE `ingredients`
 -- Limiti per la tabella `recipesimages`
 --
 ALTER TABLE `recipesimages`
-  ADD CONSTRAINT `recipesimages_ibfk_1` FOREIGN KEY (`IdRecipe`) REFERENCES `recipes` (`IdRecipe`),
-  ADD CONSTRAINT `recipesimages_ibfk_2` FOREIGN KEY (`IdImage`) REFERENCES `images` (`IdImage`),
   ADD CONSTRAINT `removeRecipeImage` FOREIGN KEY (`IdRecipe`) REFERENCES `recipes` (`IdRecipe`) ON DELETE CASCADE,
   ADD CONSTRAINT `removeRecipeImg` FOREIGN KEY (`IdRecipe`) REFERENCES `recipes` (`IdRecipe`) ON DELETE CASCADE;
 
@@ -467,7 +470,6 @@ ALTER TABLE `recipesimages`
 -- Limiti per la tabella `recipesingredients`
 --
 ALTER TABLE `recipesingredients`
-  ADD CONSTRAINT `recipesingredients_ibfk_1` FOREIGN KEY (`IdRecipe`) REFERENCES `recipes` (`IdRecipe`),
   ADD CONSTRAINT `recipesingredients_ibfk_2` FOREIGN KEY (`IdIngredient`) REFERENCES `ingredients` (`IdIngredient`),
   ADD CONSTRAINT `removeRecipe` FOREIGN KEY (`IdRecipe`) REFERENCES `recipes` (`IdRecipe`) ON DELETE CASCADE;
 
@@ -476,8 +478,7 @@ ALTER TABLE `recipesingredients`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `dropUser` FOREIGN KEY (`IdUser`) REFERENCES `users` (`IdUser`) ON DELETE CASCADE,
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`IdUser`) REFERENCES `users` (`IdUser`),
-  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`IdRecipe`) REFERENCES `recipes` (`IdRecipe`);
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`IdUser`) REFERENCES `users` (`IdUser`);
 
 --
 -- Limiti per la tabella `users`
