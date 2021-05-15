@@ -4,8 +4,8 @@
 <head>
     <?php
     require_once("header.php");
-    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
-        $_SESSION['modifyByAdmin']=false;
+    if (isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin']) == true) {
+        $_SESSION['modifyByAdmin'] = false;
     }
     ?>
     <link rel="stylesheet" href="blog.css">
@@ -13,9 +13,9 @@
 
 <body>
     <div class="container-fluid ">
-       
+
         <?php
-        require_once("callingLogin.php"); 
+        require_once("callingLogin.php");
         require_once("navbar.php"); ?>
         <header class="text-center logo">
             <h1 style="font-size: 65px"> The Taistiest Recipes</h1>
@@ -32,14 +32,14 @@
             $explode = explode(';', $row['Title']);
             $titles[] = $explode[0];
             $subtitles[] = $explode[1];
-            $idRecipes[]=$row['IdRecipe'];
+            $idRecipes[] = $row['IdRecipe'];
             $paths[] = $row['Path'];
         }
 
-        for ($i = 0; $i < sizeof($titles); ++$i ) {
+        for ($i = 0; $i < sizeof($titles); ++$i) {
             echo '<div class="row">';
             echo '<div class="col-lg-6 mb-3 mb-lg-0" style="margin-top: 12px !important; margin-bottom: 12px !important ">
-                    <a href="recipe.php?recipe='.$idRecipes[$i].'">
+                    <a href="recipe.php?recipe=' . $idRecipes[$i] . '">
                         <div class="hover hover-1 text-white box rounded"><img src="' . $paths[$i] . '" alt="' . $titles[$i] . '">
                             <div class="hover-overlay"></div>
                                 <div class="hover-1-content px-5 py-4">
@@ -50,9 +50,9 @@
                     </a>
                 </div>';
             ++$i;
-            if(isset($paths[$i])){
-            echo '<div class="col-lg-6" style="margin-top: 12px !important; margin-bottom: 12px !important">
-                   <a href="recipe.php?recipe='.$idRecipes[$i].'">
+            if (isset($paths[$i])) {
+                echo '<div class="col-lg-6" style="margin-top: 12px !important; margin-bottom: 12px !important">
+                   <a href="recipe.php?recipe=' . $idRecipes[$i] . '">
                     <div class="hover hover-1 text-white box rounded"><img src="' . $paths[$i] . '" alt="' . $titles[$i] . '">
                         <div class="hover-overlay"></div>
                             <div class="hover-1-content px-5 py-4">
@@ -62,10 +62,28 @@
                         </div>
                     </a>
                  </div>';
-            echo '</div>'; //row
+                echo '</div>'; //row
+
             }
+        }
+        if (isset($_SESSION['Category']) && $_SESSION['Category'] == 'Chef') {
+            echo '<div class="row  d-flex justify-content-center">
+                <div class="col-lg-6" style="margin-top: 12px !important; margin-bottom: 12px !important">
+                    <a href="InsertNewRecipe.php">
+                        <div class="hover hover-1 text-white box rounded"><img src="Images/InsertNewRecipe.jpeg" alt="Insert a new product">
+                            <div class="hover-overlay"></div>
+                            <div class="hover-1-content px-5 py-4">
+                                <h3 class="hover-1-title text-uppercase font-weight-bold mb-0"></h3>
+                                <p class="hover-1-description sublogo mb-0" style="font-size: 18px">
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                </div>';
         }
         ?>
     </div> <!-- contriner -->
     <?php require_once("footer.php"); ?>
+
 </html>

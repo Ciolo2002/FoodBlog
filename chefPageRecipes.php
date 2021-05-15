@@ -99,6 +99,20 @@
             }
         }
         ?>
+        <div class="row  d-flex justify-content-center">
+            <div class="col-lg-6" style="margin-top: 12px !important; margin-bottom: 12px !important">
+                <a href="InsertNewRecipe.php">
+                    <div class="hover hover-1 text-white box rounded"><img src="Images/InsertNewRecipe.jpeg" alt="Insert a new product">
+                        <div class="hover-overlay"></div>
+                        <div class="hover-1-content px-5 py-4">
+                            <h3 class="hover-1-title text-uppercase font-weight-bold mb-0"></h3>
+                            <p class="hover-1-description sublogo mb-0" style="font-size: 18px">
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div> <!-- contriner -->
     <?php require_once("footer.php"); ?>
 
