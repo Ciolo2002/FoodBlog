@@ -42,8 +42,16 @@
         $stmt->execute();
         $row;
         echo '<datalist id="ingredients">';
-        while($row=$stmt->fetch()){
-            echo '<option value="'.$row['Ingredient'].'">';
+        while ($row = $stmt->fetch()) {
+            echo '<option value="' . $row['Ingredient'] . '">';
+        }
+        echo '</datalist>';
+        $stmt2 = $dbh->getInstance()->prepare("SELECT * FROM `measureunits` WHERE 1");
+        $stmt2->execute();
+        $row2;
+        echo '<datalist id="measureunits">';
+        while ($row2 = $stmt2->fetch()) {
+            echo '<option value="' . $row2['MeasureUnit'] . '">';
         }
         echo '</datalist>';
 
@@ -80,7 +88,7 @@
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Time: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="text" name="time2" maxlength="255" placeholder="Insert the PREP | COOKING | REST | TOTAL | SERVES" style="height: 100%; width:100%; border:none;" required>
+                            <input type="text" name="time2" maxlength="255" placeholder="Insert PREP | COOKING | REST | TOTAL | SERVES" style="height: 100%; width:100%; border:none;" required>
                         </div>
                     </div>
                 </div>
@@ -99,13 +107,13 @@
             </div>
 
             <div class="row d-flex justify-content-center" id="ingredient">
-                <div class="col-10  d-flex justify-content-center ">
+                <div class="col-md-12 col-6 d-flex justify-content-center ">
 
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Ingredient: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
                             <input type="text" list="ingredients" name="ingredient[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;" required>
-                            
+
 
                         </div>
                     </div>
@@ -118,9 +126,11 @@
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Measure unit: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="text" name="measureUnit[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;" required>
+                            <input type="text" list="measureunits" name="measureUnit[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;" required>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-12 col-6 d-flex justify-content-center ">
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Alternative: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
@@ -136,11 +146,12 @@
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> A. m. unit: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="text" name="measureUnit[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;">
+                            <input type="text" list="measureunits" name="measureUnit[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;">
                         </div>
                     </div>
                 </div>
             </div>
+
 
 
 
