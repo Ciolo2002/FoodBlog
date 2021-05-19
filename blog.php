@@ -16,7 +16,7 @@
 
         <?php
         require_once("callingLogin.php");
-        require_once("navbar.php"); ?>
+        require_once("navbar.php");?>
         <header class="text-center logo">
             <h1 style="font-size: 65px"> The Taistiest Recipes</h1>
         </header>
