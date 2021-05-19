@@ -17,6 +17,11 @@
             $("#addIngredient").click(function() {
                 $("#ingredient").clone().insertAfter("#preparation");
             });
+            var myInput = document.getElementById("alternative");
+            if (myInput && myInput.value) {
+                $('#measureUnitAlternative').attr('required', true);
+                $('#quantityAlternative').attr('required', true);
+            }
         });
     </script>
 
@@ -55,6 +60,76 @@
         }
         echo '</datalist>';
 
+
+
+
+
+        if (isset($_POST['submit'])) {
+            $title = strtoupper($_POST['title2']) . ';' . strtolower($_POST['subtitle2']);
+            $time = $_POST['time2'];
+            $preparation = $_POST['preparation2'];
+            $ingredients = '';
+            // print_r($_POST['ingredient']);
+            //  print_r($_POST['alternative']);
+            for ($i = 0; $i < count($_POST['ingredient']); $i++) {
+                if ($_POST['alternative'][$i] != "") {
+                    $ingredients .= '||' . $_POST['ingredient'][$i] . '@' . $_POST['quantity'][$i] . '@' . $_POST['measureUnit'][$i] . '@' . $_POST['alternative'][$i] . '@' . $_POST['quantityAlternative'][$i] . '@' . $_POST['measureUnitAlternative'][$i];
+                } else {
+                    $ingredients .= '||' . $_POST['ingredient'][$i] . '@' . $_POST['quantity'][$i] . '@' . $_POST['measureUnit'][$i];
+                }
+            }
+            $target_file;
+            $image['IdImage'] = null;
+            if (is_uploaded_file($_FILES["fileToUpload"]["tmp_name"])) {
+                $target_dir = "Images/";
+                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+                // Check if image file is a actual image or fake image
+                if (isset($_POST["submit"])) {
+                    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                    if ($check !== false) {
+                        echo "File is an image - " . $check["mime"] . ".";
+                        $uploadOk = 1;
+                    } else {
+                        echo "File is not an image.";
+                        $uploadOk = 0;
+                    }
+                }
+                // Check file size
+                if ($_FILES["fileToUpload"]["size"] > 5000000) {
+                    echo "Sorry, your file is too large.";
+                    $uploadOk = 0;
+                }
+
+                // Allow certain file formats
+                if (
+                    $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif"
+                ) {
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $uploadOk = 0;
+                }
+
+                // Check if $uploadOk is set to 0 by an error
+                if ($uploadOk == 0) {
+                    echo "Sorry, your file was not uploaded.";
+                    // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+            }
+            echo $title;
+            echo $time;
+            print_r($ingredients);
+            echo $preparation;
+            echo $target_file;
+        }
         ?>
 
         <form action="InsertNewRecipe.php" method="post" enctype="multipart/form-data">
@@ -107,10 +182,10 @@
             </div>
 
             <div class="row d-flex justify-content-center" id="ingredient">
-                <div class="col-md-12 col-6 d-flex justify-content-center ">
+                <div class="col-xl-6 fluid d-flex justify-content-center ">
 
                     <div class="myform form" style="border: none;">
-                        <span class="navbar-font" style="font-size: 30px;"> Ingredient: </span>
+                        <span class="navbar-font" style=" font-size: 2vw;"> Ingredient: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
                             <input type="text" list="ingredients" name="ingredient[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;" required>
 
@@ -118,35 +193,35 @@
                         </div>
                     </div>
                     <div class="myform form" style="border: none;">
-                        <span class="navbar-font" style="font-size: 30px;"> Quantity: </span>
+                        <span class="navbar-font" style=" font-size: 2vw;"> Quantity: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="text" name="quantity[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;" required>
+                            <input type="number" min="0" name="quantity[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;" required>
                         </div>
                     </div>
                     <div class="myform form" style="border: none;">
-                        <span class="navbar-font" style="font-size: 30px;"> Measure unit: </span>
+                        <span class="navbar-font" style=" font-size: 2vw;"> Measure unit: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
                             <input type="text" list="measureunits" name="measureUnit[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;" required>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-6 d-flex justify-content-center ">
+                <div class="col-xl-6 fluid d-flex justify-content-center ">
                     <div class="myform form" style="border: none;">
-                        <span class="navbar-font" style="font-size: 30px;"> Alternative: </span>
+                        <span class="navbar-font" style=" font-size: 2vw;"> Alternative: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="text" name="alternative[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;">
+                            <input type="text" name="alternative[]" id="alternative" list="ingredients" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;">
                         </div>
                     </div>
                     <div class="myform form" style="border: none;">
-                        <span class="navbar-font" style="font-size: 30px;"> A. quantity: </span>
+                        <span class="navbar-font" style=" font-size: 2vw;"> A. quantity: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="text" name="measureUnit[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;">
+                            <input type="number" min="0" name="quantityAlternative[]" id="quantityAlternative" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;">
                         </div>
                     </div>
                     <div class="myform form" style="border: none;">
-                        <span class="navbar-font" style="font-size: 30px;"> A. m. unit: </span>
+                        <span class="navbar-font" style=" font-size: 2vw;"> A. m. unit: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="text" list="measureunits" name="measureUnit[]" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;">
+                            <input type="text" list="measureunits" name="measureUnitAlternative[]" id="measureUnitAlternative" maxlength="255" placeholder="Insert an ingredient" style="height: 100%; width:100%; border:none;">
                         </div>
                     </div>
                 </div>

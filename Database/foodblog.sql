@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 14, 2021 alle 17:25
--- Versione del server: 10.4.18-MariaDB
--- Versione PHP: 8.0.3
+-- Creato il: Mag 19, 2021 alle 19:40
+-- Versione del server: 10.4.19-MariaDB
+-- Versione PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -159,17 +159,18 @@ INSERT INTO `products` (`IdProduct`, `Title`, `Link`, `Description`, `IdImage`) 
 CREATE TABLE `recipes` (
   `IdRecipe` int(11) NOT NULL,
   `Title` varchar(255) DEFAULT NULL,
-  `Preparation` text DEFAULT NULL
+  `Preparation` text DEFAULT NULL,
+  `State` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `recipes`
 --
 
-INSERT INTO `recipes` (`IdRecipe`, `Title`, `Preparation`) VALUES
-(1, 'BREAD ROLLS ; recipe for 10 rolls', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR  TOTAL | SERVES 4-8 ;\r\n01 Dissolve the yeast and sugar in the water and leave to stand until active and foaming. This should take about 10 minutes. ;\r\n02 Combine the flour and salt in a large bowl and add the yeast mixture and the beaten egg and begin to bring to a dough. Ensure everything is combined and there is no flour left in the bowl. ;\r\n03 Tip out the dough and begin to knead on an unfloured work surface for 10-12 minutes until the dough is smooth and springs back when being gently poked ;\r\n04 Put the dough into a large bowl, cover with cling film and leave to proof until double in size. About 1 – 2 hours depending on the environment. ;\r\n05 Once the dough has been sufficiently proofed knock the air out of it my gently pushing your hand into the centre and divide into 80g pieces. ;\r\n06 Roll the pieces into little balls using the surface tension method and place them on a lined baking tray with enough space to proof once more. Cover with a wet cloth to prevent dehydration. ;\r\n07 Preheat the oven to 180°C or 350f. ;\r\n08 Allow them to double in size once more (about 30 minutes) and carefully brush them half of the melted butter ensuring not to knock out the air. ;\r\n09 Bake them at 180°C for 10-15 minutes or until golden brown. ;\r\n10 Brush them with the remaining butter and allow them cool completely before use.'),
-(2, 'FLOUR TORTILLAS ; recipe for 8 tortillas', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the flour, salt, and baking powder in a large bowl. ;\r\n02 Cut the cold butter into small pieces and rub it into the flour mix using your fingertips until you have a fine breadcrumb texture. ;\r\n03 Add the yoghurt and gently kneed until combined. Cover loosely with cling film and rest the dough for 10 minutes. ;\r\n04 Once the dough has rested, roll it into a sausage shape and equally divide the dough into 8 portions, shape them into balls and rest them for a further 10 minutes. ;\r\n05 Using a floured rolling pin, roll each portion out to 10 inches in diameter on a lightly floured work surface. ;\r\n06 Cook one at a time in a large dry non-stick frying pan over a medium to low heat turning over only once during cooking. ;\r\n07 Allow the finished Tortillas to cool completely and soften before use.'),
-(3, 'BREAKFAST TOAST ; recipe for 1 loaf', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the sugar yeast and water and leave to stand to until the yeast is foaming. ;\r\n02 Add the flour, salt, and whole milk together and mix it too a loose dough. If the dough is wet, let it stand for 5 minutes, dust with a little flour and start kneading. ;\r\n03 Knead for 10-15 minutes until the dough is smooth and springy. After a couple of minutes kneading you will start to notice a significant difference in the consistency. ;\r\n04 Once sufficiently kneading, place the dough in a large bowl and cover with a damp cloth. Allow the dough to double in size (about 1 hour). ;\r\n05 Lightly oil and flour an appropriately sized loaf tin and preheat your oven to 180°C. ;\r\n06 Once the dough has doubled in size, knock the air out and flatten the dough. Roll the dough over itself to create a sausage shape and place it in the loaf tin. Ensure to push the dough into the corners of the tin. ;\r\n07 Cover it with a damp cloth and allow the dough to double in volume once more; 08. Bake at 180°C for 20-25 minutes or until golden brown. (12-15 minutes for smaller loaves). If you are unsure you can check the core temperature using a probe thermometer. Be sure the breach reaches a minimum of 86°C.');
+INSERT INTO `recipes` (`IdRecipe`, `Title`, `Preparation`, `State`) VALUES
+(1, 'BREAD ROLLS ; recipe for 10 rolls', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR  TOTAL | SERVES 4-8 ;\r\n01 Dissolve the yeast and sugar in the water and leave to stand until active and foaming. This should take about 10 minutes. ;\r\n02 Combine the flour and salt in a large bowl and add the yeast mixture and the beaten egg and begin to bring to a dough. Ensure everything is combined and there is no flour left in the bowl. ;\r\n03 Tip out the dough and begin to knead on an unfloured work surface for 10-12 minutes until the dough is smooth and springs back when being gently poked ;\r\n04 Put the dough into a large bowl, cover with cling film and leave to proof until double in size. About 1 – 2 hours depending on the environment. ;\r\n05 Once the dough has been sufficiently proofed knock the air out of it my gently pushing your hand into the centre and divide into 80g pieces. ;\r\n06 Roll the pieces into little balls using the surface tension method and place them on a lined baking tray with enough space to proof once more. Cover with a wet cloth to prevent dehydration. ;\r\n07 Preheat the oven to 180°C or 350f. ;\r\n08 Allow them to double in size once more (about 30 minutes) and carefully brush them half of the melted butter ensuring not to knock out the air. ;\r\n09 Bake them at 180°C for 10-15 minutes or until golden brown. ;\r\n10 Brush them with the remaining butter and allow them cool completely before use.', 1),
+(2, 'FLOUR TORTILLAS ; recipe for 8 tortillas', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the flour, salt, and baking powder in a large bowl. ;\r\n02 Cut the cold butter into small pieces and rub it into the flour mix using your fingertips until you have a fine breadcrumb texture. ;\r\n03 Add the yoghurt and gently kneed until combined. Cover loosely with cling film and rest the dough for 10 minutes. ;\r\n04 Once the dough has rested, roll it into a sausage shape and equally divide the dough into 8 portions, shape them into balls and rest them for a further 10 minutes. ;\r\n05 Using a floured rolling pin, roll each portion out to 10 inches in diameter on a lightly floured work surface. ;\r\n06 Cook one at a time in a large dry non-stick frying pan over a medium to low heat turning over only once during cooking. ;\r\n07 Allow the finished Tortillas to cool completely and soften before use.', 1),
+(3, 'BREAKFAST TOAST ; recipe for 1 loaf', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the sugar yeast and water and leave to stand to until the yeast is foaming. ;\r\n02 Add the flour, salt, and whole milk together and mix it too a loose dough. If the dough is wet, let it stand for 5 minutes, dust with a little flour and start kneading. ;\r\n03 Knead for 10-15 minutes until the dough is smooth and springy. After a couple of minutes kneading you will start to notice a significant difference in the consistency. ;\r\n04 Once sufficiently kneading, place the dough in a large bowl and cover with a damp cloth. Allow the dough to double in size (about 1 hour). ;\r\n05 Lightly oil and flour an appropriately sized loaf tin and preheat your oven to 180°C. ;\r\n06 Once the dough has doubled in size, knock the air out and flatten the dough. Roll the dough over itself to create a sausage shape and place it in the loaf tin. Ensure to push the dough into the corners of the tin. ;\r\n07 Cover it with a damp cloth and allow the dough to double in volume once more; 08. Bake at 180°C for 20-25 minutes or until golden brown. (12-15 minutes for smaller loaves). If you are unsure you can check the core temperature using a probe thermometer. Be sure the breach reaches a minimum of 86°C.', 1);
 
 -- --------------------------------------------------------
 
@@ -255,13 +256,11 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`IdReview`, `Stars`, `Review`, `IdUser`, `IdRecipe`) VALUES
-(1, 4, 'It\'s so tasy!', 3, 1),
 (2, 2, 'I don\'t really like it.', 1, 2),
 (4, 4, 'Yummy!!!', 5, 2),
 (18, 5, 'I love them', 13, 1),
 (20, 4, 'So easy to prepare :)', 2, 2),
 (58, 2, 'This recipe sucks', 1, 1),
-(59, 3, 'I recommend that you eat them when you are grilling with hamburgers', 3, 1),
 (60, 4, 'Thanks, I will make them every day for my children', 1, 3),
 (61, 1, 'When I put Nutella on my toasts they break', 8, 3),
 (62, 5, 'With apricot jam this is my absolute favorite snack', 6, 3),
@@ -294,7 +293,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`IdUser`, `Name`, `Surname`, `Email`, `Password`, `Newsletter`, `Category`) VALUES
 (1, 'Luigi', 'Verdi', 'luigi.verdi@gmail.com', '$2y$10$0SV.H/mkgmB0.5Y1dZIp2.KDy.t5z8b3Ywa9otEzpTOtkmFdhBkyS', 1, 3),
 (2, 'Maria', 'Rossi', 'maria@ciao.it', '$2y$10$GAr5ECFJJSzOxWiSxpT5qeSgen8C.Ez452TpsglpmG0SLG/3i1nQC', 0, 3),
-(3, 'Michael', 'Sarto', 'michael.sarto@ptpvenezia.edu.it', '$2y$10$UEGXAh3/0XehkjZyizPrbuHQcfVCLkDKomDYuWVnjCj2qq.iNfaiS', 1, 2),
+(3, 'Michael', 'Sarto', 'michael.sarto@ptpvenezia.edu.it', '$2y$10$l3LeiP95BeQLPKJsj2/Fn.gsYOQd9GH/QgvYqhHMjRhr0f5GJoU5q', 1, 2),
 (5, 'Anna', 'Contiero', 'anna.contiero1970@gmail.com', '$2y$10$dMiqSbXPGbRVui.paQos/ef2SA7KgBI4sy/2xqcgvX1h2sxOrdx8K', 1, 3),
 (6, 'Paolo', 'Bonolis', 'paolo.bonolis@live.com', '$2y$10$JdPymdsxzNN4/3wC9suBa.0xJG5Q0xAkPzny3gHNZwAyFccEFU73m', 1, 3),
 (7, 'Luca', 'Laurentis', 'luca.laurentis@gmail.it', '$2y$10$zxo7k1aWjJrby5oH/9h0zeMACik6LRX8Bjh/RcDXwYnmkRAjsH8T6', 0, 3),
@@ -311,11 +310,12 @@ INSERT INTO `users` (`IdUser`, `Name`, `Surname`, `Email`, `Password`, `Newslett
 (20, 'Nicolò', 'Bighetto', 'nickbig@hello.yuppi', '$2y$10$KUeg25.heeCdkG781LIc6.3zOLfZ.uTpr0vx6Dh38KvcMbxjRetu.', 0, 3),
 (21, 'Hadda', 'Hakim', 'vortrex@ciao.ciao', '$2y$10$uNvd5wcDWWmAYix03zFfvelhKtNWbqYKjYu.gyNI5t7FkdbXE0Pt.', 0, 3),
 (31, 'Ludovico', 'Ariosto', 'ludovico@arrosto.haha', '$2y$10$/H7SZD1xOWaUZPqJ2nv2cu2S5R.TE9O1.z2L07jpL.CwCbqj16JoO', 0, 3),
-(36, 'Topolino', 'Disney', 'topolino@ciao.boh', '$2y$10$fbf1wAcPwzOEuxwvHY0F8uVniTpHUhf8UHlwnHg4AbT9PDgai/UvG', 0, 3),
+(36, 'Topolino', 'Disney', 'topolino@ciao.it', '$2y$10$fbf1wAcPwzOEuxwvHY0F8uVniTpHUhf8UHlwnHg4AbT9PDgai/UvG', 1, 3),
 (38, 'Minnie', 'Disney', 'minnie@disney.it', '$2y$10$yfgRtneAGTUIEhuJr2Sbg.hv65RJiThz8yuvhbs7FkK9mXGolAVJy', 0, 3),
 (39, 'Rosa', 'Chemical', 'rosa@music.it', '$2y$10$jeyDq6PsAyzoeRMJ.bOZAemjdOzkqZu7LenyaPF/Uwnf/.VWmj14S', 1, 3),
 (40, 'Matthew David', 'Gullidge', 'burntleeksandrawbeets@gmail.com', '$2y$10$n529dtGZ78.sa9Ns/5bEk.Pj7SkaSZtkYTinE7D3LxyfmF/8TekMC', 1, 1),
-(41, 'Sfera', 'Ebbasta', 'sfera.ebbasta@bhmg.it', '$2y$10$ITPtwtXfARzLnnm1JN2ibO3IrfFkhTsu8.dbOXi5LsSYVYdvct9Ja', 1, 3);
+(41, 'Sfera', 'Ebbasta', 'sfera.ebbasta@bhmg.it', '$2y$10$ITPtwtXfARzLnnm1JN2ibO3IrfFkhTsu8.dbOXi5LsSYVYdvct9Ja', 1, 3),
+(44, 'Bianca', 'Zennaro', 'bianca@famosa.it', '$2y$10$s1PxNjODE5udfLqoid064excuCBftiCL3H6A9gkO3JFcX5DODCXu6', 0, 3);
 
 --
 -- Indici per le tabelle scaricate
@@ -440,13 +440,13 @@ ALTER TABLE `recipesimages`
 -- AUTO_INCREMENT per la tabella `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `IdUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `IdUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Limiti per le tabelle scaricate
