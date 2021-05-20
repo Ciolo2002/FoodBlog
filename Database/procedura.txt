@@ -1,0 +1,35 @@
+DELIMITER //
+DROP PROCEDURE IF EXISTS InserisciRicetta//
+CREATE PROCEDURE InserisciRicetta(IN Title VARCHAR(255), IN Preparation TEXT, IN Path VARCHAR(255), IN ingredients TEXT)
+BEGIN
+  INSERT INTO `recipes`(`Title`, `Preparation`) VALUES (Title, Preparation);
+  INSERT INTO `images`(`Path`) VALUES (Path);
+  INSERT INTO `recipesimages`( `IdRecipe`, `IdImage`) SELECT MAX(`IdImage`), MAX(`IdRecipe`) FROM recipes, images WHERE recipes.Title=Title AND images.Path=Path;
+  
+  SET Delimiter = '||';
+  SET Delimiter2='@';
+SET Ingredienti = ingredients;
+SET Pos=2;
+WHILE  SUBSTRING_INDEX(ingredients, Delimiter, Pos) AS Substring
+DO
+(CHAR_LENGTH(Substring) -
+CHAR_LENGTH(REPLACE(Substring, Delimiter2, '')) + 1) as TotalValue
+IF TotalValue= 6 THEN
+SELECT ingredients.IdIngredient AS Row1 FROM ingredients a ,ingredients b  WHERE a.Ingredient=SUBSTRING_INDEX(Substring, Delimiter2, 1) AND b.Ingredient=SUBSTRING_INDEX(Substring, Delimiter2, 4);
+IF Row1!=null THEN
+INSERT INTO `recipesingredients`( `IdIngredient`, `Quantity`) VALUES (Row1,SUBSTRING_INDEX(Substring, Delimiter2, 2));
+INSERT INTO  `recipesingredients`( `IdIngredient`, `Quantity`) VALUES (Row1+1,SUBSTRING_INDEX(Substring, Delimiter2, 5));
+ELSE THEN
+SELECT `MeasureUnit` FROM `measureunits` WHERE `MeasureUnit`= 
+
+
+	
+
+
+
+
+SET Pos=Pos+1;
+END WHILE;
+  
+END //
+DELIMITER ;

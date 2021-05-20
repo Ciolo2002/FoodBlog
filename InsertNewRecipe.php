@@ -66,8 +66,8 @@
 
         if (isset($_POST['submit'])) {
             $title = strtoupper($_POST['title2']) . ';' . strtolower($_POST['subtitle2']);
-            $time = $_POST['time2'];
-            $preparation = $_POST['preparation2'];
+             
+            $preparation = strtoupper($_POST['time2']).';'. $_POST['preparation2'];
             $ingredients = '';
             // print_r($_POST['ingredient']);
             //  print_r($_POST['alternative']);
@@ -125,10 +125,11 @@
                 }
             }
             echo $title;
-            echo $time;
             print_r($ingredients);
             echo $preparation;
             echo $target_file;
+
+            $stmtTitle= $dbh->getInstance()->prepare("");
         }
         ?>
 
