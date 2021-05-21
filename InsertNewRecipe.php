@@ -129,7 +129,59 @@
             echo $preparation;
             echo $target_file;
 
-            $stmtTitle= $dbh->getInstance()->prepare("");
+            $stmtTitle= $dbh->getInstance()->prepare("INSERT INTO `recipes`( `Title`, `Preparation`) VALUES (:title, :preparation) ");
+           
+            $stmtTitle->bindParam(':title', $title);
+            $stmtTitle->bindParam(':preparation', $preparation);
+            $stmtTitle->execute();
+            $IdNewRecipe=$dbh->getInstance()->lastInsertId();
+
+            $stmtImage=$dbh->getInstance()->prepare("INSERT INTO `images`( `Path`) VALUES (:path)");
+            $stmtImage->bindParam(':path',$target_file);
+            $stmtImage->execute();
+            $IdNewImage=$dbh->getInstance()->lastInsertId();
+
+
+            $stmtImageRecipe=$dbh->getInstance()->prepare("INSERT INTO `recipesimages`( `IdRecipe`, `IdImage`) VALUES (:idRecipe,':idImage')");
+            $stmtImageRecipe->bindParam(':idRecipe', $IdNewRecipe);
+            $stmtImageRecipe->bindParam(':idImage', $IdNewImage);
+            $stmtImageRecipe->execute();
+
+
+            for ($i = 0; $i < count($_POST['ingredient']); $i++) {
+                if($_POST['alternative'][$i]!=null){
+               $stmtIngredients=$dbh->getInstance()->prepare("SELECT a.IdIngredient as aId,  a.IdMeasureUnit as aMu, b.IdIngredient as bId, b.IdMeasureUnit as bMu FROM ingredients a , ingredients b  WHERE a.Ingredient= :ingredient AND b.Ingredient=:alternative");
+               $stmtIngredients->bindParam(':ingredient', $_POST['ingredient'][$i]);
+               $stmtIngredients->bindParam(':alternative', $_POST['alternative'][$i]);
+               $stmtIngredients->execute();
+               $rowIngredients=$stmtIngredients->fetch();
+                if($rowIngredients['aId']!=null && $rowIngredients['aMu']!=null && $rowIngredients['bId']!=null && $rowIngredients['bMu']!=null){
+                    $stmtInsertRecipeIngrediet=$dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idRecipe,:idIngredient,:quantity)");
+                    $stmtInsertRecipeIngrediet->bindParam(':idRecipe', $IdNewRecipe);
+                    $stmtInsertRecipeIngrediet->bindParam(':idIngredient', $rowIngredients['aId']);
+                    $stmtInsertRecipeIngrediet->bindParam(':quantity', $_POST['quantity'][$i]);
+                    $stmtInsertRecipeIngrediet->execute();
+                    $stmtInsertRecipeIngrediet2=$dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idRecipe,:idIngredient,:quantity)");
+                    $stmtInsertRecipeIngrediet2->bindParam(':idRecipe', $IdNewRecipe);
+                    $stmtInsertRecipeIngrediet2->bindParam(':idIngredient', $rowIngredients['bId']);
+                    $stmtInsertRecipeIngrediet2->bindParam(':quantity', $_POST['quantityAlternative'][$i]);
+                    $stmtInsertRecipeIngrediet2->execute();
+                }else{
+                    $stmtUnit=$dbh->getInstance()->prepare("SELECT 1 FROM `measureunits` WHERE `MeasureUnit`=:mu");
+                    $stmtUnit->bindParam(':mu',$_POST['measureUnit'][$i]);
+                    $stmtUnit->execute();
+                    $rowUnit=$stmtUnit->fetch();
+                    if($rowUnit['1']==null){
+                        $stmtInsertMeasure=$dbh->getInstance()->prepare() ;//inserire la nuova unità di misura
+                    }
+                }
+            }
+
+
+
+            }
+
+
         }
         ?>
 
