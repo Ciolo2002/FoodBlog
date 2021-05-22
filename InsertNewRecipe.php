@@ -167,13 +167,44 @@
                     $stmtInsertRecipeIngrediet2->bindParam(':quantity', $_POST['quantityAlternative'][$i]);
                     $stmtInsertRecipeIngrediet2->execute();
                 }else{
-                    $stmtUnit=$dbh->getInstance()->prepare("SELECT 1 FROM `measureunits` WHERE `MeasureUnit`=:mu");
+                    $stmtUnit=$dbh->getInstance()->prepare("SELECT IdMeasureUnit FROM `measureunits` WHERE `MeasureUnit`=:mu");
                     $stmtUnit->bindParam(':mu',$_POST['measureUnit'][$i]);
                     $stmtUnit->execute();
                     $rowUnit=$stmtUnit->fetch();
-                    if($rowUnit['1']==null){
-                        $stmtInsertMeasure=$dbh->getInstance()->prepare() ;//inserire la nuova unità di misura
+                    if($rowUnit['IdMeasureUnit']==null){
+                        $stmtInsertMeasure=$dbh->getInstance()->prepare("INSERT INTO `measureunits`(`MeasureUnit`) VALUES (:mu)");//inserire la nuova unità di misura
+                        $stmtInsertMeasure->bindParam(':mu',$_POST['measureUnit'][$i]);
+                        $stmtInsertMeasure->execute();
+                        $rowUnit=$dbh->getInstance()->lastInsertId();
                     }
+                    $stmtInsertIngrediet=$dbh->getInstance()->prepare("INSERT INTO `ingredients`( `Ingredient`, `IdMeasureUnit`, `IdAlternative`) VALUES (:ingredient,:mu,null)");
+                    $stmtInsertIngrediet->bindParam(':mu',$rowUnit);
+                    $stmtInsertIngrediet->bindParam('ingredient',$_POST['ingredient'][$i]);
+                    $stmtInsertIngrediet->execute();
+                    $idNewIngredient=$dbh->getInstance()->lastInsertId();
+                    $stmtInsertAlternative=$dbh->getInstance()->prepare("INSERT INTO `ingredients`( `Ingredient`, `IdMeasureUnit`, `IdAlternative`) VALUES (:ingredient,:mu,null)");
+                    $stmtInsertAlternative->bindParam(':mu',$rowUnit);
+                    $stmtInsertAlternative->bindParam('ingredient',$_POST['alternative'][$i]);
+                    $stmtInsertAlternative->execute();
+                    $idNewAlternative=$dbh->getInstance()->lastInsertId();
+                    $stmtModifyIngredient=$dbh->getInstance()->prepare("UPDATE `ingredients` SET`IdAlternative`=':idAlt' WHERE `IdIngredient`=:idIng");
+                    $stmtModifyIngredient->bindParam(':idAlt', $idNewAlternative);
+                    $stmtModifyIngredient->bindParam(':idIng', $idNewIngredient);
+                    $stmtModifyIngredient->execute();
+                    $stmtModifyAlternative=$dbh->getInstance()->prepare("UPDATE `ingredients` SET`IdAlternative`=':idAlt' WHERE `IdIngredient`=:idIng");
+                    $stmtModifyAlternative->bindParam(':idAlt', $idNewIngredient);
+                    $stmtModifyAlternative->bindParam(':idIng', $idNewAlternative);
+                    $stmtModifyAlternative->execute();
+                    $stmtInserIngredientRecipe=$dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idrecipe,:idngredient,:quantity)");
+                    $stmtInserIngredientRecipe->bindParam(':idrecipe', $IdNewRecipe);
+                    $stmtInserIngredientRecipe->bindParam(':idngredient', $idNewIngredient);
+                    $stmtInserIngredientRecipe->bindParam(':quantity', $_POST['quantity'][$i]);
+                    $stmtInserIngredientRecipe->execute();
+                    $stmtInserAlternativeRecipe=$dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idrecipe,:idngredient,:quantity)");
+                    $stmtInserAlternativeRecipe->bindParam(':idrecipe', $IdNewRecipe);
+                    $stmtInserAlternativeRecipe->bindParam(':idngredient', $idNewAlternative);
+                    $stmtInserAlternativeRecipe->bindParam(':quantity', $_POST['quantityAlternative'][$i]);
+                    $stmtInserAlternativeRecipe->execute();
                 }
             }
 
