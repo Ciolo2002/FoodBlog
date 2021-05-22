@@ -8,8 +8,8 @@
     </div>
     <?php
     require_once('Header.php');
-    if(isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin'])==true){
-        $_SESSION['modifyByAdmin']=false;
+    if (isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin']) == true) {
+        $_SESSION['modifyByAdmin'] = false;
     }
     if (isset($_SESSION['IdUser'])) { //controllo se l'utente è gia loggato
         echo ' <div class="row d-flex justify-content-center">
@@ -50,9 +50,10 @@
         $stmt5->bindParam(':idRecipe', $_GET['recipe']);
         $stmt5->execute();
     }
-    $stmt4 = $dbh->getInstance()->prepare("SELECT users.IdUser, users.Name, users.Surname, reviews.Stars, reviews.Review, reviews.IdReview from reviews INNER JOIN users on users.IdUser=reviews.IdUser where reviews.IdRecipe=" . $row['IdRecipe']);
+    $stmt4 = $dbh->getInstance()->prepare("SELECT users.IdUser, users.Name, users.Surname, reviews.Stars, reviews.Review, reviews.IdReview from reviews   INNER JOIN users on users.IdUser=reviews.IdUser  where reviews.IdRecipe=:idrecipe");
+    $stmt4->bindParam('idrecipe', $row['IdRecipe']);
     $stmt4->execute();
-    for ($cnt = $stmt4->rowCount(); $cnt > 0; --$cnt) {
+    for ($cnt = 0; $stmt4->rowCount() > $cnt; ++$cnt) {
         $row4 = $stmt4->fetch();
         $name = $row4['Name'];
         $surname = $row4['Surname'];
