@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 22, 2021 alle 16:50
+-- Creato il: Mag 24, 2021 alle 00:25
 -- Versione del server: 10.4.19-MariaDB
 -- Versione PHP: 8.0.6
 
@@ -80,7 +80,8 @@ INSERT INTO `images` (`IdImage`, `Path`) VALUES
 (38, 'Images/No-Churn Bee Pollen Ice Cream.jpg'),
 (39, 'Images/No-Churn Bee Pollen Ice Cream.jpg'),
 (40, 'Images/No-Churn Bee Pollen Ice Cream.jpg'),
-(41, 'Images/No-Churn Bee Pollen Ice Cream.jpg');
+(41, 'Images/No-Churn Bee Pollen Ice Cream.jpg'),
+(42, 'Images/No-Churn Bee Pollen Ice Cream.jpg');
 
 -- --------------------------------------------------------
 
@@ -182,7 +183,8 @@ INSERT INTO `recipes` (`IdRecipe`, `Title`, `Preparation`, `State`) VALUES
 (1, 'BREAD ROLLS ; recipe for 10 rolls', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR  TOTAL | SERVES 4-8 ;\r\n01 Dissolve the yeast and sugar in the water and leave to stand until active and foaming. This should take about 10 minutes. ;\r\n02 Combine the flour and salt in a large bowl and add the yeast mixture and the beaten egg and begin to bring to a dough. Ensure everything is combined and there is no flour left in the bowl. ;\r\n03 Tip out the dough and begin to knead on an unfloured work surface for 10-12 minutes until the dough is smooth and springs back when being gently poked ;\r\n04 Put the dough into a large bowl, cover with cling film and leave to proof until double in size. About 1 – 2 hours depending on the environment. ;\r\n05 Once the dough has been sufficiently proofed knock the air out of it my gently pushing your hand into the centre and divide into 80g pieces. ;\r\n06 Roll the pieces into little balls using the surface tension method and place them on a lined baking tray with enough space to proof once more. Cover with a wet cloth to prevent dehydration. ;\r\n07 Preheat the oven to 180°C or 350f. ;\r\n08 Allow them to double in size once more (about 30 minutes) and carefully brush them half of the melted butter ensuring not to knock out the air. ;\r\n09 Bake them at 180°C for 10-15 minutes or until golden brown. ;\r\n10 Brush them with the remaining butter and allow them cool completely before use.', 1),
 (2, 'FLOUR TORTILLAS ; recipe for 8 tortillas', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the flour, salt, and baking powder in a large bowl. ;\r\n02 Cut the cold butter into small pieces and rub it into the flour mix using your fingertips until you have a fine breadcrumb texture. ;\r\n03 Add the yoghurt and gently kneed until combined. Cover loosely with cling film and rest the dough for 10 minutes. ;\r\n04 Once the dough has rested, roll it into a sausage shape and equally divide the dough into 8 portions, shape them into balls and rest them for a further 10 minutes. ;\r\n05 Using a floured rolling pin, roll each portion out to 10 inches in diameter on a lightly floured work surface. ;\r\n06 Cook one at a time in a large dry non-stick frying pan over a medium to low heat turning over only once during cooking. ;\r\n07 Allow the finished Tortillas to cool completely and soften before use.', 1),
 (3, 'BREAKFAST TOAST ; recipe for 1 loaf', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the sugar yeast and water and leave to stand to until the yeast is foaming. ;\r\n02 Add the flour, salt, and whole milk together and mix it too a loose dough. If the dough is wet, let it stand for 5 minutes, dust with a little flour and start kneading. ;\r\n03 Knead for 10-15 minutes until the dough is smooth and springy. After a couple of minutes kneading you will start to notice a significant difference in the consistency. ;\r\n04 Once sufficiently kneading, place the dough in a large bowl and cover with a damp cloth. Allow the dough to double in size (about 1 hour). ;\r\n05 Lightly oil and flour an appropriately sized loaf tin and preheat your oven to 180°C. ;\r\n06 Once the dough has doubled in size, knock the air out and flatten the dough. Roll the dough over itself to create a sausage shape and place it in the loaf tin. Ensure to push the dough into the corners of the tin. ;\r\n07 Cover it with a damp cloth and allow the dough to double in volume once more; 08. Bake at 180°C for 20-25 minutes or until golden brown. (12-15 minutes for smaller loaves). If you are unsure you can check the core temperature using a probe thermometer. Be sure the breach reaches a minimum of 86°C.', 1),
-(12, 'NO-CHURN BEE POLLEN ICE CREAM;recipe for x  icecream ball', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8; 01 Add all of the ingredients together except the Cream and bring to the boil ;\r\n02 Blend the mixture together in a food processor or with a stick blender ;\r\n03 Pass the mixture through a seize and discard the remnants ;\r\n04 Refrigerate ;\r\n05 Whip the Cream until nearly stiff ;\r\n06 Fold the whipped Cream into the Bee Pollen mixture gently. Be careful not to knock out the air ;\r\n07 Place the Ice Cream in the freezer and stir gently with a spoon 3-4 times over a couple of hours until the Ice Cream is frozen and ready to serve ;', 1);
+(12, 'NO-CHURN BEE POLLEN ICE CREAM;recipe for x  icecream ball', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8; 01 Add all of the ingredients together except the Cream and bring to the boil ;\r\n02 Blend the mixture together in a food processor or with a stick blender ;\r\n03 Pass the mixture through a seize and discard the remnants ;\r\n04 Refrigerate ;\r\n05 Whip the Cream until nearly stiff ;\r\n06 Fold the whipped Cream into the Bee Pollen mixture gently. Be careful not to knock out the air ;\r\n07 Place the Ice Cream in the freezer and stir gently with a spoon 3-4 times over a couple of hours until the Ice Cream is frozen and ready to serve ;', 1),
+(13, 'NO-CHURN BEE POLLEN ICE CREAM;recipe for 4  icecream ball', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8;  01 Add all of the ingredients together except the Cream and bring to the boil ;\r\n02 Blend the mixture together in a food processor or with a stick blender ;\r\n03 Pass the mixture through a seize and discard the remnants ;\r\n04 Refrigerate ;\r\n05 Whip the Cream until nearly stiff ;\r\n06 Fold the whipped Cream into the Bee Pollen mixture gently. Be careful not to knock out the air ;\r\n07 Place the Ice Cream in the freezer and stir gently with a spoon 3-4 times over a couple of hours until the Ice Cream is frozen and ready to serve ;', 0);
 
 -- --------------------------------------------------------
 
@@ -209,7 +211,8 @@ INSERT INTO `recipesimages` (`IdRecipeImage`, `IdRecipe`, `IdImage`) VALUES
 (7, 3, 9),
 (10, 30, 3),
 (17, 11, 40),
-(18, 12, 41);
+(18, 12, 41),
+(19, 13, 42);
 
 -- --------------------------------------------------------
 
@@ -258,7 +261,14 @@ INSERT INTO `recipesingredients` (`IdRecipe`, `IdIngredient`, `Quantity`) VALUES
 (12, 31, 400),
 (12, 32, 400),
 (12, 33, 200),
-(12, 34, 200);
+(12, 34, 200),
+(13, 6, 1),
+(13, 30, 200),
+(13, 9, 125),
+(13, 31, 400),
+(13, 32, 400),
+(13, 33, 200),
+(13, 34, 200);
 
 -- --------------------------------------------------------
 
@@ -431,7 +441,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT per la tabella `images`
 --
 ALTER TABLE `images`
-  MODIFY `IdImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `IdImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT per la tabella `ingredients`
@@ -455,13 +465,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT per la tabella `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `IdRecipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IdRecipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT per la tabella `recipesimages`
 --
 ALTER TABLE `recipesimages`
-  MODIFY `IdRecipeImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `IdRecipeImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT per la tabella `reviews`
