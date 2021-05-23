@@ -56,7 +56,7 @@
                                     <p class="hover-1-description sublogo mb-0" style="font-size: 18px"> 
                                     <div class="float-child">
                                     <form action="modifyRecipe.php" method="POST">
-                                    <input type="hidden" name="IdProductToModify" value="' . $idRecipes[$i] . '">
+                                    <input type="hidden" name="IdRecipeToModify" value="' . $idRecipes[$i] . '">
                                     <button type="submit" class="btn btn-link" name="modifyItem"><i class="fas fa-cog  fa-lg trashBin"></i></button>
                                     </form>
                                     </div>
@@ -81,7 +81,7 @@
                                 <p class="hover-1-description sublogo mb-0" style="font-size: 18px">
                                     <div class="float-child">
                                 <form action="modifyRecipe.php" method="POST">
-                                        <input type="hidden" name="IdProductToModify" value="' . $idRecipes[$i] . '">
+                                        <input type="hidden" name="IdRecipeToModify" value="' . $idRecipes[$i] . '">
                                         <button type="submit" class="btn btn-link" name="modifyItem"><i class="fas fa-cog  fa-lg trashBin"></i></button>
                                         </div>
                                         <div class="float-child">
@@ -99,7 +99,7 @@
             }
         }
         ?>
-        <div class="row  d-flex justify-content-center">
+        <div class="row d-flex justify-content-center">
             <div class="col-lg-6" style="margin-top: 12px !important; margin-bottom: 12px !important">
                 <a href="InsertNewRecipe.php">
                     <div class="hover hover-1 text-white box rounded"><img src="Images/InsertNewRecipe.jpeg" alt="Insert a new product">
