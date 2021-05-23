@@ -12,8 +12,9 @@
             </span>
         </div>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
+    <!-- open navbar button -->
+            <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
@@ -46,10 +47,10 @@
                 ?>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://www.instagram.com/mattgullidge/"><i class="fab fa-instagram fa-lg"></i></a>
+                <a class="nav-link" href="https://www.instagram.com/mattgullidge/" alt="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://www.pinterest.it/mattgullidge/"><i class="fab fa-pinterest-p"></i></a>
+                <a class="nav-link" href="https://www.pinterest.it/mattgullidge/" alt="Pinterest"><i class="fab fa-pinterest-p"></i></a>
             </li>
         </ul>
     </div>
