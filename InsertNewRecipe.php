@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <?php ob_start(); //non so cosa sia ma mi risolve un bug legato a header(refresh:0) 
+    ?>
     <?php
     require_once("header.php");
     if (isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin']) == true) {
@@ -244,6 +246,7 @@
                     }
                 }
             }
+            header("Location: recipe.php?recipe=" .$IdNewRecipe);
         }
         ?>
 

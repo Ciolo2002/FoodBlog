@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <?php ob_start(); //non so cosa sia ma mi risolve un bug legato a header(refresh:0) 
+    ?>
     <?php
     require_once("header.php");
     if (isset($_SESSION['modifyByAdmin']) && isset($_SESSION['modifyByAdmin']) == true) {
@@ -10,9 +12,9 @@
     if (!isset($_SESSION['Category']) || $_SESSION['Category'] != 'Chef') {
         header("Location: index.php");
     }
-    if(isset($_POST['IdRecipeToModify'])){
-        $_SESSION['IdRecipeToModify']=$_POST['IdRecipeToModify'];
-     }
+    if (isset($_POST['IdRecipeToModify'])) {
+        $_SESSION['IdRecipeToModify'] = $_POST['IdRecipeToModify'];
+    }
     if (!isset($_SESSION['IdRecipeToModify'])) { //PROBELMI QUI E NELLA MODIFICA DEGLI INGREDIENTI
         header("Location: index.php");
     } else {
@@ -134,7 +136,7 @@
             $stmtTitle = $dbh->getInstance()->prepare("UPDATE `recipes` SET `Title`=:title,`Preparation`=:preparation WHERE `IdRecipe`=:idrecipe");
 
             $stmtTitle->bindParam(':title', htmlspecialchars($title));
-            $stmtTitle->bindParam(':idrecipe', htmlspecialchars( $_SESSION['IdRecipeToModify']));
+            $stmtTitle->bindParam(':idrecipe', htmlspecialchars($_SESSION['IdRecipeToModify']));
             $stmtTitle->bindParam(':preparation', htmlspecialchars($preparation));
             $stmtTitle->execute();
 
@@ -145,13 +147,13 @@
 
 
             $stmtImageRecipe = $dbh->getInstance()->prepare("UPDATE `recipesimages` SET `IdImage`=:idImage WHERE `IdRecipe`=:idRecipe");
-            $stmtImageRecipe->bindParam(':idRecipe',htmlspecialchars( $_SESSION['IdRecipeToModify'])); //////////////////////////
+            $stmtImageRecipe->bindParam(':idRecipe', htmlspecialchars($_SESSION['IdRecipeToModify'])); //////////////////////////
             $stmtImageRecipe->bindParam(':idImage',  htmlspecialchars($IdNewImage));
             $stmtImageRecipe->execute();
-            
+
             $stmtDelitreRecipesIngredients = $dbh->getInstance()->prepare("DELETE FROM `recipesingredients` WHERE `IdRecipe`=:idRecipe");
-            $stmtDelitreRecipesIngredients->bindParam(':idRecipe',htmlspecialchars( $_SESSION['IdRecipeToModify'])); //////////////////////////
-         
+            $stmtDelitreRecipesIngredients->bindParam(':idRecipe', htmlspecialchars($_SESSION['IdRecipeToModify'])); //////////////////////////
+
             $stmtDelitreRecipesIngredients->execute();
 
 
@@ -170,12 +172,12 @@
                     }
                     if (isset($rowIngredients['aId']) && $rowIngredients['aId'] != null &&  isset($rowIngredients['aMu']) && $rowIngredients['aMu'] != null && isset($rowIngredients['bId']) && $rowIngredients['bId'] != null &&  isset($rowIngredients['bMu']) && $rowIngredients['bMu'] != null) {
                         $stmtInsertRecipeIngrediet = $dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idRecipe,:idIngredient,:quantity)");
-                        $stmtInsertRecipeIngrediet->bindParam(':idRecipe', htmlspecialchars( $_SESSION['IdRecipeToModify']));
+                        $stmtInsertRecipeIngrediet->bindParam(':idRecipe', htmlspecialchars($_SESSION['IdRecipeToModify']));
                         $stmtInsertRecipeIngrediet->bindParam(':idIngredient', htmlspecialchars($rowIngredients['aId']));
                         $stmtInsertRecipeIngrediet->bindParam(':quantity', htmlspecialchars($_POST['quantity'][$i]));
                         $stmtInsertRecipeIngrediet->execute();
                         $stmtInsertRecipeIngrediet2 = $dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idRecipe,:idIngredient,:quantity)");
-                        $stmtInsertRecipeIngrediet2->bindParam(':idRecipe', htmlspecialchars( $_SESSION['IdRecipeToModify']));
+                        $stmtInsertRecipeIngrediet2->bindParam(':idRecipe', htmlspecialchars($_SESSION['IdRecipeToModify']));
                         $stmtInsertRecipeIngrediet2->bindParam(':idIngredient', htmlspecialchars($rowIngredients['bId']));
                         $stmtInsertRecipeIngrediet2->bindParam(':quantity', htmlspecialchars($_POST['quantityAlternative'][$i]));
                         $stmtInsertRecipeIngrediet2->execute();
@@ -219,12 +221,12 @@
                         $stmtModifyAlternative->bindParam(':idIng', htmlspecialchars($idNewAlternative));
                         $stmtModifyAlternative->execute();
                         $stmtInserIngredientRecipe = $dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idrecipe,:idngredient,:quantity)");
-                        $stmtInserIngredientRecipe->bindParam(':idrecipe', htmlspecialchars( $_SESSION['IdRecipeToModify']));
+                        $stmtInserIngredientRecipe->bindParam(':idrecipe', htmlspecialchars($_SESSION['IdRecipeToModify']));
                         $stmtInserIngredientRecipe->bindParam(':idngredient', htmlspecialchars($idNewIngredient));
                         $stmtInserIngredientRecipe->bindParam(':quantity',  htmlspecialchars($_POST['quantity'][$i]));
                         $stmtInserIngredientRecipe->execute();
                         $stmtInserAlternativeRecipe = $dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idrecipe,:idngredient,:quantity)");
-                        $stmtInserAlternativeRecipe->bindParam(':idrecipe',  htmlspecialchars( $_SESSION['IdRecipeToModify']));
+                        $stmtInserAlternativeRecipe->bindParam(':idrecipe',  htmlspecialchars($_SESSION['IdRecipeToModify']));
                         $stmtInserAlternativeRecipe->bindParam(':idngredient', htmlspecialchars($idNewAlternative));
                         $stmtInserAlternativeRecipe->bindParam(':quantity', htmlspecialchars($_POST['quantityAlternative'][$i]));
                         $stmtInserAlternativeRecipe->execute();
@@ -236,7 +238,7 @@
                     $row = $stmtSearchIngredient->fetch();
                     if (isset($row['IdIngredient']) && $row['IdIngredient'] != null) {
                         $stmtInsertRecipeIngrediet = $dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idRecipe,:idIngredient,:quantity)");
-                        $stmtInsertRecipeIngrediet->bindParam(':idRecipe', htmlspecialchars( $_SESSION['IdRecipeToModify']));
+                        $stmtInsertRecipeIngrediet->bindParam(':idRecipe', htmlspecialchars($_SESSION['IdRecipeToModify']));
                         $stmtInsertRecipeIngrediet->bindParam(':idIngredient', htmlspecialchars($row['IdIngredient']));
                         $stmtInsertRecipeIngrediet->bindParam(':quantity', htmlspecialchars($_POST['quantity'][$i]));
                         $stmtInsertRecipeIngrediet->execute();
@@ -257,14 +259,14 @@
                         $stmtInsertIngrediet->execute();
                         $idNewIngredient = $dbh->getInstance()->lastInsertId();
                         $stmtInserIngredientRecipe = $dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idrecipe,:idngredient,:quantity)");
-                        $stmtInserIngredientRecipe->bindParam(':idrecipe', htmlspecialchars( $_SESSION['IdRecipeToModify']));
+                        $stmtInserIngredientRecipe->bindParam(':idrecipe', htmlspecialchars($_SESSION['IdRecipeToModify']));
                         $stmtInserIngredientRecipe->bindParam(':idngredient', htmlspecialchars($idNewIngredient));
                         $stmtInserIngredientRecipe->bindParam(':quantity',  htmlspecialchars($_POST['quantity'][$i]));
                         $stmtInserIngredientRecipe->execute();
                     }
                 }
             }
-            header("Location:recipe.php?recipe=" . $_SESSION['IdRecipeToModify']);
+            header("Location: recipe.php?recipe=" . $_SESSION['IdRecipeToModify']);
         }
         ?>
 
@@ -396,7 +398,7 @@
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Add an ingredient: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <button type="button" id="addIngredient" style="height: 100%; width:100%; border:none;" >NEW INGREDIENT</button>
+                            <button type="button" id="addIngredient" style="height: 100%; width:100%; border:none;">NEW INGREDIENT</button>
                         </div>
                     </div>
                 </div>
@@ -409,7 +411,7 @@
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Image: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="file" name="fileToUpload" id="fileToUpload" class="hidden nav-font" >
+                            <input type="file" name="fileToUpload" id="fileToUpload" class="hidden nav-font">
                         </div>
                     </div>
                 </div>
@@ -483,7 +485,8 @@
                                 </div>
                             </div>
                         </div>
-                       <!-- <input type="hidden" name="IdRecipeToModify" value="<?php //echo $_POST['IdRecipeToModify']?>"> -->
+                        <!-- <input type="hidden" name="IdRecipeToModify" value="<?php //echo $_POST['IdRecipeToModify']
+                                                                                    ?>"> -->
                     </form>
 
 
