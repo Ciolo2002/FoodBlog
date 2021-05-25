@@ -137,11 +137,17 @@
 
             for ($i = 0; $i < count($_POST['ingredient']); $i++) {
                 if ($_POST['alternative'][$i] != null) {
-                    $stmtIngredients = $dbh->getInstance()->prepare("SELECT a.IdIngredient as aId,  a.IdMeasureUnit as aMu, b.IdIngredient as bId, b.IdMeasureUnit as bMu FROM ingredients a , ingredients b  WHERE a.Ingredient= :ingredient AND b.Ingredient=:alternative");
-                    $stmtIngredients->bindParam(':ingredient', htmlspecialchars($_POST['ingredient'][$i]));
-                    $stmtIngredients->bindParam(':alternative', htmlspecialchars($_POST['alternative'][$i]));
-                    $stmtIngredients->execute();
-                    $rowIngredients = $stmtIngredients->fetch();
+                    $stmtAlternativeId = $dbh->getInstance()->prepare("SELECT `IdIngredient` FROM `ingredients` WHERE `Ingredient`=:alternative");
+                    $stmtAlternativeId->bindParam(':alternative', htmlspecialchars($_POST['alternative'][$i]));
+                    $stmtAlternativeId->execute();
+                    $rowAlternativeId = $stmtAlternativeId->fetch();
+                    if (isset($rowAlternativeId['IdIngredient'])) {
+                        $stmtIngredients = $dbh->getInstance()->prepare("SELECT a.IdIngredient as aId,  a.IdMeasureUnit as aMu, b.IdIngredient as bId, b.IdMeasureUnit as bMu FROM ingredients a , ingredients b  WHERE a.Ingredient= :ingredient AND a.IdAlternative=:alternative");
+                        $stmtIngredients->bindParam(':ingredient', htmlspecialchars($_POST['ingredient'][$i]));
+                        $stmtIngredients->bindParam(':alternative', htmlspecialchars($rowAlternativeId['IdIngredient']));
+                        $stmtIngredients->execute();
+                        $rowIngredients = $stmtIngredients->fetch();
+                    }
                     if (isset($rowIngredients['aId']) && $rowIngredients['aId'] != null &&  isset($rowIngredients['aMu']) && $rowIngredients['aMu'] != null && isset($rowIngredients['bId']) && $rowIngredients['bId'] != null &&  isset($rowIngredients['bMu']) && $rowIngredients['bMu'] != null) {
                         $stmtInsertRecipeIngrediet = $dbh->getInstance()->prepare("INSERT INTO `recipesingredients`(`IdRecipe`, `IdIngredient`, `Quantity`) VALUES (:idRecipe,:idIngredient,:quantity)");
                         $stmtInsertRecipeIngrediet->bindParam(':idRecipe', htmlspecialchars($IdNewRecipe));
