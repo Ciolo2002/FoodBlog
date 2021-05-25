@@ -213,6 +213,7 @@
                             case "Administrator":
                                 $url = 'adminPage.php';
                                 $action = "MANAGE USERS";
+                                echo  '<a href="sendEmail.php" class="button btn btn-block mybtn btn-secondary logo">SEND NEWSLETTER</a>';
                                 break;
                         }
                         echo  '<a href="' . $url . '" class="button btn btn-block mybtn btn-secondary logo">' . $action . '</a>';

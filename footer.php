@@ -19,7 +19,7 @@
     
     
     <div class="text-center p-3 sublogo" style="background-color: rgba(0, 0, 0, 0.1);">
-    &copy; <?php echo date("Y"); ?> by Burnt Leeks & Raw Beets. All Rights Reserved. <b>|</b> Designed by Michael Sarto
+    &copy; <?php echo date("Y"); ?> by Burnt Leeks & Raw Beets. All Rights Reserved. <b>|</b> <a href="https://www.instagram.com/michael_ciola/" style="text-decoration:none; color: inherit;"> Designed by  Michael Sarto</a>
     </div>
     
 </footer>
