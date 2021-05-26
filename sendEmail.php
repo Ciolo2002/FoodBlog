@@ -23,16 +23,20 @@
         <?php
         require_once("callingLogin.php");
         require_once("navbar.php");
+
+        // ini_set("SMTP", "tls://smtp.gmail.com");
+        //ini_set("smtp_port", "587");
+       
         if (isset($_POST['submit'])) {
             $stmt = $dbh->getInstance()->prepare("SELECT  `Name`, `Surname`, `Email` FROM `users` WHERE `Newsletter`=true");
             $stmt->execute();
             $message = $_POST['message'];
             $headers[] = 'MIME-Version: 1.0';
             $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-            $headers[] = 'From: Burnt Leeks & Raw Beets <burntleeksandrawbeets@gmail.com>';
-            while($row=$stmt->fetch()){
+            $headers[] = 'From: Burnt Leeks & Raw Beets <michael.sarto@ptpvenezia.edu.it>';
+            while ($row = $stmt->fetch()) {
                 $to = $row['Email'];
-                $subject = 'Hi '.$row['Name'].' '.$row['Surname'].', '.$_POST['subject'];
+                $subject = 'Hi ' . $row['Name'] . ' ' . $row['Surname'] . ', ' . $_POST['subject'];
                 mail($to, $subject, $message, implode("\r\n", $headers));
             }
         }

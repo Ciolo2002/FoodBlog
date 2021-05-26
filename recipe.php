@@ -86,7 +86,7 @@
                         }
                         for ($cnt = 0; $cnt < sizeof($listToPrint); ++$cnt) {
                             echo ' <input id="' . $cnt . '" type="checkbox"  name="' . $cnt . '">';
-                            echo '<label for="' . $cnt . '" class="text-justify navbar-font" style="font-size: 22px">' . $listToPrint[$cnt] . '</label>';
+                            echo '<label for="' . $cnt . '" class="text-justify navbar-font" style="font-size: 21px">' . $listToPrint[$cnt] . '</label>';
                         }
                         ?>
 
