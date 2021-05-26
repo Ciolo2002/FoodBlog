@@ -150,6 +150,11 @@
             $stmtImageRecipe->bindParam(':idRecipe', htmlspecialchars($_SESSION['IdRecipeToModify'])); //////////////////////////
             $stmtImageRecipe->bindParam(':idImage',  htmlspecialchars($IdNewImage));
             $stmtImageRecipe->execute();
+            
+            $stmtDelitreRecipesIngredients = $dbh->getInstance()->prepare("DELETE FROM `recipesingredients` WHERE `IdRecipe`=:idRecipe");
+            $stmtDelitreRecipesIngredients->bindParam(':idRecipe',htmlspecialchars($_SESSION['IdRecipeToModify'])); //////////////////////////
+         
+            $stmtDelitreRecipesIngredients->execute();
 
             $stmtDelitreRecipesIngredients = $dbh->getInstance()->prepare("DELETE FROM `recipesingredients` WHERE `IdRecipe`=:idRecipe");
             $stmtDelitreRecipesIngredients->bindParam(':idRecipe', htmlspecialchars($_SESSION['IdRecipeToModify'])); //////////////////////////
