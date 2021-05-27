@@ -47,7 +47,7 @@
                 ?>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://www.instagram.com/mattgullidge/" alt="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                <a class="nav-link" href="https://www.instagram.com/mattgullidge/" alt="Instagram"><i class="fab fa-instagram fa-lg" alt="Instagram"></i> <span style="display: none;" aria-hidden="true">Instagram</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="https://www.pinterest.it/mattgullidge/" alt="Pinterest"><i class="fab fa-pinterest-p"></i></a>
