@@ -57,12 +57,12 @@
                                     <div class="float-child">
                                     <form action="modifyRecipe.php" method="POST">
                                     <input type="hidden" name="IdRecipeToModify" value="' . $idRecipes[$i] . '">
-                                    <button type="submit" class="btn btn-link" name="modifyItem"><i class="fas fa-cog  fa-lg trashBin"></i></button>
+                                    <button type="submit" class="btn btn-link" name="modifyItem"><i class="fas fa-cog  fa-lg trashBin"title="Modify"></i></button>
                                     </form>
                                     </div>
                                     <div class="float-child"><form action="deliteRecipe.php" method="POST">
                                     <input type="hidden" name="idToDelite" value="' . $idRecipes[$i], '">
-                                    <button type="submit" name="deliteRecipe"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin"></i></button> </div>
+                                    <button type="submit" name="deliteRecipe"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin" title="Trash bin"></i></button> </div>
                                     </form>
                                  </p>
                            
@@ -82,12 +82,12 @@
                                     <div class="float-child">
                                 <form action="modifyRecipe.php" method="POST">
                                         <input type="hidden" name="IdRecipeToModify" value="' . $idRecipes[$i] . '">
-                                        <button type="submit" class="btn btn-link" name="modifyItem"><i class="fas fa-cog  fa-lg trashBin"></i></button>
+                                        <button type="submit" class="btn btn-link" name="modifyItem"><i class="fas fa-cog  fa-lg trashBin" title="Modify"></i></button>
                                         </div>
                                         <div class="float-child">
                                         </form>
                                         <form action="deliteRecipe.php" method="POST"><input type="hidden" name="idToDelite" value="' . $idRecipes[$i], '">
-                                        <button type="submit" name="deliteRecipe"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin"></i></button>
+                                        <button type="submit" name="deliteRecipe"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin" title="Trash bin"></i></button>
                                     </form>
                                     </div>
                                 </p>

@@ -70,7 +70,7 @@
             echo '<form id"myform" class="d-flex flex-row-reverse" action="deliteReview.php" method="POST">
                             <input type="hidden" name="IdReview" value="' . $row4['IdReview'] . '">
                             <input type="hidden" name="IdRecipe" value="' . $_GET['recipe'] . '">
-                            <button type="submit" name="submit" class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin"></i></button>
+                            <button type="submit" name="submit" class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin" title="Trash bin"></i></button>
                             </form>';
         }
         echo ' </div>

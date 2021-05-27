@@ -114,7 +114,7 @@
             <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45 d-flex justify-content-center">
                 <div class="product-wrapper box rounded text-center rss opacity ">
                     <div class="product-img rounded">
-                        <a href="insertProduct.php" data-abc="true">
+                        <a href="insertProduct.php" data-abc="true" title="Insert a new product">
                         <img src="Images/InsertNewProduct.jpg" class="img-fluid rounded" alt="Insert a new product">
                            </div>
                         </a>

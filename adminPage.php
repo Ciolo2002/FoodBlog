@@ -71,9 +71,9 @@
                                     <td class="navbar-font">
                                     <form action="userPage.php" method="POST">
                                     <input type="hidden" name="IdUserToModify" value="'.$id.'">
-                                    <button type="submit" class="btn btn-link" name="modifyByAdmin"><i class="fas fa-cog  fa-lg trashBin"></i></button>
+                                    <button type="submit" class="btn btn-link" name="modifyByAdmin"><i class="fas fa-cog  fa-lg trashBin" title="Modify"></i></button>
                                     </form>
-                                    <form action="deliteAccount.php" method="POST"><input type="hidden" name="idToDelite" value="'.$id.'"><button type="submit" name="adminSubmit"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin"></i></button></form>
+                                    <form action="deliteAccount.php" method="POST"><input type="hidden" name="idToDelite" value="'.$id.'"><button type="submit" name="adminSubmit"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin" title="Trash bin"></i></button></form>
                                     </td>
                                       
                                </tr>  

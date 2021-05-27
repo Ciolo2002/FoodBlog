@@ -12,7 +12,7 @@
             </span>
         </div>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" title="Open and close navigation bar" data-target="#collapsibleNavbar" >
     <!-- open navbar button -->
             <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,10 +47,10 @@
                 ?>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://www.instagram.com/mattgullidge/" alt="Instagram"><i class="fab fa-instagram fa-lg" alt="Instagram"></i> <span style="display: none;" aria-hidden="true">Instagram</span></a>
+                <a class="nav-link" href="https://www.instagram.com/mattgullidge/" alt="Instagram"><i class="fab fa-instagram fa-lg" alt="Instagram" title="Instagram link"></i></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://www.pinterest.it/mattgullidge/" alt="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a class="nav-link" href="https://www.pinterest.it/mattgullidge/" alt="Pinterest"><i class="fab fa-pinterest-p" title="Pinterest link"></i></a>
             </li>
         </ul>
     </div>

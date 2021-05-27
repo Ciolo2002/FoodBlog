@@ -48,9 +48,9 @@
                                      <div class="product-action-style">
                                           <div class="float-child"><form action="modifyItem.php" method="POST">
                                          <input type="hidden" name="IdProductToModify" value="' . $row['IdProduct'] . '">
-                                         <button type="submit" class="btn btn-link" name="modifyItem"><i class="fas fa-cog  fa-lg trashBin"></i></button>
+                                         <button type="submit" class="btn btn-link" name="modifyItem"><i class="fas fa-cog  fa-lg trashBin"title="Modify"></i></button>
                                          </form></div>
-                                         <div class="float-child"><form action="deliteItem.php" method="POST"><input type="hidden" name="idToDelite" value="' . $row['IdProduct'], '"><button type="submit" name="adminSubmit"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin"></i></button></form></div>
+                                         <div class="float-child"><form action="deliteItem.php" method="POST"><input type="hidden" name="idToDelite" value="' . $row['IdProduct'], '"><button type="submit" name="adminSubmit"  class="btn btn-link"><i class="fas fa-trash-alt fa-lg trashBin" title="Trash bin"></i></button></form></div>
                                      </div>
                                  </div>
                              </div>
@@ -68,7 +68,7 @@
             <div class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-45 d-flex justify-content-center">
                 <div class="product-wrapper box rounded text-center rss opacity ">
                     <div class="product-img rounded">
-                        <a href="insertProduct.php" data-abc="true">
+                        <a href="insertProduct.php" data-abc="true" title="Insert a new product">
                         <img src="Images/InsertNewProduct.jpg" class="img-fluid rounded" alt="Insert a new product">
                            </div>
                         </a>

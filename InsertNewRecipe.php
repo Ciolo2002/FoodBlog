@@ -365,7 +365,7 @@
                 <div class="col-10  d-flex justify-content-center ">
 
                     <div class="myform form" style="border: none;">
-                        <span class="navbar-font" style="font-size: 30px;"> Image: </span>
+                        <span class="navbar-font" style="font-size: 30px;"><label for="fileToUpload">Image: </label> </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
                             <input type="file" name="fileToUpload" id="fileToUpload" class="hidden nav-font" required>
                         </div>

@@ -414,7 +414,7 @@
                 <div class="col-10  d-flex justify-content-center ">
 
                     <div class="myform form" style="border: none;">
-                        <span class="navbar-font" style="font-size: 30px;"> Image: </span>
+                        <span class="navbar-font" style="font-size: 30px;"><label for="fileToUpload"> Image: </label></span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
                             <input type="file" name="fileToUpload" id="fileToUpload" class="hidden nav-font">
                         </div>
@@ -464,7 +464,7 @@
 
                     ?>
                     <form action="deliteRecipe.php" method="post">
-                        <input type="hidden" name="idToDelite" value="<?php echo $_POST['IdRecipeToModify']; ?>" />
+                        <input type="hidden" name="idToDelite" value="<?php echo $_SESSION['IdRecipeToModify']; ?>" />
                         <div class="row d-flex ">
                             <div class="col-12  d-flex justify-content-center ">
                                 <div class="myform form" style="border: none;">
