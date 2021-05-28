@@ -1,5 +1,0 @@
-
-AuthType Basic
-AuthName "Restricted Area"
-AuthUserFile "C:\xampp\htdocs\FoodBlog2\Images\.htpasswd"
-Require valid-user
