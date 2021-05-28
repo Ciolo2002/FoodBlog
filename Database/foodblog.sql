@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 25, 2021 alle 13:26
+-- Creato il: Mag 29, 2021 alle 00:02
 -- Versione del server: 10.4.19-MariaDB
 -- Versione PHP: 8.0.6
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `foodblog`
 --
+CREATE DATABASE IF NOT EXISTS `foodblog` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `foodblog`;
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,6 @@ INSERT INTO `ingredients` (`IdIngredient`, `Ingredient`, `IdMeasureUnit`, `IdAlt
 (1, '00 Flour', 1, 2),
 (2, 'Bread Flour', 1, 1),
 (3, 'Water 95°', 1, NULL),
-(4, 'Water', 1, NULL),
 (5, ' Egg Beaten', 1, NULL),
 (6, 'Table Salt', 1, NULL),
 (7, 'Fresh Yeast', 1, 8),
@@ -152,73 +153,7 @@ INSERT INTO `ingredients` (`IdIngredient`, `Ingredient`, `IdMeasureUnit`, `IdAlt
 (31, 'UHT Cream', 1, 32),
 (32, 'Double Cream', 1, 31),
 (33, 'UHT Semi-Skimmed Milk', 1, 34),
-(34, 'regular Semi-Skimmed Milk', 1, 33),
-(35, 'Milk', 1, 36),
-(36, 'Soia Milk', 1, 35),
-(37, 'Egg', 1, NULL),
-(38, 'Baking Powder', 1, 39),
-(40, '00 Flour', 1, NULL),
-(41, 'UHT Cream', 1, 42),
-(42, 'Soia Milk', 1, 41),
-(43, 'Melted Butter', 1, 44),
-(44, 'Granulated Sugar', 1, 43),
-(45, 'Liquid Glucose', 1, 46),
-(46, 'Bee Pollen', 1, 45),
-(47, 'Dry Yeast', 1, 48),
-(48, 'Baking Powder', 1, 47),
-(49, 'Melted Butter', 1, 50),
-(50, 'Granulated Sugar', 1, 49),
-(51, 'Dry Yeast', 1, 52),
-(52, 'Unsalted Butter Cold', 1, 51),
-(53, 'Melted Butter', 1, 54),
-(54, 'Granulated Sugar', 1, 53),
-(55, 'Whole Milk Cold', 1, 56),
-(56, 'Granulated Sugar', 1, 55),
-(57, 'Melted Butter', 1, 58),
-(58, 'Granulated Sugar', 1, 57),
-(59, ' Egg Beaten', 1, 60),
-(60, 'Soia Milk', 1, 59),
-(61, 'Melted Butter', 1, 62),
-(62, 'Granulated Sugar', 1, 61),
-(63, 'UHT Cream', 1, NULL),
-(64, 'Unsalted Butter Cold', 1, 65),
-(65, 'Bee Pollen', 1, 64),
-(66, 'Water 95°', 1, 67),
-(67, 'Water', 1, 66),
-(68, ' Egg Beaten', 1, 69),
-(69, 'Soia Milk', 1, 68),
-(70, 'Melted Butter', 1, 71),
-(71, 'Granulated Sugar', 1, 70),
-(72, 'Water 95°', 1, 73),
-(73, 'Water', 1, 72),
-(74, ' Egg Beaten', 1, 75),
-(75, 'Soia Milk', 1, 74),
-(76, 'Melted Butter', 1, 77),
-(77, 'Granulated Sugar', 1, 76),
-(78, 'Greek Yoghurt', 1, 79),
-(79, 'Granulated Sugar', 1, 78),
-(80, 'Water 95°', 1, 81),
-(81, 'Water', 1, 80),
-(82, ' Egg Beaten', 1, 83),
-(83, 'Soia Milk', 1, 82),
-(84, 'Melted Butter', 1, 85),
-(85, 'Granulated Sugar', 1, 84),
-(86, 'Greek Yoghurt', 1, 87),
-(87, 'Granulated Sugar', 1, 86),
-(88, 'Water 95°', 1, 89),
-(89, 'Water', 1, 88),
-(90, ' Egg Beaten', 1, 91),
-(91, 'Soia Milk', 1, 90),
-(92, 'Melted Butter', 1, 93),
-(93, 'Granulated Sugar', 1, 92),
-(94, 'Soia Milk', 1, 95),
-(95, 'Granulated Sugar', 1, 94),
-(96, 'Water 95°', 1, 97),
-(97, 'Water', 1, 96),
-(98, ' Egg Beaten', 1, 99),
-(99, 'Soia Milk', 1, 98),
-(100, 'Melted Butter', 1, 101),
-(101, 'Granulated Sugar', 1, 100);
+(34, 'regular Semi-Skimmed Milk', 1, 33);
 
 -- --------------------------------------------------------
 
@@ -278,6 +213,7 @@ CREATE TABLE `recipes` (
 --
 
 INSERT INTO `recipes` (`IdRecipe`, `Title`, `Preparation`, `State`) VALUES
+(0, 'TEST;test', 'TEST; test', 1),
 (1, 'BREAD ROLLS ; recipe for 10 rolls', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR  TOTAL | SERVES 4-8 ;\r\n01 Dissolve the yeast and sugar in the water and leave to stand until active and foaming. This should take about 10 minutes. ;\r\n02 Combine the flour and salt in a large bowl and add the yeast mixture and the beaten egg and begin to bring to a dough. Ensure everything is combined and there is no flour left in the bowl. ;\r\n03 Tip out the dough and begin to knead on an unfloured work surface for 10-12 minutes until the dough is smooth and springs back when being gently poked ;\r\n04 Put the dough into a large bowl, cover with cling film and leave to proof until double in size. About 1 – 2 hours depending on the environment. ;\r\n05 Once the dough has been sufficiently proofed knock the air out of it my gently pushing your hand into the centre and divide into 80g pieces. ;\r\n06 Roll the pieces into little balls using the surface tension method and place them on a lined baking tray with enough space to proof once more. Cover with a wet cloth to prevent dehydration. ;\r\n07 Preheat the oven to 180°C or 350f. ;\r\n08 Allow them to double in size once more (about 30 minutes) and carefully brush them half of the melted butter ensuring not to knock out the air. ;\r\n09 Bake them at 180°C for 10-15 minutes or until golden brown. ;\r\n10 Brush them with the remaining butter and allow them cool completely before use.', 1),
 (2, 'FLOUR TORTILLAS ; recipe for 8 tortillas', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the flour, salt, and baking powder in a large bowl. ;\r\n02 Cut the cold butter into small pieces and rub it into the flour mix using your fingertips until you have a fine breadcrumb texture. ;\r\n03 Add the yoghurt and gently kneed until combined. Cover loosely with cling film and rest the dough for 10 minutes. ;\r\n04 Once the dough has rested, roll it into a sausage shape and equally divide the dough into 8 portions, shape them into balls and rest them for a further 10 minutes. ;\r\n05 Using a floured rolling pin, roll each portion out to 10 inches in diameter on a lightly floured work surface. ;\r\n06 Cook one at a time in a large dry non-stick frying pan over a medium to low heat turning over only once during cooking. ;\r\n07 Allow the finished Tortillas to cool completely and soften before use.', 1),
 (3, 'BREAKFAST TOAST ; recipe for 1 loaf', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the sugar yeast and water and leave to stand to until the yeast is foaming. ;\r\n02 Add the flour, salt, and whole milk together and mix it too a loose dough. If the dough is wet, let it stand for 5 minutes, dust with a little flour and start kneading. ;\r\n03 Knead for 10-15 minutes until the dough is smooth and springy. After a couple of minutes kneading you will start to notice a significant difference in the consistency. ;\r\n04 Once sufficiently kneading, place the dough in a large bowl and cover with a damp cloth. Allow the dough to double in size (about 1 hour). ;\r\n05 Lightly oil and flour an appropriately sized loaf tin and preheat your oven to 180°C. ;\r\n06 Once the dough has doubled in size, knock the air out and flatten the dough. Roll the dough over itself to create a sausage shape and place it in the loaf tin. Ensure to push the dough into the corners of the tin. ;\r\n07 Cover it with a damp cloth and allow the dough to double in volume once more; 08. Bake at 180°C for 20-25 minutes or until golden brown. (12-15 minutes for smaller loaves). If you are unsure you can check the core temperature using a probe thermometer. Be sure the breach reaches a minimum of 86°C.', 1),
@@ -300,25 +236,10 @@ CREATE TABLE `recipesimages` (
 --
 
 INSERT INTO `recipesimages` (`IdRecipeImage`, `IdRecipe`, `IdImage`) VALUES
-(1, 1, 3),
 (2, 1, 4),
-(4, 2, 6),
 (5, 2, 7),
-(6, 3, 8),
 (7, 3, 9),
-(10, 30, 3),
-(17, 11, 40),
-(18, 4, 41),
-(19, 13, 42),
-(20, 14, 56),
-(21, 15, 57),
-(22, 16, 58),
-(23, 17, 59),
-(24, 18, 60),
-(25, 19, 61),
-(26, 20, 62),
-(27, 21, 73),
-(28, 22, 74);
+(18, 4, 41);
 
 -- --------------------------------------------------------
 
@@ -346,46 +267,28 @@ INSERT INTO `recipesingredients` (`IdRecipe`, `IdIngredient`, `Quantity`) VALUES
 (1, 8, 7),
 (1, 9, 20),
 (1, 10, 50),
-(2, 2, 220),
 (2, 1, 220),
-(2, 11, 150),
+(2, 2, 220),
 (2, 6, 5),
-(2, 13, 5),
+(2, 11, 150),
 (2, 12, 65),
+(2, 13, 5),
 (3, 1, 500),
 (3, 2, 500),
 (3, 3, 150),
-(3, 14, 150),
+(3, 6, 10),
 (3, 7, 21),
 (3, 8, 7),
 (3, 9, 40),
-(3, 6, 10),
-(4, 29, 100),
+(3, 14, 150),
 (4, 6, 1),
-(4, 30, 200),
 (4, 9, 125),
+(4, 29, 100),
+(4, 30, 200),
 (4, 31, 400),
 (4, 32, 400),
 (4, 33, 200),
-(4, 34, 200),
-(0, 51, 33),
-(0, 52, 334),
-(0, 29, 33),
-(0, 53, 122),
-(0, 54, 323),
-(21, 94, 33),
-(21, 95, 97),
-(21, 29, 22),
-(21, 96, 33),
-(21, 97, 334),
-(21, 98, 33),
-(21, 99, 334),
-(21, 14, 33),
-(21, 100, 122),
-(21, 101, 323),
-(22, 1, 40),
-(22, 1, 88),
-(22, 12, 89);
+(4, 34, 200);
 
 -- --------------------------------------------------------
 
@@ -421,7 +324,7 @@ INSERT INTO `reviews` (`IdReview`, `Stars`, `Review`, `IdUser`, `IdRecipe`) VALU
 (95, 3, ' I tried making these toasts yesterday but my skills are not that developed, I\'ll try again next week', 20, 3),
 (107, 5, 'Ice ice. Deam Sosa this gelato is so good. ', 41, 4),
 (108, 3, 'Without churn this recipe is very easy to prepare but the taste is not the same :/', 16, 4),
-(112, 4, 'Sweeeet (❁´◡`❁)', 21, 4);
+(115, 4, 'Sweeeet (❁´◡`❁)', 21, 4);
 
 -- --------------------------------------------------------
 
@@ -526,8 +429,9 @@ ALTER TABLE `recipesimages`
 -- Indici per le tabelle `recipesingredients`
 --
 ALTER TABLE `recipesingredients`
-  ADD KEY `IdRecipe` (`IdRecipe`),
-  ADD KEY `IdIngredient` (`IdIngredient`);
+  ADD PRIMARY KEY (`IdRecipe`,`IdIngredient`),
+  ADD KEY `ingredient_fk_1` (`IdIngredient`),
+  ADD KEY `IdRecipe` (`IdRecipe`);
 
 --
 -- Indici per le tabelle `reviews`
@@ -552,7 +456,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT per la tabella `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `IdCategory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IdCategory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `images`
@@ -564,13 +468,13 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT per la tabella `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `IdIngredient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `IdIngredient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT per la tabella `measureunits`
 --
 ALTER TABLE `measureunits`
-  MODIFY `IdMeasureUnit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IdMeasureUnit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `products`
@@ -582,19 +486,25 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT per la tabella `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `IdRecipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `IdRecipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `recipesimages`
 --
 ALTER TABLE `recipesimages`
-  MODIFY `IdRecipeImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `IdRecipeImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT per la tabella `recipesingredients`
+--
+ALTER TABLE `recipesingredients`
+  MODIFY `IdRecipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT per la tabella `users`
@@ -607,23 +517,44 @@ ALTER TABLE `users`
 --
 
 --
+-- Limiti per la tabella `ingredients`
+--
+ALTER TABLE `ingredients`
+  ADD CONSTRAINT `ingredients_ibfk_1` FOREIGN KEY (`IdMeasureUnit`) REFERENCES `measureunits` (`IdMeasureUnit`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ingredients_ibfk_2` FOREIGN KEY (`IdAlternative`) REFERENCES `ingredients` (`IdIngredient`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`IdImage`) REFERENCES `images` (`IdImage`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `recipesimages`
+--
+ALTER TABLE `recipesimages`
+  ADD CONSTRAINT `recipesimages_ibfk_1` FOREIGN KEY (`IdRecipe`) REFERENCES `recipes` (`IdRecipe`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `recipesimages_ibfk_2` FOREIGN KEY (`IdImage`) REFERENCES `images` (`IdImage`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Limiti per la tabella `recipesingredients`
 --
 ALTER TABLE `recipesingredients`
-  ADD CONSTRAINT `recipesingredients_ibfk_2` FOREIGN KEY (`IdIngredient`) REFERENCES `ingredients` (`IdIngredient`);
+  ADD CONSTRAINT `ingredient_fk_1` FOREIGN KEY (`IdIngredient`) REFERENCES `ingredients` (`IdIngredient`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `recipesingredients_ibfk_1` FOREIGN KEY (`IdRecipe`) REFERENCES `recipes` (`IdRecipe`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `reviews`
 --
 ALTER TABLE `reviews`
-  ADD CONSTRAINT `dropUser` FOREIGN KEY (`IdUser`) REFERENCES `users` (`IdUser`) ON DELETE CASCADE,
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`IdUser`) REFERENCES `users` (`IdUser`);
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`IdUser`) REFERENCES `users` (`IdUser`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`IdRecipe`) REFERENCES `recipes` (`IdRecipe`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`Category`) REFERENCES `categories` (`IdCategory`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`Category`) REFERENCES `categories` (`IdCategory`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
