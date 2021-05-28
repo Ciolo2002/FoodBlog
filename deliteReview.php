@@ -9,7 +9,6 @@ if (isset($_POST['submit'])) {
 
 
 if((isset($row['IdUser'])&& $row['IdUser']==$_SESSION['IdUser']) || ($_SESSION['Category']=='Administrator')){
-
     $stmt = $dbh->getInstance()->prepare("DELETE FROM reviews WHERE IdReview= :IdReview");
     $stmt->bindParam(':IdReview', $_POST['IdReview']);
     $stmt->execute();

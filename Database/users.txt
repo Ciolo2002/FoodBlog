@@ -12,20 +12,67 @@ A.Djh!]XQg<TrTX+Gx(&V@fPv74qnTL~
 'admin' ha i permessi di inserire riumuovere e modificare gli utenti
 ;E&w#!%Br]]XtJLSe@$XY}qD<r3g2u2n
 
+
+
+
+
 GRANT USAGE ON *.* TO `admin`@`%` IDENTIFIED BY PASSWORD '*08DF490E2DC9C28ADF608D812337897EC5C37A82';
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON `foodblog`.* TO `admin`@`%`;
+GRANT SELECT ON `foodblog`.* TO `admin`@`%`;
+
+GRANT INSERT, UPDATE, DELETE ON `foodblog`.`users` TO `admin`@`%`;
+
+GRANT INSERT, UPDATE, DELETE ON `foodblog`.`reviews` TO `admin`@`%`;
 
 
-GRANT SELECT, INSERT, DELETE ON *.* TO `user`@`%` IDENTIFIED BY PASSWORD '*78B1A9D08A82E9B062ABD130B50FA1D6CF40C25A';
 
 
-GRANT SELECT, INSERT, UPDATE, DELETE, FILE ON *.* TO `chef`@`%` IDENTIFIED BY PASSWORD '*1351EB58BB3A7DA123CAEA3F49791E69AE1360BB';
+
+
+
+
+GRANT USAGE ON *.* TO `user`@`%` IDENTIFIED BY PASSWORD '*78B1A9D08A82E9B062ABD130B50FA1D6CF40C25A';
+
+GRANT SELECT ON `foodblog`.* TO `user`@`%`;
+
+GRANT UPDATE, DELETE ON `foodblog`.`users` TO `user`@`%`;
+
+GRANT INSERT, DELETE ON `foodblog`.`reviews` TO `user`@`%`;
+
+
+
 
 
 
 GRANT USAGE ON *.* TO `nouser`@`%` IDENTIFIED BY PASSWORD '*EFC7D8F103F984B5C93064FE0465583412ACDA89';
 
-GRANT SELECT, INSERT, REFERENCES ON `foodblog`.* TO `nouser`@`%`;
+GRANT SELECT ON `foodblog`.* TO `nouser`@`%`;
 
-GRANT INSERT ON `foodblog`.`reviews` TO `nouser`@`%`;
+GRANT INSERT ON `foodblog`.`users` TO `nouser`@`%`;
+
+
+
+
+
+
+GRANT USAGE ON *.* TO `chef`@`%` IDENTIFIED BY PASSWORD '*1351EB58BB3A7DA123CAEA3F49791E69AE1360BB';
+
+GRANT SELECT ON `foodblog`.* TO `chef`@`%`;
+
+GRANT INSERT, UPDATE, DELETE ON `foodblog`.`products` TO `chef`@`%`;
+
+GRANT INSERT, UPDATE, DELETE ON `foodblog`.`ingredients` TO `chef`@`%`;
+
+GRANT INSERT, UPDATE, DELETE ON `foodblog`.`recipesingredients` TO `chef`@`%`;
+
+GRANT INSERT, UPDATE ON `foodblog`.`recipes` TO `chef`@`%`;
+
+GRANT INSERT, UPDATE, DELETE ON `foodblog`.`measureunits` TO `chef`@`%`;
+
+GRANT INSERT, UPDATE, DELETE ON `foodblog`.`users` TO `chef`@`%`;
+
+GRANT INSERT, UPDATE, DELETE ON `foodblog`.`images` TO `chef`@`%`;
+
+GRANT INSERT, DELETE ON `foodblog`.`reviews` TO `chef`@`%`;
+
+GRANT INSERT, UPDATE, DELETE ON `foodblog`.`recipesimages` TO `chef`@`%`;
