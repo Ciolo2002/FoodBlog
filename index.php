@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12 half-image" style="background: rgba(255, 255, 255, 0.3)">
                     <div class="d-flex align-items-center justify-content-center" style=" margin: 25%;">
-                        <h1 class="logo main">Burnt Leeks<br>& Raw Beets</h1> <!-- lo stile di questo h1 non funziona se usato dentro style.css-->
+                        <h1 class="logo main">Burnt Leeks<br>& Raw Beets</h1>
                     </div>
                 </div>
             </div>

@@ -416,7 +416,7 @@
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"><label for="fileToUpload"> Image: </label></span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
-                            <input type="file" name="fileToUpload" id="fileToUpload" class="hidden nav-font">
+                            <input type="file" name="fileToUpload" id="fileToUpload" class="hidden nav-font" required>
                         </div>
                     </div>
                 </div>

@@ -17,15 +17,15 @@ if (isset($_POST['Login'])) {
             $actual_link .= '&recipe=' . $_GET['recipe'];
         }
     }
-    // $row is false if the user does not exist
+ 
     if ($row) {
         if (password_verify($_POST['password'], $row['password'])) {
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['IdUser'] = $row['IdUser'];
             $_SESSION['Name'] = $row['Name'];
             $_SESSION['Category']=$row['Category'];
-            $_SESSION['SignUp'] = true; //vero se l'utente si è appena registrato e quindi si è anche appena loggato
-            $_SESSION['ErrorLogin'] = true; //vero se il l'utente è loggato
+            $_SESSION['SignUp'] = true; 
+            $_SESSION['ErrorLogin'] = true;
             header('Location:' . $actualLink);
             exit;
         } else {

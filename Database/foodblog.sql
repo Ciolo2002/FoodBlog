@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 29, 2021 alle 00:02
+-- Creato il: Mag 31, 2021 alle 21:56
 -- Versione del server: 10.4.19-MariaDB
 -- Versione PHP: 8.0.6
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `foodblog`
 --
-CREATE DATABASE IF NOT EXISTS `foodblog` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `foodblog`;
 
 -- --------------------------------------------------------
 
@@ -115,7 +113,13 @@ INSERT INTO `images` (`IdImage`, `Path`) VALUES
 (71, 'Images/BreadRolls.jpg'),
 (72, 'Images/chillisinwater.jpg'),
 (73, 'Images/English.jpg'),
-(74, 'Images/MeFace.jpg');
+(74, 'Images/MeFace.jpg'),
+(75, 'Images/No-Churn Bee Pollen Ice Cream.jpg'),
+(76, 'Images/No-Churn Bee Pollen Ice Cream.jpg'),
+(77, 'Images/No-Churn Bee Pollen Ice Cream.jpg'),
+(78, 'Images/strawberries.jpg'),
+(79, 'Images/No-Churn Bee Pollen Ice Cream.jpg'),
+(80, 'Images/No-Churn Bee Pollen Ice Cream.jpg');
 
 -- --------------------------------------------------------
 
@@ -153,7 +157,25 @@ INSERT INTO `ingredients` (`IdIngredient`, `Ingredient`, `IdMeasureUnit`, `IdAlt
 (31, 'UHT Cream', 1, 32),
 (32, 'Double Cream', 1, 31),
 (33, 'UHT Semi-Skimmed Milk', 1, 34),
-(34, 'regular Semi-Skimmed Milk', 1, 33);
+(34, 'regular Semi-Skimmed Milk', 1, 33),
+(35, '00 Flour', 1, 36),
+(36, 'Table Salt', 1, 35),
+(37, 'UHT Cream', 1, 38),
+(38, 'UHT Semi-Skimmed Milk', 1, 37),
+(39, 'UHT Cream', 1, 40),
+(40, 'UHT Semi-Skimmed Milk', 1, 39),
+(41, 'Melted Butter', 1, 42),
+(42, 'Bread Flour', 1, 41),
+(43, 'Bee Pollen', 1, 44),
+(44, 'Baking Powder', 1, 43),
+(45, 'UHT Cream', 1, 46),
+(46, 'UHT Semi-Skimmed Milk', 1, 45),
+(47, 'Bee Pollen', 1, 48),
+(48, 'Baking Powder', 1, 47),
+(49, 'UHT Cream', 1, 50),
+(50, 'UHT Semi-Skimmed Milk', 1, 49),
+(51, 'UHT Cream', 1, 52),
+(52, 'UHT Semi-Skimmed Milk', 1, 51);
 
 -- --------------------------------------------------------
 
@@ -217,7 +239,7 @@ INSERT INTO `recipes` (`IdRecipe`, `Title`, `Preparation`, `State`) VALUES
 (1, 'BREAD ROLLS ; recipe for 10 rolls', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR  TOTAL | SERVES 4-8 ;\r\n01 Dissolve the yeast and sugar in the water and leave to stand until active and foaming. This should take about 10 minutes. ;\r\n02 Combine the flour and salt in a large bowl and add the yeast mixture and the beaten egg and begin to bring to a dough. Ensure everything is combined and there is no flour left in the bowl. ;\r\n03 Tip out the dough and begin to knead on an unfloured work surface for 10-12 minutes until the dough is smooth and springs back when being gently poked ;\r\n04 Put the dough into a large bowl, cover with cling film and leave to proof until double in size. About 1 – 2 hours depending on the environment. ;\r\n05 Once the dough has been sufficiently proofed knock the air out of it my gently pushing your hand into the centre and divide into 80g pieces. ;\r\n06 Roll the pieces into little balls using the surface tension method and place them on a lined baking tray with enough space to proof once more. Cover with a wet cloth to prevent dehydration. ;\r\n07 Preheat the oven to 180°C or 350f. ;\r\n08 Allow them to double in size once more (about 30 minutes) and carefully brush them half of the melted butter ensuring not to knock out the air. ;\r\n09 Bake them at 180°C for 10-15 minutes or until golden brown. ;\r\n10 Brush them with the remaining butter and allow them cool completely before use.', 1),
 (2, 'FLOUR TORTILLAS ; recipe for 8 tortillas', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the flour, salt, and baking powder in a large bowl. ;\r\n02 Cut the cold butter into small pieces and rub it into the flour mix using your fingertips until you have a fine breadcrumb texture. ;\r\n03 Add the yoghurt and gently kneed until combined. Cover loosely with cling film and rest the dough for 10 minutes. ;\r\n04 Once the dough has rested, roll it into a sausage shape and equally divide the dough into 8 portions, shape them into balls and rest them for a further 10 minutes. ;\r\n05 Using a floured rolling pin, roll each portion out to 10 inches in diameter on a lightly floured work surface. ;\r\n06 Cook one at a time in a large dry non-stick frying pan over a medium to low heat turning over only once during cooking. ;\r\n07 Allow the finished Tortillas to cool completely and soften before use.', 1),
 (3, 'BREAKFAST TOAST ; recipe for 1 loaf', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8 ;\r\n01 Combine the sugar yeast and water and leave to stand to until the yeast is foaming. ;\r\n02 Add the flour, salt, and whole milk together and mix it too a loose dough. If the dough is wet, let it stand for 5 minutes, dust with a little flour and start kneading. ;\r\n03 Knead for 10-15 minutes until the dough is smooth and springy. After a couple of minutes kneading you will start to notice a significant difference in the consistency. ;\r\n04 Once sufficiently kneading, place the dough in a large bowl and cover with a damp cloth. Allow the dough to double in size (about 1 hour). ;\r\n05 Lightly oil and flour an appropriately sized loaf tin and preheat your oven to 180°C. ;\r\n06 Once the dough has doubled in size, knock the air out and flatten the dough. Roll the dough over itself to create a sausage shape and place it in the loaf tin. Ensure to push the dough into the corners of the tin. ;\r\n07 Cover it with a damp cloth and allow the dough to double in volume once more; 08. Bake at 180°C for 20-25 minutes or until golden brown. (12-15 minutes for smaller loaves). If you are unsure you can check the core temperature using a probe thermometer. Be sure the breach reaches a minimum of 86°C.', 1),
-(4, 'NO-CHURN BEE POLLEN ICE CREAM;recipe for x  icecream ball', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8; 01 Add all of the ingredients together except the Cream and bring to the boil ;\r\n02 Blend the mixture together in a food processor or with a stick blender ;\r\n03 Pass the mixture through a seize and discard the remnants ;\r\n04 Refrigerate ;\r\n05 Whip the Cream until nearly stiff ;\r\n06 Fold the whipped Cream into the Bee Pollen mixture gently. Be careful not to knock out the air ;\r\n07 Place the Ice Cream in the freezer and stir gently with a spoon 3-4 times over a couple of hours until the Ice Cream is frozen and ready to serve ;', 1);
+(4, 'NO-CHURN BEE POLLEN ICE CREAM;recipe for 12  icecream ball', '30 MINUTE PREP |15 MINUTE COOKING | 15 MINUTE REST | 1 HOUR TOTAL | SERVES 4-8; 01 Add all of the ingredients together except the Cream and bring to the boil ;\r\n02 Blend the mixture together in a food processor or with a stick blender ;\r\n03 Pass the mixture through a seize and discard the remnants ;\r\n04 Refrigerate ;\r\n05 Whip the Cream until nearly stiff ;\r\n06 Fold the whipped Cream into the Bee Pollen mixture gently. Be careful not to knock out the air ;\r\n07 Place the Ice Cream in the freezer and stir gently with a spoon 3-4 times over a couple of hours until the Ice Cream is frozen and ready to serve ;', 1);
 
 -- --------------------------------------------------------
 
@@ -239,7 +261,7 @@ INSERT INTO `recipesimages` (`IdRecipeImage`, `IdRecipe`, `IdImage`) VALUES
 (2, 1, 4),
 (5, 2, 7),
 (7, 3, 9),
-(18, 4, 41);
+(18, 4, 80);
 
 -- --------------------------------------------------------
 
@@ -285,10 +307,8 @@ INSERT INTO `recipesingredients` (`IdRecipe`, `IdIngredient`, `Quantity`) VALUES
 (4, 9, 125),
 (4, 29, 100),
 (4, 30, 200),
-(4, 31, 400),
-(4, 32, 400),
-(4, 33, 200),
-(4, 34, 200);
+(4, 51, 400),
+(4, 52, 200);
 
 -- --------------------------------------------------------
 
@@ -429,7 +449,6 @@ ALTER TABLE `recipesimages`
 -- Indici per le tabelle `recipesingredients`
 --
 ALTER TABLE `recipesingredients`
-  ADD PRIMARY KEY (`IdRecipe`,`IdIngredient`),
   ADD KEY `ingredient_fk_1` (`IdIngredient`),
   ADD KEY `IdRecipe` (`IdRecipe`);
 
@@ -462,13 +481,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT per la tabella `images`
 --
 ALTER TABLE `images`
-  MODIFY `IdImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `IdImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT per la tabella `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `IdIngredient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `IdIngredient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT per la tabella `measureunits`

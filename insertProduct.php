@@ -13,22 +13,12 @@
         header("Location: index.php");
     }
     ?>
-
-
-
 </head>
-
 <body>
-
     <div class="container-fluid ">
-
         <?php
         require_once("callingLogin.php");
         require_once("navbar.php");
-
-
-
-
         if (isset($_POST["submit"])) {
             $image['IdImage'] = null;
             if (is_uploaded_file($_FILES["fileToUpload"]["tmp_name"])) {
@@ -36,8 +26,6 @@
                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-                // Check if image file is a actual image or fake image
                 if (isset($_POST["submit"])) {
                     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
                     if ($check !== false) {
@@ -48,13 +36,10 @@
                         $uploadOk = 0;
                     }
                 }
-                // Check file size
                 if ($_FILES["fileToUpload"]["size"] > 5000000) {
                     echo "Sorry, your file is too large.";
                     $uploadOk = 0;
                 }
-
-                // Allow certain file formats
                 if (
                     $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                     && $imageFileType != "gif"
@@ -62,20 +47,14 @@
                     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                     $uploadOk = 0;
                 }
-
-                // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0) {
                     echo "Sorry, your file was not uploaded.";
-                    // if everything is ok, try to upload file
                 } else {
                     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                         echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
                     } else {
                         echo "Sorry, there was an error uploading your file.";
                     }
-
-
-
                     $pdoStatement = $dbh->getInstance()->prepare("INSERT INTO images(Path) VALUES( :photopath)");
                     $pdoStatement->bindValue(":photopath", $target_file, PDO::PARAM_STR);
                     $pdoStatement->execute();
@@ -95,21 +74,13 @@
             $stmt2->execute();
             header("Refresh:0");
         }
-
         ?>
-
-
-
-
         <header class="text-center logo">
             <h1 style="font-size: 65px"> Insert the new product </h1>
         </header>
-
-
         <form action="insertProduct.php" method="post" enctype="multipart/form-data">
             <div class="row d-flex justify-content-center">
                 <div class="col-10  d-flex justify-content-center ">
-
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Title: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
@@ -118,14 +89,8 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
             <div class="row d-flex justify-content-center">
                 <div class="col-10  d-flex justify-content-center ">
-
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Description: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
@@ -136,7 +101,6 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-10  d-flex justify-content-center ">
-
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Link: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
@@ -147,7 +111,6 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-10  d-flex justify-content-center ">
-
                     <div class="myform form" style="border: none;">
                         <span class="navbar-font" style="font-size: 30px;"> Image: </span>
                         <div class="form-control navbar-font" style="font-size: 25px; height: auto; width:auto">
@@ -156,10 +119,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
             <div class="row d-flex ">
                 <div class="col-6  d-flex justify-content-center ">
                     <div class="myform form" style="border: none;">
@@ -172,9 +131,7 @@
                     </div>
                 </div>
             </div>
-
         </form>
-
         <div class="row d-flex justify-content-center ">
             <div class="col-12  d-flex justify-content-center ">
                 <div class="myform form" style="border: none;">
@@ -196,23 +153,11 @@
                         }
                         echo  '<a href="' . $url . '" class="button btn btn-block mybtn btn-secondary logo">' . $action . '</a>';
                     }
-
                     ?>
-
                 </div>
             </div>
         </div>
-
-
-
-
-
     </div>
     <?php require_once("footer.php"); ?>
-
-
-
-
 </body>
-
 </html>
