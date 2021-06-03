@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 31, 2021 alle 21:56
+-- Creato il: Giu 03, 2021 alle 18:05
 -- Versione del server: 10.4.19-MariaDB
 -- Versione PHP: 8.0.6
 
@@ -215,7 +215,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`IdProduct`, `Title`, `Link`, `Description`, `IdImage`) VALUES
 (1, 'Easy As Bread', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Bread is the most respected staple food across the globe. We love it for good reason. It is inexpensive. It is delicious. It has been around since the beginning and we are familiar with it. \r\n\r\nBread is the only food that connects our different cultures and social groups. Through race, religion, poverty and wealth. Bread is celebrated. If you are interested in a further understanding of your own food culture or have curiosities about others and the similarities between them all. There is no better place to start than with bread. This book consists of easy bread recipes that are diverse and will cover a wide range of cuisine’s so you can eat good bread and turn every meal into a great meal.\r\n', 13),
-(12, 'Proper Pasta', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', '\r\nMaecenas condimentum laoreet felis, ut cursus orci semper sit amet. Sed fermentum consequat ante quis eleifend. Mauris ac auctor turpis. Integer a tristique tortor. Quisque pulvinar quis sem sit amet cursus. Proin sollicitudin malesuada dolor sit amet dignissim. Vivamus nibh elit, malesuada ac volutpat ac, tempor nec nunc. Nunc quis nibh orci. Mauris semper, ex sed volutpat consectetur, quam sapien feugiat ex, in bibendum quam arcu quis erat.\r\n', 30);
+(12, 'Proper Pasta', 'https://www.amazon.it/kindle-store-ebooks/b?ie=UTF8&node=818937031', 'Everything you need to know about Pasta.\r\n\r\n <br>\r\n\r\nAre you ready to learn to secrets?\r\n\r\n<br>\r\n\r\nYour friends will love you!', 30);
 
 -- --------------------------------------------------------
 
@@ -344,7 +344,11 @@ INSERT INTO `reviews` (`IdReview`, `Stars`, `Review`, `IdUser`, `IdRecipe`) VALU
 (95, 3, ' I tried making these toasts yesterday but my skills are not that developed, I\'ll try again next week', 20, 3),
 (107, 5, 'Ice ice. Deam Sosa this gelato is so good. ', 41, 4),
 (108, 3, 'Without churn this recipe is very easy to prepare but the taste is not the same :/', 16, 4),
-(115, 4, 'Sweeeet (❁´◡`❁)', 21, 4);
+(115, 4, 'Sweeeet (❁´◡`❁)', 21, 4),
+(116, 5, 'So easy to prepare :)', 47, 3),
+(117, 5, 'Keep up the good work!', 47, 1),
+(118, 4, 'Did you create this recipe while covid positive? ', 48, 1),
+(120, 4, 'i love it', 20, 4);
 
 -- --------------------------------------------------------
 
@@ -375,24 +379,26 @@ INSERT INTO `users` (`IdUser`, `Name`, `Surname`, `Email`, `Password`, `Newslett
 (7, 'Luca', 'Laurentis', 'luca.laurentis@gmail.it', '$2y$10$zxo7k1aWjJrby5oH/9h0zeMACik6LRX8Bjh/RcDXwYnmkRAjsH8T6', 0, 3),
 (8, 'Csaba', 'Zorba', 'csaba.zorza@gmail.it', '$2y$10$qCz6/EDMZhaLfNh6SuxaQeuNQ5UfNLb4LS2IUjSpGojw3OE3GIePi', 1, 3),
 (9, 'Antonella', 'Kinder', 'antonella@kinder.it', '$2y$10$3fl/6xxIlgxbl4t06U7Hn.B5PcrFvMEoxYtAyBHGQN3.On3TWiqhy', 1, 3),
-(10, 'Michele', 'Sarto', 'sarto@tiscali.it', '$2y$10$Tx4WeaPqPrvuhmFESs9nduCKVMKXRQmJiaRjRdxpUCXd/1JCMUpvO', 1, 3),
-(12, 'Grace', 'Gullidge', 'ciao@ciao.it', '$2y$10$nAno1NOCGtHqBJvkSCxLIejtFbhQAyCFsBFucazSk9OsdpJvEguQ2', 0, 3),
-(13, 'Nicola', 'Panizzolo', 'nicola.panizollo@ptpvenezia.edu.it', '$2y$10$58P.iDm908KPmJ2DgZ8zuuaxx1bpHVAHPuRemSA3Q7ddYC37wbfL6', 1, 3),
+(10, 'Michele', 'Sarto', 'sartogobbato@tiscali.it', '$2y$10$Tx4WeaPqPrvuhmFESs9nduCKVMKXRQmJiaRjRdxpUCXd/1JCMUpvO', 1, 3),
+(12, 'Grace', 'Gullidge', 'ciao@ciao.it', '$2y$10$nAno1NOCGtHqBJvkSCxLIejtFbhQAyCFsBFucazSk9OsdpJvEguQ2', 1, 3),
+(13, 'Nicola', 'Panizzolo', 'nicola.panizzolo@ptpvenezia.edu.it', '$2y$10$58P.iDm908KPmJ2DgZ8zuuaxx1bpHVAHPuRemSA3Q7ddYC37wbfL6', 1, 3),
 (15, 'Ethan', 'Franceschin', 'ethan.franceschin@ptpvenezia.edu.it', '$2y$10$v/IshXfaAnKzLemWzzmhHuThx6CWKbgo.24NyYCel9UOQ9MXCpfLG', 1, 3),
-(16, 'Leonardo', 'Vio', 'leonardo.vio56@gmail.com', '$2y$10$YS3HJXqUXQ.8qEewIQyyb.JP/DOZaMoZnPiVmH/Mim6RjejWqMqRu', 1, 3),
-(17, 'Diego', 'Nardo', 'diego.nardo@magia.org.uk', '$2y$10$i1d5mW63jHWv1onoHbHgt.U79l1.2PD9aRDB8QAqtv64vkyRZiEUS', 0, 3),
-(18, 'Claudia', 'Dei Rossi', 'claudia@deirossi.it', '$2y$10$l/pWcTCXLwONAcK131t0IumSNGB3Z.8QzaGZ5BLeD5wxbJTcGqMI6', 1, 3),
+(16, 'Leonardo', 'Vio', 'leonardo.vio@ptpvenezia.edu.it', '$2y$10$YS3HJXqUXQ.8qEewIQyyb.JP/DOZaMoZnPiVmH/Mim6RjejWqMqRu', 1, 3),
+(17, 'Diego', 'Nardo', 'diego.nardo@ptpvenezia.edu.it', '$2y$10$i1d5mW63jHWv1onoHbHgt.U79l1.2PD9aRDB8QAqtv64vkyRZiEUS', 1, 3),
+(18, 'Claudia', 'Dei Rossi', 'claudia.deirossi@ptpvenezia.edu.it', '$2y$10$l/pWcTCXLwONAcK131t0IumSNGB3Z.8QzaGZ5BLeD5wxbJTcGqMI6', 1, 3),
 (19, 'Marta', 'Terranova', 'marta.terranova@gmail.it', '$2y$10$hAVBeGIKd8IL5F18glsKheF2FgQJCrB5pv4tl3DCGJrl1jcvErtpO', 1, 3),
-(20, 'Nicolò', 'Bighetto', 'nickbig@hello.yuppi', '$2y$10$KUeg25.heeCdkG781LIc6.3zOLfZ.uTpr0vx6Dh38KvcMbxjRetu.', 0, 3),
-(21, 'Hadda', 'Hakim', 'vortrex@ciao.ciao', '$2y$10$uNvd5wcDWWmAYix03zFfvelhKtNWbqYKjYu.gyNI5t7FkdbXE0Pt.', 0, 3),
+(20, 'Nicolò', 'Bighetto', 'nickbigh@gmail.com', '$2y$10$KUeg25.heeCdkG781LIc6.3zOLfZ.uTpr0vx6Dh38KvcMbxjRetu.', 1, 3),
+(21, 'Hadda', 'Hakim', 'haddaoui.hakim@ptpvenezia.edu.it', '$2y$10$uNvd5wcDWWmAYix03zFfvelhKtNWbqYKjYu.gyNI5t7FkdbXE0Pt.', 1, 3),
 (31, 'Ludovico', 'Ariosto', 'ludovico@arrosto.haha', '$2y$10$/H7SZD1xOWaUZPqJ2nv2cu2S5R.TE9O1.z2L07jpL.CwCbqj16JoO', 0, 3),
-(36, 'Topolino', 'Disney', 'topolino@ciao.it', '$2y$10$fbf1wAcPwzOEuxwvHY0F8uVniTpHUhf8UHlwnHg4AbT9PDgai/UvG', 1, 3),
+(36, 'Cristian', 'Plop', 'cristian.plop@ptpvenezia.edu.it', '$2y$10$jqK5LNsjuHwP7dq225nIru7gVVARrzKv7I3yZ19LjmuykmPdPWS0q', 1, 3),
 (38, 'Minnie', 'Disney', 'minnie@disney.it', '$2y$10$yfgRtneAGTUIEhuJr2Sbg.hv65RJiThz8yuvhbs7FkK9mXGolAVJy', 0, 3),
 (39, 'Rosa', 'Chemical', 'rosa@music.it', '$2y$10$jeyDq6PsAyzoeRMJ.bOZAemjdOzkqZu7LenyaPF/Uwnf/.VWmj14S', 1, 3),
 (40, 'Matthew David', 'Gullidge', 'burntleeksandrawbeets@gmail.com', '$2y$10$n529dtGZ78.sa9Ns/5bEk.Pj7SkaSZtkYTinE7D3LxyfmF/8TekMC', 1, 1),
 (41, 'Sfera', 'Ebbasta', 'sfera.ebbasta@bhmg.it', '$2y$10$ITPtwtXfARzLnnm1JN2ibO3IrfFkhTsu8.dbOXi5LsSYVYdvct9Ja', 1, 3),
 (44, 'Bianca', 'Zennaro', 'bianca@famosa.it', '$2y$10$s1PxNjODE5udfLqoid064excuCBftiCL3H6A9gkO3JFcX5DODCXu6', 0, 3),
-(46, 'Claudia', 'Dei Roxxxy', 'claudiadeirossi@iam.com', '$2y$10$zMxgLlSvuvHA40eYBTDJgexi/37.5evkcx.TAUV/IWr1MgthGKBHS', 0, 3);
+(46, 'Claudia', 'Dei Roxxxy', 'claudiadeirossi@iam.com', '$2y$10$zMxgLlSvuvHA40eYBTDJgexi/37.5evkcx.TAUV/IWr1MgthGKBHS', 0, 3),
+(47, 'Leonardo', 'Vio', 'violeo@gmail.com', '$2y$10$NpgIUJFFxsnJ5gfrOjMUQO1zTA4XDtHaQWf92oLVwbFsDkjFkkiTO', 1, 3),
+(48, 'Tommaso', 'Soncin', '12thrway@gmail.com', '$2y$10$tOYjJsf6JGhRpnxG3OyuSeLRnOu7vtTVkwaEOzTOlAOpT7dj0zP.6', 1, 3);
 
 --
 -- Indici per le tabelle scaricate
@@ -523,13 +529,13 @@ ALTER TABLE `recipesingredients`
 -- AUTO_INCREMENT per la tabella `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `IdReview` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `IdUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `IdUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Limiti per le tabelle scaricate
